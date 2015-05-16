@@ -21,7 +21,13 @@ public class Controlador implements ActionListener {
 	public static final String A_ELIMINAR_LIBRO = "eliminar libro";
 	public static final String A_ELIMINAR_CLIENTE = "eliminar cliente";
 	public static final String A_ELIMINAR_AUTOR = "eliminar autor";
-
+	public static final String A_EDITAR_LIBRO  = "editar libro";
+	public static final String A_EDITAR_CLIENTE  = "editar cliente";
+	public static final String A_EDITAR_AUTOR  = "editar autor";
+	public static final String A_BUSCAR_LIBRO = "buscar libro";
+	public static final String A_BUSCAR_CLIENTE = "buscar cliente";
+	public static final String A_BUSCAR_AUTOR = "buscar autor";
+	
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;

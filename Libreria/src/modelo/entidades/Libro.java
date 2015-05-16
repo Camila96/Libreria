@@ -96,5 +96,9 @@ public class Libro {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	@Override
+	public String toString() {
+		return nombre + ","+ descripcion + ","+ genero+","+copiasVendidas + ","+valor+image + ","+autor;
+	}
 }

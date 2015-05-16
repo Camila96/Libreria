@@ -22,6 +22,8 @@ public class Autor {
 		this.id = id;
 	}
 
-
-
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }

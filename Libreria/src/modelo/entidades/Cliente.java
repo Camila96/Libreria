@@ -46,4 +46,9 @@ public class Cliente {
 	public void setListaLibro(ArrayList<Libro> listaLibro) {
 		this.listaLibro = listaLibro;
 	}
+	
+	@Override
+	public String toString() {
+		return nombre + ","+ credito;
+	}
 }
