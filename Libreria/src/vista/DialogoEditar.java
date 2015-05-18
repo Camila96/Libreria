@@ -109,7 +109,7 @@ public class DialogoEditar extends JDialog {
 
 		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR);
 		btnCancelar.addActionListener(controlador);
-		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_SITIO);
+		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_LIBRO);
 		btnCancelar.setBounds(100,380, 150, 30);
 
 		btnCargarImage = new JButton(ConstantesGUI.T_ITEM_CARGAR_IMAGEN);

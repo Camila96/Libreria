@@ -35,8 +35,7 @@ public class Controlador implements ActionListener {
 	public static final String A_BUSCAR_CLIENTE = "buscar cliente";
 	public static final String A_BUSCAR_AUTOR = "buscar autor";
 	public static final String A_MOSTRAR_AGREGAR_LIBRO="mostrar libro";
-	public static final String A_MOSTRAR_AGREGAR_SITIO = "mostrar agregar sitio";
-	public static final String A_MOSTRAR_CANCELAR_SITIO = "mostrar cancelar sitio";
+	public static final String A_MOSTRAR_CANCELAR_LIBRO = "mostrar cancelar sitio";
 	public static final String A_CREAR_IMAGEN = "crear imagen";
 	public static final String A_MOSTRAR_DIALOGO_EDITAR_SITIO="Editar Dialogo";
 	public static final String A_MOSTRAR_CANCELAR_CLIENTE = "Mostrar agregar Cliente";
@@ -95,12 +94,7 @@ public class Controlador implements ActionListener {
 			agregarLibro();
 			dialogoLibro.eliminarDatosTabla();
 			break;
-			
-		case A_CREAR_IMAGEN:
-			dialogoLibro.importarImagen();
-			break;
-			
-		case A_MOSTRAR_CANCELAR_SITIO:
+		case A_MOSTRAR_CANCELAR_LIBRO:
 			dialogoLibro.setVisible(false);
 			break; 
 			
@@ -112,6 +106,9 @@ public class Controlador implements ActionListener {
 				e1.printStackTrace();
 			}
 			dialogoLibro.eliminarDatosTabla();
+			break;
+		case A_CREAR_IMAGEN:
+			dialogoLibro.importarImagen();
 			break;
 		case A_MOSTRAR_DIALOGO_EDITAR_SITIO:
 			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));

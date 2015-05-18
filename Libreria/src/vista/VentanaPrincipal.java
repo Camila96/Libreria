@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import controlador.Controlador;
 import modelo.dao.GestorAutor;
@@ -35,6 +37,9 @@ public class VentanaPrincipal  extends JFrame{
 	private JTable tableAutor;
 	private DefaultTableModel modeloAutor;
 	private DialogoLibro dialogoLibro;
+	private JPanelImage jPanelImage;
+	
+	
 
 	public VentanaPrincipal(final Controlador controlador) {
 		setIconImage(createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
@@ -42,7 +47,6 @@ public class VentanaPrincipal  extends JFrame{
 		setSize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		setTitle("LIBRERIA");
 
 		barraMenu = new BarraMenu(controlador);
 		setJMenuBar(barraMenu);
@@ -53,8 +57,20 @@ public class VentanaPrincipal  extends JFrame{
 
 		modeloLibro = new DefaultTableModel(new String[]{"N°ORDEN" ,"NOMBRE", "DESCRIPCION","VALOR","GENERO","AUTOR", "COPIAS VENDIDAS"}, 0);
 		tableLibro = new JTable(modeloLibro);
+		jPanelImage = new JPanelImage();
 		tableLibro.getTableHeader().setReorderingAllowed(false);
+		tableLibro.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
+
+			public void valueChanged(ListSelectionEvent e) {		
+				if(modeloLibro.getRowCount() > 0){
+					jPanelImage.setRutaImagen(controlador.buscarId(retornarIdSeleccion()).getImage());
+					jPanelImage.repaint();
+				}
+
+			}
+		});
 		add(new JScrollPane(tableLibro),BorderLayout.WEST);
+		add(jPanelImage,BorderLayout.SOUTH);
 
 		modeloCliente = new DefaultTableModel(new String[]{"ID", "NOMBRE", "CREDITO"}, 0);
 		tableCliente = new JTable(modeloCliente);
