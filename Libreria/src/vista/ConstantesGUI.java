@@ -9,11 +9,12 @@ public class ConstantesGUI {
 	 */
 	public static final String RUTA_ARCHIVO_ESP = "properties/esp.properties";
 	public static final String RUTA_ARCHIVO_ENG = "properties/ing.properties";
-	public static final int VENTANA_ANCHO = 700;
-	public static final int VENTANA_ALTO = 700;
+	public static final int VENTANA_ANCHO = 1350;
+	public static final int VENTANA_ALTO = 750;
 	public static final int DIALOGO_ANCHO = 500;
 	public static final int DIALOGO_ALTO = 480;
-
+	public static final String I_ICONO_VENTANA = "/img/icon.png";
+	public static final String T_TITULO_VENTANA = "LIBRERIA";
 	
 	/**
 	 * barra menu
@@ -49,4 +50,8 @@ public class ConstantesGUI {
 	public static final String T_ITEM_AGREGAR_BUTTON= "Agregar Sitio";
 	public static final String T_ITEM_CANCELAR= "Cancelar Sitio";
 	public static final String T_ITEM_CARGAR_IMAGEN= "Cargar imagen";
+	public static final String T_ITEM_EDITAR="editar";
+	
+	
+	
 }

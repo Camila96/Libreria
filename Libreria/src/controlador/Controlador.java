@@ -85,11 +85,18 @@ public class Controlador implements ActionListener {
 			dialogoLibro.eliminarDatosTabla();
 			break;
 		case A_MOSTRAR_DIALOGO_EDITAR_SITIO:
-//			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			dialogoEditar.setVisible(true);
 			break;
 		case A_EDITAR_LIBRO:
-//				editarSitio();
+				editarSitio();
+			break;
+		case A_BUSCAR_LIBRO:
+			try {
+				buscar();
+			} catch (ExcepcionLibroNoEncontrado e1) {
+				e1.printStackTrace();
+			}
 			break;
 		case ConstantesGUI.C_JM_IDIOMA_INGLES:
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ENG);
@@ -111,14 +118,49 @@ public class Controlador implements ActionListener {
 	}
 	
 	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
-
 		int id = ventanaPrincipal.eliminarSitio();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
 	}
 	
+	public void editarSitio(){
+		try {
+			dialogoEditar.editar(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			ventanaPrincipal.actualizarVentana(buscarId(ventanaPrincipal.retornarIdSeleccion()), ventanaPrincipal.retornarIdSeleccion());
+			
+		} catch (Exception e) {
+		}
+	}
+	
+	public Libro buscarId(int id){
+		try {
+			return gestorLibro.buscarLibro(id);
+		} catch (ExcepcionLibroNoEncontrado e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void buscar() throws ExcepcionLibroNoEncontrado{
+		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
+			buscarSitioId();
+		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombre().isSelected()) {
+			buscarSitioNombre();
+		}
+	}
+
+	public void buscarSitioId() throws ExcepcionLibroNoEncontrado{
+		gestorLibro.buscarLibro(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.buscarLibroId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
+
+	public void buscarSitioNombre() throws ExcepcionLibroNoEncontrado{
+		gestorLibro.buscarLibro(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.buscarLibroNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
 	
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
-
 	}
 }

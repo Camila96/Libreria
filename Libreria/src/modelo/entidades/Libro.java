@@ -12,10 +12,12 @@ public class Libro {
 	private String image;
 	private String autor;
 	private int id;
+	private static int consecutivo;
 	
 	
 	public Libro(String nombre, String descripcion, double valor, String genero,String autor,
 			double copiasVendidas, String image) {
+		this.id = consecutivo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.genero = genero;
@@ -23,7 +25,7 @@ public class Libro {
 		this.valor = valor;
 		this.image = image;
 		this.autor = autor;
-		this.id = id;
+		consecutivo++;
 	}	
 
 	public String getNombre() {

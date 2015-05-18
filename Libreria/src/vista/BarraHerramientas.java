@@ -1,7 +1,9 @@
 package vista;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import controlador.Controlador;
@@ -21,76 +23,80 @@ public class BarraHerramientas extends JToolBar {
 	private JButton btnBuscarCliente;
 	private JButton btnBuscarAutor;
 	private JTextField txtBuscar;
+	private JRadioButton jrBtnId;
+	private JRadioButton jrBtnNombre;
+	private ButtonGroup btnGroup;
+
 	
 	public BarraHerramientas(Controlador controlador) {
 		setEnabled(false);
-		btnAgregarLibro = new JButton(createImageIcon("/img/edit.png"));
+		btnAgregarLibro = new JButton(createImageIcon("/img/book.png"));
 		btnAgregarLibro.addActionListener(controlador);
 		btnAgregarLibro.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_LIBRO);
 		btnAgregarLibro.setToolTipText("Agregar Libro");
 		add(btnAgregarLibro);
 		
-		btnAgregarCliente = new JButton(createImageIcon("/img/edit.png"));
-		btnAgregarCliente.addActionListener(controlador);
-		btnAgregarCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
-		btnAgregarCliente.setToolTipText("Agregar Cliente");
-		add(btnAgregarCliente);
-		
-		btnAgregarAutor = new JButton(createImageIcon("/img/edit.png"));
-		btnAgregarAutor.addActionListener(controlador);
-		btnAgregarAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
-		btnAgregarAutor.setToolTipText("Agregar Autor");
-		add(btnAgregarAutor);
-		
-		btnEditarLibro = new JButton(createImageIcon("/img/edit.png"));
+		btnEditarLibro = new JButton(createImageIcon("/img/editb.png"));
 		btnEditarLibro.addActionListener(controlador);
 		btnEditarLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_EDITAR_SITIO);
 		btnEditarLibro.setToolTipText("Editar Libro");
 		add(btnEditarLibro);
-
-		btnEditarCliente = new JButton(createImageIcon("/img/edit.png"));
-		btnEditarCliente.addActionListener(controlador);
-		btnEditarCliente.setActionCommand(Controlador.A_EDITAR_CLIENTE);
-		btnEditarCliente.setToolTipText("Editar Cliente");
-		add(btnEditarCliente);
 		
-		btnEditarAutor = new JButton(createImageIcon("/img/edit.png"));
-		btnEditarAutor.addActionListener(controlador);
-		btnEditarAutor.setActionCommand(Controlador.A_EDITAR_AUTOR);
-		btnEditarAutor.setToolTipText("Editar Autor");
-		add(btnEditarAutor);
-		
-		btnEliminarLibro = new JButton(createImageIcon("/img/edit.png"));
+		btnEliminarLibro = new JButton(createImageIcon("/img/borrarb.png"));
 		btnEliminarLibro.addActionListener(controlador);
 		btnEliminarLibro.setActionCommand(Controlador.A_ELIMINAR_LIBRO);
 		btnEliminarLibro.setToolTipText("Eliminar Libro");
 		add(btnEliminarLibro);
 		
-		btnEliminarCliente = new JButton(createImageIcon("/img/edit.png"));
-		btnEliminarCliente.addActionListener(controlador);
-		btnEliminarCliente.setActionCommand(Controlador.A_ELIMINAR_CLIENTE);
-		btnEliminarCliente.setToolTipText("Eliminar Cliente");
-		add(btnEliminarCliente);
-		
-		btnEliminarAutor = new JButton(createImageIcon("/img/edit.png"));
-		btnEliminarAutor.addActionListener(controlador);
-		btnEliminarAutor.setActionCommand(Controlador.A_ELIMINAR_AUTOR);
-		btnEliminarAutor.setToolTipText("Eliminar Autor");
-		add(btnEliminarAutor);
-		
-		btnBuscarLibro = new JButton(createImageIcon("/img/edit.png"));
+		btnBuscarLibro = new JButton(createImageIcon("/img/buscarb.png"));
 		btnBuscarLibro.addActionListener(controlador);
 		btnBuscarLibro.setActionCommand(Controlador.A_BUSCAR_LIBRO);
 		btnBuscarLibro.setToolTipText("Buscar Libro");
 		add(btnBuscarLibro);
 		
-		btnBuscarCliente = new JButton(createImageIcon("/img/edit.png"));
+		btnAgregarCliente = new JButton(createImageIcon("/img/clientea.png"));
+		btnAgregarCliente.addActionListener(controlador);
+		btnAgregarCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
+		btnAgregarCliente.setToolTipText("Agregar Cliente");
+		add(btnAgregarCliente);
+		
+		btnEditarCliente = new JButton(createImageIcon("/img/editarc.png"));
+		btnEditarCliente.addActionListener(controlador);
+		btnEditarCliente.setActionCommand(Controlador.A_EDITAR_CLIENTE);
+		btnEditarCliente.setToolTipText("Editar Cliente");
+		add(btnEditarCliente);
+		
+		btnEliminarCliente = new JButton(createImageIcon("/img/eliminarc.png"));
+		btnEliminarCliente.addActionListener(controlador);
+		btnEliminarCliente.setActionCommand(Controlador.A_ELIMINAR_CLIENTE);
+		btnEliminarCliente.setToolTipText("Eliminar Cliente");
+		add(btnEliminarCliente);
+		
+		btnBuscarCliente = new JButton(createImageIcon("/img/buscarc.png"));
 		btnBuscarCliente.addActionListener(controlador);
 		btnBuscarCliente.setActionCommand(Controlador.A_BUSCAR_CLIENTE);
 		btnBuscarCliente.setToolTipText("Buscar Cliente");
 		add(btnBuscarCliente);
 		
-		btnBuscarAutor = new JButton(createImageIcon("/img/edit.png"));
+		btnAgregarAutor = new JButton(createImageIcon("/img/autora.png"));
+		btnAgregarAutor.addActionListener(controlador);
+		btnAgregarAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
+		btnAgregarAutor.setToolTipText("Agregar Autor");
+		add(btnAgregarAutor);
+				
+		btnEditarAutor = new JButton(createImageIcon("/img/editara.png"));
+		btnEditarAutor.addActionListener(controlador);
+		btnEditarAutor.setActionCommand(Controlador.A_EDITAR_AUTOR);
+		btnEditarAutor.setToolTipText("Editar Autor");
+		add(btnEditarAutor);
+		
+		btnEliminarAutor = new JButton(createImageIcon("/img/eliminara.png"));
+		btnEliminarAutor.addActionListener(controlador);
+		btnEliminarAutor.setActionCommand(Controlador.A_ELIMINAR_AUTOR);
+		btnEliminarAutor.setToolTipText("Eliminar Autor");
+		add(btnEliminarAutor);
+		
+		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
 		btnBuscarAutor.addActionListener(controlador);
 		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnBuscarAutor.setToolTipText("Bucar Autor");
@@ -98,6 +104,19 @@ public class BarraHerramientas extends JToolBar {
 		
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar);
+		
+		btnGroup = new ButtonGroup();
+		jrBtnId = new JRadioButton("Buscar por Id");
+		jrBtnId.addActionListener(controlador);
+		jrBtnId.setActionCommand(Controlador.A_BUSCAR_LIBRO);
+		btnGroup.add(jrBtnId);
+		add(jrBtnId);
+
+		jrBtnNombre = new JRadioButton("Buscar por Nombre");
+		jrBtnNombre.addActionListener(controlador);
+		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_LIBRO);
+		btnGroup.add(jrBtnNombre);
+		add(jrBtnNombre);
 	}
 	
 	protected ImageIcon createImageIcon(String path) {
@@ -109,6 +128,30 @@ public class BarraHerramientas extends JToolBar {
 		}
 	}
 
+
+	public JRadioButton getJrBtnId() {
+		return jrBtnId;
+	}
+
+	public void setJrBtnId(JRadioButton jrBtnId) {
+		this.jrBtnId = jrBtnId;
+	}
+
+	public JRadioButton getJrBtnNombre() {
+		return jrBtnNombre;
+	}
+
+	public void setJrBtnNombre(JRadioButton jrBtnNombre) {
+		this.jrBtnNombre = jrBtnNombre;
+	}
+
+	public ButtonGroup getBtnGroup() {
+		return btnGroup;
+	}
+
+	public void setBtnGroup(ButtonGroup btnGroup) {
+		this.btnGroup = btnGroup;
+	}
 
 	public JButton getBtnAgregarLibro() {
 		return btnAgregarLibro;

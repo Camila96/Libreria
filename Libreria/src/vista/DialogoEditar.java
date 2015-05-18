@@ -40,7 +40,7 @@ public class DialogoEditar extends JDialog {
 	private JTextField txtValor;
 	private JTextField txtImage;
 
-	private JButton btnAgregar;
+	private JButton btnEditar;
 	private JButton btnCancelar;
 	private JButton btnCargarImage;
 	private VentanaPrincipal ventanaPrincipal;
@@ -102,10 +102,10 @@ public class DialogoEditar extends JDialog {
 		txtImage.setBounds(150, 320, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 		
-		btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON);
-		btnAgregar.addActionListener(controlador);
-		btnAgregar.setActionCommand(Controlador.A_AGREGAR_LIBRO);
-		btnAgregar.setBounds(310,380, 150, 30);
+		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR);
+		btnEditar.addActionListener(controlador);
+		btnEditar.setActionCommand(Controlador.A_EDITAR_LIBRO);
+		btnEditar.setBounds(310,380, 150, 30);
 
 		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR);
 		btnCancelar.addActionListener(controlador);
@@ -131,7 +131,7 @@ public class DialogoEditar extends JDialog {
 		add(txtCopiasVendidas);
 		add(lbImagen);
 		add(txtImage);
-		add(btnAgregar);
+		add(btnEditar);
 		add(btnCancelar);
 		add(btnCargarImage);
 	}
@@ -328,14 +328,6 @@ public class DialogoEditar extends JDialog {
 
 	public void setTxtImage(JTextField txtImage) {
 		this.txtImage = txtImage;
-	}
-
-	public JButton getBtnAgregar() {
-		return btnAgregar;
-	}
-
-	public void setBtnAgregar(JButton btnAgregar) {
-		this.btnAgregar = btnAgregar;
 	}
 
 	public JButton getBtnCancelar() {
