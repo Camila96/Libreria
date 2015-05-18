@@ -16,25 +16,7 @@ public class ConstantesGUI {
 	public static final String I_ICONO_VENTANA = "/img/icon.png";
 	public static final String T_TITULO_VENTANA = "LIBRERIA";
 	
-	/**
-	 * barra menu
-	 */
-	public static final String C_JM_IDIOMA_ESPANIOL="CAMBIAR ESPANIOL";
-	public static final String C_JM_IDIOMA_INGLES="CAMBIAR INGLES";
-	public static final String T_MENU_ARCHIVO = "t.menu.archivo";
-	public static final String T_MENU_ITEM_AGREGAR_LIBRO  = "t.menu.item.agregar.libro";
-	public static final String T_MENU_ITEM_AGREGAR_CLIENTE  = "t.menu.item.agregar.cliente";
-	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "t.menu.item.agregar.autor";
-	public static final String T_MENU_ITEM_ELIMINAR_LIBRO = "t.menu.item.eliminar.libro";
-	public static final String T_MENU_ITEM_ELIMINAR_CLIENTE= "t.menu.item.eliminar.cliente";
-	public static final String T_MENU_ITEM_ELIMINAR_AUTOR = "t.menu.item.eliminar.autor";
-	public static final String T_MENU_PREFERENCIAS = "t.menu.preferencias";
-	public static final String T_MENU_CAMBIAR_IDIOMA= "t.menu.cambiar.idioma";
-	public static final String T_MENU_ITEM_INGLES = "t.menu.item.ingles";
-	public static final String T_MENU_ITEM_ESPANIOL = "t.menu.item.espaniol";
-	public static final String T_MENU_ACERCA_DE = "t.menu.acerca.de";
 	
-
 	/**
 	 * Constantes dialogo
 	 */
@@ -53,6 +35,37 @@ public class ConstantesGUI {
 	public static final String T_ITEM_EDITAR="editar";
 	public static final String T_AGREGAR_CREDITO = "Credito";
 	public static final String T_AGREGAR_ID = "Id";
+	
+	/**
+	 * barra menu
+	 */
+	public static final String C_JM_IDIOMA_ESPANIOL="CAMBIAR ESPANIOL";
+	public static final String C_JM_IDIOMA_INGLES="CAMBIAR INGLES";
+	public static final String T_MENU_ARCHIVO = "t.menu.archivo";
+	public static final String T_MENU_ITEM_AGREGAR_LIBRO  = "t.menu.item.agregar.libro";
+	public static final String T_MENU_ITEM_AGREGAR_CLIENTE  = "t.menu.item.agregar.cliente";
+	public static final String T_MENU_ITEM_AGREGAR_AUTOR = "t.menu.item.agregar.autor";
+	public static final String T_MENU_ITEM_ELIMINAR_LIBRO = "t.menu.item.eliminar.libro";
+	public static final String T_MENU_ITEM_ELIMINAR_CLIENTE= "t.menu.item.eliminar.cliente";
+	public static final String T_MENU_ITEM_ELIMINAR_AUTOR = "t.menu.item.eliminar.autor";
+	public static final String T_MENU_PREFERENCIAS = "t.menu.preferencias";
+	public static final String T_MENU_CAMBIAR_IDIOMA= "t.menu.cambiar.idioma";
+	public static final String T_MENU_ITEM_INGLES = "t.menu.item.ingles";
+	public static final String T_MENU_ITEM_ESPANIOL = "t.menu.item.espaniol";
+	public static final String T_MENU_ACERCA_DE = "t.menu.acerca.de";
+	public static final String T_MENU_IMPORTAR_ARCHIVO = "t.menu.importar.archivo";
+	public static final String T_MENU_EXPORTAR_ARCHIVO = "t.menu.exportar.archivo";
+	public static final String T_MENU_ITEM_IMPORTAR_BINARIO ="t.menu.item.im.binario";
+	public static final String T_MENU_ITEM_IMPORTAR_PLANO = "t.menu.item.im.plano";
+	public static final String T_MENU_ITEM_IMPORTAR_JSON = "t.menu.item.im.json";
+	public static final String T_MENU_ITEM_IMPORTAR_XML = "t.menu.item.xml";
+	public static final String T_MENU_ITEM_EXPORTAR_BINARIO = "t.menu.item.ex.binario";
+	public static final String T_MENU_ITEM_EXPORTAR_PLANI = "t.menu.item.ex.plano";
+	public static final String T_MENU_ITEM_EXPORTAR_XML = "t.menu.item.ex.xml";
+	public static final String T_MENU_ITEM_EXPORTAR_JSON = "t.menu.item.ex.json";
+	
+
+	
 	
 	
 	

@@ -24,14 +24,14 @@ import org.xml.sax.SAXException;
 
 public class ArchivoXmlLibro {
 
-	public static final String RUTA_GUARDAR_XML = "src/data/";
+	public static final String RUTA_GUARDAR_XML = "src/data/j.xml";
 	public static final String C_ID = "id";
 	public static final String C_NOMBRE = "Nombre";
 	public static final String C_DESCRIPCION = "Descripcion"; 
 	public static final String C_VALOR = "Valor";
 	public static final String C_GENERO = "Genero";
 	public static final String C_AUTOR = "Autor";
-	public static final String C_COPIAS_VENDIDAS = "Copias Vendidas";
+	public static final String C_COPIAS = "Copias Vendidas";
 	public static final String C_IMAGEN = "Imagen";
 	
 
@@ -68,9 +68,9 @@ public class ArchivoXmlLibro {
 			autor.appendChild(archivo.createTextNode(libro.getAutor()));
 			cuerpo.appendChild(autor);
 			
-			Element copiasVendidas = archivo.createElement(C_COPIAS_VENDIDAS);
-			copiasVendidas.appendChild(archivo.createTextNode(Double.toString(libro.getCopiasVendidas())));
-			cuerpo.appendChild(copiasVendidas);
+			Element copias = archivo.createElement(C_COPIAS);
+			copias.appendChild(archivo.createTextNode(Double.toString(libro.getCopiasVendidas())));
+			cuerpo.appendChild(copias);
 			
 			Element imagen = archivo.createElement(C_IMAGEN);
 			imagen.appendChild(archivo.createTextNode(libro.getImage()));
@@ -79,7 +79,7 @@ public class ArchivoXmlLibro {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(archivo);
-			StreamResult resultado = new StreamResult(new File(RUTA_GUARDAR_XML +libro.getNombre() + ".xml"));
+			StreamResult resultado = new StreamResult(new File(RUTA_GUARDAR_XML));
 
 			try {
 				transformer.transform(domSource, resultado);

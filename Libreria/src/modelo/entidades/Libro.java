@@ -57,10 +57,17 @@ public class Libro implements Serializable{
 		this.copiasVendidas = copiasVendidas;
 	}
 
+	public static int getConsecutivo() {
+		return consecutivo;
+	}
+
+	public static void setConsecutivo(int consecutivo) {
+		Libro.consecutivo = consecutivo;
+	}
+
 	public double getValor() {
 		return valor;
 	}
-
 
 	public void setValor(double valor) {
 		this.valor = valor;
