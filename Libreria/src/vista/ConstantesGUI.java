@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+
 public class ConstantesGUI {
 	
 	/**
@@ -9,6 +11,8 @@ public class ConstantesGUI {
 	public static final String RUTA_ARCHIVO_ENG = "properties/ing.properties";
 	public static final int VENTANA_ANCHO = 700;
 	public static final int VENTANA_ALTO = 700;
+	public static final int DIALOGO_ANCHO = 500;
+	public static final int DIALOGO_ALTO = 480;
 
 	
 	/**
@@ -30,4 +34,19 @@ public class ConstantesGUI {
 	public static final String T_MENU_ACERCA_DE = "t.menu.acerca.de";
 	
 
+	/**
+	 * Constantes dialogo
+	 */
+	public static final String T_TITULO = "SITIOS TURISTICOS";
+	public static final String T_AGREGAR_NOMBRE = "Nombre";
+	public static final String T_AGREGAR_VALOR = "Valor";
+	public static final String T_AGREGAR_DESCRIPCION = "Descripcion";
+	public static final String T_AGREGAR_IMAGEN = "Imagen";
+	public static final Color COlOR_DATOS = Color.decode("#E0ECF8");
+	public static final String T_AGREGAR_GENERO = "Genero";
+	public static final String T_AGREGAR_AUTOR = "Autor";
+	public static final String T_AGREGAR_COPIAS_VENDIDAS = "Copias Vendidas";
+	public static final String T_ITEM_AGREGAR_BUTTON= "Agregar Sitio";
+	public static final String T_ITEM_CANCELAR= "Cancelar Sitio";
+	public static final String T_ITEM_CARGAR_IMAGEN= "Cargar imagen";
 }

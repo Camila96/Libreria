@@ -38,7 +38,7 @@ public class BarraMenu extends JMenuBar{
 
 		itemAgregarLibro = new JMenuItem();
 		itemAgregarLibro.addActionListener(controlador);
-		itemAgregarLibro.setActionCommand(Controlador.A_AGREGAR_LIBRO);
+		itemAgregarLibro.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_LIBRO);
 		menuArchivo.add(itemAgregarLibro);
 
 		itemAgregarCliente = new JMenuItem();

@@ -6,16 +6,16 @@ public class Libro {
 
 	private String nombre;
 	private String descripcion;
-	private Genero genero;
-	private int copiasVendidas;
+	private String genero;
+	private double copiasVendidas;
 	private double valor;
 	private String image;
-	private Autor autor;
+	private String autor;
 	private int id;
 	
 	
-	public Libro(String nombre, String descripcion, Genero genero,
-			int copiasVendidas, double valor, String image, Autor autor,int id) {
+	public Libro(String nombre, String descripcion, double valor, String genero,String autor,
+			double copiasVendidas, String image) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.genero = genero;
@@ -42,26 +42,13 @@ public class Libro {
 		this.descripcion = descripcion;
 	}
 
-
-	public Genero getGenero() {
-		return genero;
-	}
-
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-
-
-	public int getCopiasVendidas() {
+	public double getCopiasVendidas() {
 		return copiasVendidas;
 	}
 
-
-	public void setCopiasVendidas(int copiasVendidas) {
+	public void setCopiasVendidas(double copiasVendidas) {
 		this.copiasVendidas = copiasVendidas;
 	}
-
 
 	public double getValor() {
 		return valor;
@@ -72,12 +59,20 @@ public class Libro {
 		this.valor = valor;
 	}
 
-	public Autor getAutor() {
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getAutor() {
 		return autor;
 	}
 
-
-	public void setAutor(Autor autor) {
+	public void setAutor(String autor) {
 		this.autor = autor;
 	}
 
@@ -99,6 +94,6 @@ public class Libro {
 
 	@Override
 	public String toString() {
-		return nombre + ","+ descripcion + ","+ genero+","+copiasVendidas + ","+valor+image + ","+autor;
+		return nombre + ","+ descripcion + ","+valor+","+ genero+","+ autor+","+copiasVendidas +","+image;
 	}
 }

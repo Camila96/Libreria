@@ -27,7 +27,7 @@ public class GestorLibro {
 		listaLibro.remove(libro);	
 	}
 
-	public Libro buscarSitioTuristico(int id) throws ExcepcionLibroNoEncontrado{
+	public Libro buscarLibro(int id) throws ExcepcionLibroNoEncontrado{
 		for (Libro libro:listaLibro ) {
 			if (libro.getId() == id) {
 				return libro;
@@ -36,7 +36,7 @@ public class GestorLibro {
 		throw new ExcepcionLibroNoEncontrado(id);
 	}
 
-	public Libro buscarAutor(String nombre) throws ExcepcionLibroNoEncontrado{
+	public Libro buscarLibro(String nombre) throws ExcepcionLibroNoEncontrado{
 		for (Libro libro:listaLibro) {
 			if (libro.getNombre().equalsIgnoreCase(nombre)) {
 				return libro;
@@ -45,10 +45,10 @@ public class GestorLibro {
 		throw new ExcepcionLibroNoEncontrado(nombre);
 	}
 	
-	public static Libro crearLibro(String nombre,String descripcion,Genero genero,int copiasVendidas,String valor, String image,Autor autor,int id){
-		if (Util.validarValor(valor)) {
-			return new Libro(nombre, descripcion,genero,copiasVendidas,
-					Double.parseDouble(valor), image,autor,id);	
+	public static Libro crearLibro(String nombre,String descripcion,String valor,String genero,String autor,String copiasVendidas, String image){
+		if (Util.validarValor(valor)&& Util.validarCopias(copiasVendidas)) {
+			return new Libro(nombre, descripcion,Double.parseDouble(valor),
+					genero,autor,Double.parseDouble(copiasVendidas),image);	
 		}
 		return null;
 	}

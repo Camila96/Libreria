@@ -9,8 +9,11 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
+import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import vista.BarraMenu;
 import vista.ConstantesGUI;
+import vista.DialogoEditar;
+import vista.DialogoLibro;
 import vista.VentanaPrincipal;
 
 public class Controlador implements ActionListener {
@@ -27,6 +30,11 @@ public class Controlador implements ActionListener {
 	public static final String A_BUSCAR_LIBRO = "buscar libro";
 	public static final String A_BUSCAR_CLIENTE = "buscar cliente";
 	public static final String A_BUSCAR_AUTOR = "buscar autor";
+	public static final String A_MOSTRAR_AGREGAR_LIBRO="mostrar libro";
+	public static final String A_MOSTRAR_AGREGAR_SITIO = "mostrar agregar sitio";
+	public static final String A_MOSTRAR_CANCELAR_SITIO = "mostrar cancelar sitio";
+	public static final String A_CREAR_IMAGEN = "crear imagen";
+	public static final String A_MOSTRAR_DIALOGO_EDITAR_SITIO="Editar Dialogo";
 	
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -37,18 +45,52 @@ public class Controlador implements ActionListener {
 	private Libro libro;
 	private Autor autor;
 	private Cliente cliente;
-
+	private DialogoLibro dialogoLibro;
+	private DialogoEditar dialogoEditar;
+	
 	public Controlador() {
 		gestorAutor = new GestorAutor();
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
 		ventanaPrincipal = new VentanaPrincipal(this);
+		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
+		dialogoEditar = new DialogoEditar(ventanaPrincipal, this);
 		ventanaPrincipal.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
+	
+		case A_MOSTRAR_AGREGAR_LIBRO:
+			dialogoLibro.setVisible(true);
+			break;
+		case A_AGREGAR_LIBRO:
+			agregarLibro();
+			dialogoLibro.eliminarDatosTabla();
+			break;
+		case A_CREAR_IMAGEN:
+			dialogoLibro.importarImagen();
+			break;
+		case A_MOSTRAR_CANCELAR_SITIO:
+			dialogoLibro.setVisible(false);
+			break; 
+		case A_ELIMINAR_LIBRO:
+			try {
+				borrarSitio();
+			} catch (ExcepcionLibroNoEncontrado e1) {
+
+				e1.printStackTrace();
+			}
+			dialogoLibro.eliminarDatosTabla();
+			break;
+		case A_MOSTRAR_DIALOGO_EDITAR_SITIO:
+//			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			dialogoEditar.setVisible(true);
+			break;
+		case A_EDITAR_LIBRO:
+//				editarSitio();
+			break;
 		case ConstantesGUI.C_JM_IDIOMA_INGLES:
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ENG);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();
@@ -60,6 +102,21 @@ public class Controlador implements ActionListener {
 		}
 	}
 
+	public void agregarLibro(){
+		Libro libro =dialogoLibro.crearLibro();
+		if (libro != null) {
+			gestorLibro.agregarLibro(libro);
+			ventanaPrincipal.agregarLibro(libro);
+		}
+	}
+	
+	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
+
+		int id = ventanaPrincipal.eliminarSitio();
+		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
+	}
+	
+	
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
 
