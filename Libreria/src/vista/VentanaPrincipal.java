@@ -56,7 +56,7 @@ public class VentanaPrincipal  extends JFrame{
 		tableLibro.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableLibro),BorderLayout.WEST);
 
-		modeloCliente = new DefaultTableModel(new String[]{"NOMBRE", "CREDITO", "LIBRO"}, 0);
+		modeloCliente = new DefaultTableModel(new String[]{"ID", "NOMBRE", "CREDITO"}, 0);
 		tableCliente = new JTable(modeloCliente);
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableCliente),BorderLayout.CENTER);
@@ -75,6 +75,10 @@ public class VentanaPrincipal  extends JFrame{
 	
 	public void agregarLibro(Libro libro){
 		modeloLibro.addRow(Util.sitioAVector(libro));
+	}
+	
+	public void agregarCliente(Cliente cliente){
+		modeloCliente.addRow(Util.clienteAVector(cliente));
 	}
 
 	public int retornarIdSeleccion(){
@@ -97,6 +101,13 @@ public class VentanaPrincipal  extends JFrame{
 		modeloLibro.setValueAt(libro.getDescripcion(),fila, 2);
 		modeloLibro.setValueAt(libro.getValor(),fila, 3);
 		modeloLibro.fireTableDataChanged();
+	}
+	
+	public void actualizarVentana(Cliente cliente, int fila){
+		modeloCliente.setValueAt(cliente.getId(),fila,0);
+		modeloCliente.setValueAt(cliente.getNombre(),fila, 1);
+		modeloCliente.setValueAt(cliente.getCredito(),fila, 2);
+		modeloCliente.fireTableDataChanged();
 	}
 	
 	public void buscarLibroNombre(String nombre){

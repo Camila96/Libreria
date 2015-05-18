@@ -7,12 +7,14 @@ public class Cliente {
 	private String nombre;
 	private int id;
 	private double credito;
+	private static int consecutivo;
 	private ArrayList<Libro> listaLibro;
 	
-	public Cliente(String nombre, int id, double credito) {
+	public Cliente(String nombre, double credito) {
 		this.nombre = nombre;
-		this.id = id;
+		this.id = consecutivo;
 		this.credito = credito;
+		consecutivo++;
 	}
 
 	public String getNombre() {

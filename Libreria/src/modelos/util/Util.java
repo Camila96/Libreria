@@ -1,5 +1,6 @@
 package modelos.util;
 
+import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 
 public class Util {
@@ -25,5 +26,10 @@ public class Util {
 		return new String[]{Integer.toString(libro.getId()),libro.getNombre(),
 				libro.getDescripcion(),Double.toString(libro.getValor()),libro.getGenero(),
 				libro.getAutor(),Double.toString(libro.getCopiasVendidas()),libro.getImage()};
+	}
+	
+	public static String[] clienteAVector(Cliente cliente){
+		return new String[]{Integer.toString(cliente.getId()),cliente.getNombre(),
+				Double.toString(cliente.getCredito())};
 	}
 }

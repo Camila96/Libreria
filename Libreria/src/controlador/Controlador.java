@@ -12,6 +12,7 @@ import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import vista.BarraMenu;
 import vista.ConstantesGUI;
+import vista.DialogoCliente;
 import vista.DialogoEditar;
 import vista.DialogoLibro;
 import vista.VentanaPrincipal;
@@ -36,6 +37,7 @@ public class Controlador implements ActionListener {
 	public static final String A_CREAR_IMAGEN = "crear imagen";
 	public static final String A_MOSTRAR_DIALOGO_EDITAR_SITIO="Editar Dialogo";
 	public static final String A_MOSTRAR_CANCELAR_CLIENTE = "Mostrar agregar Cliente";
+	public static final String A_MOSTRAR_AGREGAR_CLIENTE = "Mostrar Agregar Cliente";
 	
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -48,6 +50,7 @@ public class Controlador implements ActionListener {
 	private Cliente cliente;
 	private DialogoLibro dialogoLibro;
 	private DialogoEditar dialogoEditar;
+	private DialogoCliente dialogoCliente;
 	
 	public Controlador() {
 		gestorAutor = new GestorAutor();
@@ -55,6 +58,7 @@ public class Controlador implements ActionListener {
 		gestorLibro = new GestorLibro();
 		ventanaPrincipal = new VentanaPrincipal(this);
 		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
+		dialogoCliente = new DialogoCliente(ventanaPrincipal, this);
 		dialogoEditar = new DialogoEditar(ventanaPrincipal, this);
 		ventanaPrincipal.setVisible(true);
 	}
@@ -66,16 +70,29 @@ public class Controlador implements ActionListener {
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
 			break;
+			
+		case A_MOSTRAR_AGREGAR_CLIENTE:
+			dialogoCliente.setVisible(true);
+			break;
+			
+		case A_AGREGAR_CLIENTE:
+			agregarCliente();
+			dialogoCliente.eliminarDatosTableCliente();
+			break;
+						
 		case A_AGREGAR_LIBRO:
 			agregarLibro();
 			dialogoLibro.eliminarDatosTabla();
 			break;
+			
 		case A_CREAR_IMAGEN:
 			dialogoLibro.importarImagen();
 			break;
+			
 		case A_MOSTRAR_CANCELAR_SITIO:
 			dialogoLibro.setVisible(false);
 			break; 
+			
 		case A_ELIMINAR_LIBRO:
 			try {
 				borrarSitio();
@@ -99,6 +116,7 @@ public class Controlador implements ActionListener {
 				e1.printStackTrace();
 			}
 			break;
+			
 		case ConstantesGUI.C_JM_IDIOMA_INGLES:
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ENG);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();
@@ -107,7 +125,8 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ESP);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();	
 			break;
-		}
+			
+			}
 	}
 
 	public void agregarLibro(){
@@ -120,7 +139,10 @@ public class Controlador implements ActionListener {
 	
 	public void agregarCliente(){
 		Cliente cliente = dialogoCliente.crearCliente();
-		
+			if (cliente != null){
+				gestorCliente.agregarCliente(cliente);
+				ventanaPrincipal.agregarCliente(cliente);
+			}
 	}
 	
 	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
@@ -132,7 +154,6 @@ public class Controlador implements ActionListener {
 		try {
 			dialogoEditar.editar(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			ventanaPrincipal.actualizarVentana(buscarId(ventanaPrincipal.retornarIdSeleccion()), ventanaPrincipal.retornarIdSeleccion());
-			
 		} catch (Exception e) {
 		}
 	}

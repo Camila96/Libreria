@@ -10,6 +10,10 @@ import controlador.Controlador;
 
 public class BarraHerramientas extends JToolBar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton btnAgregarLibro;
 	private JButton btnAgregarCliente;
 	private JButton btnAgregarAutor;
@@ -56,7 +60,7 @@ public class BarraHerramientas extends JToolBar {
 		
 		btnAgregarCliente = new JButton(createImageIcon("/img/clientea.png"));
 		btnAgregarCliente.addActionListener(controlador);
-		btnAgregarCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
+		btnAgregarCliente.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_CLIENTE);
 		btnAgregarCliente.setToolTipText("Agregar Cliente");
 		add(btnAgregarCliente);
 		
