@@ -19,7 +19,7 @@ public class ArchivoPlanoLibro {
 	public static final String RUTA = "src/data/";
 	
 	public static void guardarArchivo(Libro libro){
-		File archivoLibro = new File(RUTA + libro.getNombre() + ".txt");
+		File archivoLibro = new File(RUTA  );
 		try {
 			escribir = new BufferedWriter(new FileWriter(archivoLibro, true));
 		} catch (IOException e) {

@@ -2,7 +2,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import persistencia.ArchivoBinarioLibro;
+import persistencia.ArchivoJsonLibro;
+import persistencia.ArchivoPlanoLibro;
+import persistencia.ArchivoXmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -38,6 +41,14 @@ public class Controlador implements ActionListener {
 	public static final String A_MOSTRAR_DIALOGO_EDITAR_SITIO="Editar Dialogo";
 	public static final String A_MOSTRAR_CANCELAR_CLIENTE = "Mostrar agregar Cliente";
 	public static final String A_MOSTRAR_AGREGAR_CLIENTE = "Mostrar Agregar Cliente";
+	public static final String A_IMPORTAR_ARCHIVO_BINARIO_LIBRO = "importar binario";
+	public static final String A_IMPORTAR_ARCHIVO_PLANO_LIBRO = "Importar Plano";
+	public static final String A_IMPORTAR_ARCHIVO_XML_LIBRO = "Importar Xml";
+	public static final String A_IMPORTAR_ARCHIVO_JSON_LIBRO = "Importar Json";
+	public static final String A_EXPORTAR_ARCHIVO_BINARIO_LIBRO = "Exportar Binario";
+	public static final String A_EXPORTAR_ARCHIVO_PLANO_LIBRO = "Exportar Plano";
+	public static final String A_EXPORTAR_ARCHIVO_XML_LIBRO = "exportar xml";
+	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
 	
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -116,7 +127,6 @@ public class Controlador implements ActionListener {
 				e1.printStackTrace();
 			}
 			break;
-			
 		case ConstantesGUI.C_JM_IDIOMA_INGLES:
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ENG);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();
@@ -125,8 +135,40 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ESP);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();	
 			break;
-			
+		case A_IMPORTAR_ARCHIVO_BINARIO_LIBRO:
+			agregarLibro(ArchivoBinarioLibro.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_BINARIO_LIBRO:
+			ArchivoBinarioLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			break;
+		case A_IMPORTAR_ARCHIVO_PLANO_LIBRO:
+			agregarLibro(ArchivoPlanoLibro.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_PLANO_LIBRO:
+			ArchivoPlanoLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			break;
+		case A_IMPORTAR_ARCHIVO_XML_LIBRO:
+			agregarLibro(ArchivoXmlLibro.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_XML_LIBRO:
+			ArchivoXmlLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			break;
+		case A_IMPORTAR_ARCHIVO_JSON_LIBRO:
+			agregarLibro(ArchivoJsonLibro.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_JSON_LIBRO:
+			ArchivoJsonLibro.guardarArchivoJson(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			break;
+		default:
+			break;
 			}
+	}
+	
+	public void agregarLibro(Libro libro){
+		if (libro != null) {
+			gestorLibro.agregarLibro(libro);
+			ventanaPrincipal.agregarLibro(libro);
+		}
 	}
 
 	public void agregarLibro(){

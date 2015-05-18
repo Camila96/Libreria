@@ -1,9 +1,14 @@
 package modelo.entidades;
 
 import java.awt.Image;
+import java.io.Serializable;
 
-public class Libro {
+public class Libro implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String descripcion;
 	private String genero;

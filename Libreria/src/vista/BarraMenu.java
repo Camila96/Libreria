@@ -27,6 +27,16 @@ public class BarraMenu extends JMenuBar{
 	private JMenuItem itemEliminarAutor;
 	private JMenuItem itemEliminarCliente;
 	private Properties properties;
+	private JMenu menuImportarArchivo;
+	private JMenu menuExportarArchivo;
+	private JMenuItem itemImBinarioLibro;
+	private JMenuItem itemImPlanoLibro;
+	private JMenuItem itemImXmlLibro;
+	private JMenuItem itemImJsonLibro;
+	private JMenuItem itemExBinarioLibro;
+	private JMenuItem itemExPlanoLibro;
+	private JMenuItem itemExXmlLibro;
+	private JMenuItem itemExJsonLibro;
 
 	public BarraMenu(Controlador controlador) {
 		properties = new Properties();
@@ -65,6 +75,53 @@ public class BarraMenu extends JMenuBar{
 		itemEliminarAutor.addActionListener(controlador);
 		itemEliminarAutor.setActionCommand(Controlador.A_ELIMINAR_AUTOR);
 		menuArchivo.add(itemEliminarAutor);
+		
+		menuImportarArchivo = new JMenu("importar");
+		
+		itemImBinarioLibro = new JMenuItem("binario");
+		itemImBinarioLibro.addActionListener(controlador);
+		itemImBinarioLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_BINARIO_LIBRO);
+		menuImportarArchivo.add(itemImBinarioLibro);
+		
+		itemImPlanoLibro = new JMenuItem("plano");
+		itemImPlanoLibro.addActionListener(controlador);
+		itemImPlanoLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_PLANO_LIBRO);
+		menuImportarArchivo.add(itemImPlanoLibro);
+		
+		itemImXmlLibro = new JMenuItem("xml");
+		itemImXmlLibro.addActionListener(controlador);
+		itemImXmlLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_XML_LIBRO);
+		menuImportarArchivo.add(itemImXmlLibro);
+		
+		itemImJsonLibro = new JMenuItem("json");
+		itemImJsonLibro.addActionListener(controlador);
+		itemImJsonLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_JSON_LIBRO);
+		menuImportarArchivo.add(itemImJsonLibro);
+		menuArchivo.add(menuImportarArchivo);
+		
+		menuExportarArchivo = new JMenu("Exportar");
+		
+		itemExBinarioLibro = new JMenuItem("binaro");
+		itemExBinarioLibro.addActionListener(controlador);
+		itemExBinarioLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_BINARIO_LIBRO);
+		menuExportarArchivo.add(itemExBinarioLibro);
+		
+		itemExPlanoLibro = new JMenuItem("plano");
+		itemExPlanoLibro.addActionListener(controlador);
+		itemExPlanoLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_PLANO_LIBRO);
+		menuExportarArchivo.add(itemExPlanoLibro);
+		
+		itemExXmlLibro = new JMenuItem("xml");
+		itemExXmlLibro.addActionListener(controlador);
+		itemExXmlLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_XML_LIBRO);
+		menuExportarArchivo.add(itemExXmlLibro);
+		
+		itemExJsonLibro = new JMenuItem("json");
+		itemExJsonLibro.addActionListener(controlador);
+		itemExJsonLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_JSON_LIBRO);
+		menuExportarArchivo.add(itemExJsonLibro);
+		menuArchivo.add(menuExportarArchivo);
+		
 		
 		add(menuArchivo);
 

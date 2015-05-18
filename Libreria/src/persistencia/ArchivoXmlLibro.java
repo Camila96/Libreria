@@ -25,8 +25,8 @@ import org.xml.sax.SAXException;
 public class ArchivoXmlLibro {
 
 	public static final String RUTA_GUARDAR_XML = "src/data/";
-	public static final String C_NOMBRE = "Nombre";
 	public static final String C_ID = "id";
+	public static final String C_NOMBRE = "Nombre";
 	public static final String C_DESCRIPCION = "Descripcion"; 
 	public static final String C_VALOR = "Valor";
 	public static final String C_GENERO = "Genero";
@@ -76,12 +76,10 @@ public class ArchivoXmlLibro {
 			imagen.appendChild(archivo.createTextNode(libro.getImage()));
 			cuerpo.appendChild(imagen);
 		
-
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(archivo);
-			StreamResult resultado = new StreamResult(new File(RUTA_GUARDAR_XML + libro.getId() 
-					+ "-" + libro.getNombre() + ".xml"));
+			StreamResult resultado = new StreamResult(new File(RUTA_GUARDAR_XML +libro.getNombre() + ".xml"));
 
 			try {
 				transformer.transform(domSource, resultado);
@@ -118,7 +116,7 @@ public class ArchivoXmlLibro {
 
 				libro = new Libro(lista.item(0).getTextContent(), lista.item(1).getTextContent(),
 						Double.parseDouble(lista.item(2).getTextContent()),lista.item(3).getTextContent()
-						,lista.item(4).getTextContent(),Double.parseDouble(lista.item(2).getTextContent()),lista.item(6).getTextContent());
+						,lista.item(4).getTextContent(),Double.parseDouble(lista.item(5).getTextContent()),lista.item(6).getTextContent());
 				libro.setId(Integer.parseInt(doc.getAttribute(C_ID)));
 			} catch (SAXException e) {
 				e.printStackTrace();
