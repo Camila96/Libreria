@@ -96,6 +96,6 @@ public class Libro {
 
 	@Override
 	public String toString() {
-		return nombre + ","+ descripcion + ","+valor+","+ genero+","+ autor+","+copiasVendidas +","+image;
+		return nombre + ","+ descripcion + "," +valor+ ","+ genero+","+ autor+","+copiasVendidas +","+image;
 	}
 }
