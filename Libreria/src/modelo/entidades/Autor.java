@@ -1,5 +1,8 @@
 package modelo.entidades;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class Autor {
 
 	private String nombre;

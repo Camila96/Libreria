@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import modelo.entidades.Autor;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelos.util.Util;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class GestorAutor {
 
 	private ArrayList<Autor> listaAutor;
@@ -29,9 +32,9 @@ public class GestorAutor {
 		}
 		throw new ExcepcionAutorNoEncontrado(nombre);
 	}
-	
+
 	public static Autor crearAutor(String nombre,int id){
-			return new Autor(nombre,id);	
+		return new Autor(nombre,id);	
 	}
 
 	public ArrayList<Autor> getListaAutor() {

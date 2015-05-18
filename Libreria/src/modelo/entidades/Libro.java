@@ -2,7 +2,10 @@ package modelo.entidades;
 
 import java.awt.Image;
 import java.io.Serializable;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class Libro implements Serializable{
 
 	/**
@@ -18,8 +21,8 @@ public class Libro implements Serializable{
 	private String autor;
 	private int id;
 	private static int consecutivo;
-	
-	
+
+
 	public Libro(String nombre, String descripcion, double valor, String genero,String autor,
 			double copiasVendidas, String image) {
 		this.id = consecutivo;
@@ -57,13 +60,7 @@ public class Libro implements Serializable{
 		this.copiasVendidas = copiasVendidas;
 	}
 
-	public static int getConsecutivo() {
-		return consecutivo;
-	}
 
-	public static void setConsecutivo(int consecutivo) {
-		Libro.consecutivo = consecutivo;
-	}
 
 	public double getValor() {
 		return valor;

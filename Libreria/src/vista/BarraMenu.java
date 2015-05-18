@@ -8,7 +8,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import controlador.Controlador;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class BarraMenu extends JMenuBar{
 	/**
 	 * 
@@ -41,7 +44,7 @@ public class BarraMenu extends JMenuBar{
 	public BarraMenu(Controlador controlador) {
 		properties = new Properties();
 		cargarPropiedades(ConstantesGUI.RUTA_ARCHIVO_ENG);
-		
+
 		menuArchivo = new JMenu();
 		menuArchivo.setMnemonic('A');
 		menuArchivo.setMnemonic('F');
@@ -75,54 +78,54 @@ public class BarraMenu extends JMenuBar{
 		itemEliminarAutor.addActionListener(controlador);
 		itemEliminarAutor.setActionCommand(Controlador.A_ELIMINAR_AUTOR);
 		menuArchivo.add(itemEliminarAutor);
-		
+
 		menuImportarArchivo = new JMenu();
-		
+
 		itemImBinarioLibro = new JMenuItem();
 		itemImBinarioLibro.addActionListener(controlador);
 		itemImBinarioLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_BINARIO_LIBRO);
 		menuImportarArchivo.add(itemImBinarioLibro);
-		
+
 		itemImPlanoLibro = new JMenuItem();
 		itemImPlanoLibro.addActionListener(controlador);
 		itemImPlanoLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_PLANO_LIBRO);
 		menuImportarArchivo.add(itemImPlanoLibro);
-		
+
 		itemImXmlLibro = new JMenuItem();
 		itemImXmlLibro.addActionListener(controlador);
 		itemImXmlLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_XML_LIBRO);
 		menuImportarArchivo.add(itemImXmlLibro);
-		
+
 		itemImJsonLibro = new JMenuItem();
 		itemImJsonLibro.addActionListener(controlador);
 		itemImJsonLibro.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_JSON_LIBRO);
 		menuImportarArchivo.add(itemImJsonLibro);
 		menuArchivo.add(menuImportarArchivo);
-		
+
 		menuExportarArchivo = new JMenu();
-		
+
 		itemExBinarioLibro = new JMenuItem();
 		itemExBinarioLibro.addActionListener(controlador);
 		itemExBinarioLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_BINARIO_LIBRO);
 		menuExportarArchivo.add(itemExBinarioLibro);
-		
+
 		itemExPlanoLibro = new JMenuItem();
 		itemExPlanoLibro.addActionListener(controlador);
 		itemExPlanoLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_PLANO_LIBRO);
 		menuExportarArchivo.add(itemExPlanoLibro);
-		
+
 		itemExXmlLibro = new JMenuItem();
 		itemExXmlLibro.addActionListener(controlador);
 		itemExXmlLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_XML_LIBRO);
 		menuExportarArchivo.add(itemExXmlLibro);
-		
+
 		itemExJsonLibro = new JMenuItem();
 		itemExJsonLibro.addActionListener(controlador);
 		itemExJsonLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_JSON_LIBRO);
 		menuExportarArchivo.add(itemExJsonLibro);
 		menuArchivo.add(menuExportarArchivo);
-		
-		
+
+
 		add(menuArchivo);
 
 		menuPreferencias= new JMenu();

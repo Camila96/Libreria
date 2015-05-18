@@ -19,7 +19,10 @@ import vista.DialogoCliente;
 import vista.DialogoEditar;
 import vista.DialogoLibro;
 import vista.VentanaPrincipal;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class Controlador implements ActionListener {
 
 	public static final String A_AGREGAR_LIBRO = "agregar libro";
@@ -48,7 +51,7 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_PLANO_LIBRO = "Exportar Plano";
 	public static final String A_EXPORTAR_ARCHIVO_XML_LIBRO = "exportar xml";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
-	
+
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;
@@ -61,7 +64,7 @@ public class Controlador implements ActionListener {
 	private DialogoLibro dialogoLibro;
 	private DialogoEditar dialogoEditar;
 	private DialogoCliente dialogoCliente;
-	
+
 	public Controlador() {
 		gestorAutor = new GestorAutor();
 		gestorCliente = new GestorCliente();
@@ -76,20 +79,20 @@ public class Controlador implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
-	
+
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
 			break;
-			
+
 		case A_MOSTRAR_AGREGAR_CLIENTE:
 			dialogoCliente.setVisible(true);
 			break;
-			
+
 		case A_AGREGAR_CLIENTE:
 			agregarCliente();
 			dialogoCliente.eliminarDatosTableCliente();
 			break;
-						
+
 		case A_AGREGAR_LIBRO:
 			agregarLibro();
 			dialogoLibro.eliminarDatosTabla();
@@ -97,7 +100,7 @@ public class Controlador implements ActionListener {
 		case A_MOSTRAR_CANCELAR_LIBRO:
 			dialogoLibro.setVisible(false);
 			break; 
-			
+
 		case A_ELIMINAR_LIBRO:
 			try {
 				borrarSitio();
@@ -115,7 +118,7 @@ public class Controlador implements ActionListener {
 			dialogoEditar.setVisible(true);
 			break;
 		case A_EDITAR_LIBRO:
-				editarSitio();
+			editarSitio();
 			break;
 		case A_BUSCAR_LIBRO:
 			try {
@@ -158,9 +161,9 @@ public class Controlador implements ActionListener {
 			break;
 		default:
 			break;
-			}
+		}
 	}
-	
+
 	public void agregarLibro(Libro libro){
 		if (libro != null) {
 			gestorLibro.agregarLibro(libro);
@@ -175,20 +178,20 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.agregarLibro(libro);
 		}
 	}
-	
+
 	public void agregarCliente(){
 		Cliente cliente = dialogoCliente.crearCliente();
-			if (cliente != null){
-				gestorCliente.agregarCliente(cliente);
-				ventanaPrincipal.agregarCliente(cliente);
-			}
+		if (cliente != null){
+			gestorCliente.agregarCliente(cliente);
+			ventanaPrincipal.agregarCliente(cliente);
+		}
 	}
-	
+
 	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
 		int id = ventanaPrincipal.eliminarSitio();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
 	}
-	
+
 	public void editarSitio(){
 		try {
 			dialogoEditar.editar(buscarId(ventanaPrincipal.retornarIdSeleccion()));
@@ -196,7 +199,7 @@ public class Controlador implements ActionListener {
 		} catch (Exception e) {
 		}
 	}
-	
+
 	public Libro buscarId(int id){
 		try {
 			return gestorLibro.buscarLibro(id);
@@ -205,7 +208,7 @@ public class Controlador implements ActionListener {
 		}
 		return null;
 	}
-	
+
 	public void buscar() throws ExcepcionLibroNoEncontrado{
 		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
 			buscarSitioId();
@@ -225,7 +228,7 @@ public class Controlador implements ActionListener {
 		ventanaPrincipal.buscarLibroNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
-	
+
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
 	}

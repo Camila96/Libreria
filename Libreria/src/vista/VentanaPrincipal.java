@@ -18,7 +18,10 @@ import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelos.util.Util;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class VentanaPrincipal  extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -38,8 +41,8 @@ public class VentanaPrincipal  extends JFrame{
 	private DefaultTableModel modeloAutor;
 	private DialogoLibro dialogoLibro;
 	private JPanelImage jPanelImage;
-	
-	
+
+
 
 	public VentanaPrincipal(final Controlador controlador) {
 		setIconImage(createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
@@ -88,11 +91,11 @@ public class VentanaPrincipal  extends JFrame{
 		setTitle(ConstantesGUI.T_TITULO_VENTANA);		
 	}
 
-	
+
 	public void agregarLibro(Libro libro){
 		modeloLibro.addRow(Util.sitioAVector(libro));
 	}
-	
+
 	public void agregarCliente(Cliente cliente){
 		modeloCliente.addRow(Util.clienteAVector(cliente));
 	}
@@ -100,6 +103,7 @@ public class VentanaPrincipal  extends JFrame{
 	public int retornarIdSeleccion(){
 		return Integer.parseInt((String) modeloLibro.getValueAt(tableLibro.getSelectedRow(), 0));
 	}
+
 	public int eliminarSitio(){
 
 		int auxiliar = Integer.parseInt((String) modeloLibro.getValueAt(tableLibro.getSelectedRow(), 0));
@@ -116,16 +120,19 @@ public class VentanaPrincipal  extends JFrame{
 		modeloLibro.setValueAt(libro.getNombre(),fila, 1);
 		modeloLibro.setValueAt(libro.getDescripcion(),fila, 2);
 		modeloLibro.setValueAt(libro.getValor(),fila, 3);
+		modeloLibro.setValueAt(libro.getGenero(),fila,4);
+		modeloLibro.setValueAt(libro.getAutor(),fila,5);
+		modeloLibro.setValueAt(libro.getCopiasVendidas(),fila,6);		
 		modeloLibro.fireTableDataChanged();
 	}
-	
+
 	public void actualizarVentana(Cliente cliente, int fila){
 		modeloCliente.setValueAt(cliente.getId(),fila,0);
 		modeloCliente.setValueAt(cliente.getNombre(),fila, 1);
 		modeloCliente.setValueAt(cliente.getCredito(),fila, 2);
 		modeloCliente.fireTableDataChanged();
 	}
-	
+
 	public void buscarLibroNombre(String nombre){
 		boolean auxiliar = true;
 		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
@@ -162,7 +169,7 @@ public class VentanaPrincipal  extends JFrame{
 		}else
 			JOptionPane.showMessageDialog(null, "No se encontro la ciudad");
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

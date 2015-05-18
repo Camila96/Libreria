@@ -11,7 +11,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.entidades.Libro;
 import vista.VentanaPrincipal;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class ArchivoBinarioLibro {
 
 	public static final String RUTA_ARCHIVO="src/data/Libro.cpr";
@@ -31,7 +34,7 @@ public class ArchivoBinarioLibro {
 	}
 
 	public static Libro abrirArchivo(){
-		
+
 		File nuevoArchivo = null;
 		JFileChooser jf = new JFileChooser(RUTA_ARCHIVO);
 		int option = jf.showOpenDialog(null);

@@ -21,7 +21,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class ArchivoXmlLibro {
 
 	public static final String RUTA_GUARDAR_XML = "src/data/j.xml";
@@ -33,14 +36,14 @@ public class ArchivoXmlLibro {
 	public static final String C_AUTOR = "Autor";
 	public static final String C_COPIAS = "Copias Vendidas";
 	public static final String C_IMAGEN = "Imagen";
-	
+
 
 	public static void guardarArchivo(Libro libro){
 		try {
 			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
 			Document archivo = documentBuilder.newDocument();
-			
+
 			Element cuerpo = archivo.createElement("Libro");
 			archivo.appendChild(cuerpo);		
 
@@ -63,19 +66,19 @@ public class ArchivoXmlLibro {
 			Element genero = archivo.createElement(C_GENERO);
 			genero.appendChild(archivo.createTextNode(libro.getGenero()));
 			cuerpo.appendChild(genero);
-			
+
 			Element autor = archivo.createElement(C_AUTOR);
 			autor.appendChild(archivo.createTextNode(libro.getAutor()));
 			cuerpo.appendChild(autor);
-			
+
 			Element copias = archivo.createElement(C_COPIAS);
 			copias.appendChild(archivo.createTextNode(Double.toString(libro.getCopiasVendidas())));
 			cuerpo.appendChild(copias);
-			
+
 			Element imagen = archivo.createElement(C_IMAGEN);
 			imagen.appendChild(archivo.createTextNode(libro.getImage()));
 			cuerpo.appendChild(imagen);
-		
+
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(archivo);
@@ -84,7 +87,7 @@ public class ArchivoXmlLibro {
 			try {
 				transformer.transform(domSource, resultado);
 			} catch (TransformerException e) {
-				e.printStackTrace();
+				e.printStackTrace();       
 			}
 
 		} catch (ParserConfigurationException e) {
@@ -116,7 +119,8 @@ public class ArchivoXmlLibro {
 
 				libro = new Libro(lista.item(0).getTextContent(), lista.item(1).getTextContent(),
 						Double.parseDouble(lista.item(2).getTextContent()),lista.item(3).getTextContent()
-						,lista.item(4).getTextContent(),Double.parseDouble(lista.item(5).getTextContent()),lista.item(6).getTextContent());
+						,lista.item(4).getTextContent(),Double.parseDouble(lista.item(5).getTextContent()),
+						lista.item(6).getTextContent());
 				libro.setId(Integer.parseInt(doc.getAttribute(C_ID)));
 			} catch (SAXException e) {
 				e.printStackTrace();

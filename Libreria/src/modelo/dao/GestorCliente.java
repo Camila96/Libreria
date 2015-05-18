@@ -7,7 +7,10 @@ import modelo.entidades.Cliente;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelos.util.Util;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class GestorCliente {
 
 	private ArrayList<Cliente> listaCliente;
@@ -41,14 +44,14 @@ public class GestorCliente {
 		}
 		throw new ExcepcionClienteNoEncontrado(nombre);
 	}
-	
+
 	public static Cliente crearCliente(String nombre, String valor){
 		if (Util.validarValor(valor)) {
 			return new Cliente(nombre, Double.parseDouble(valor));	
 		}
 		return null;
 	}
-	
+
 	public ArrayList<Cliente> getListaCliente() {
 		return listaCliente;
 	}

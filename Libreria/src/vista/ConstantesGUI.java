@@ -1,9 +1,12 @@
 package vista;
 
 import java.awt.Color;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class ConstantesGUI {
-	
+
 	/**
 	 * ventana principal
 	 */
@@ -15,8 +18,8 @@ public class ConstantesGUI {
 	public static final int DIALOGO_ALTO = 480;
 	public static final String I_ICONO_VENTANA = "/img/icon.png";
 	public static final String T_TITULO_VENTANA = "LIBRERIA";
-	
-	
+
+
 	/**
 	 * Constantes dialogo
 	 */
@@ -35,7 +38,7 @@ public class ConstantesGUI {
 	public static final String T_ITEM_EDITAR="editar";
 	public static final String T_AGREGAR_CREDITO = "Credito";
 	public static final String T_AGREGAR_ID = "Id";
-	
+
 	/**
 	 * barra menu
 	 */
@@ -63,10 +66,10 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_EXPORTAR_PLANI = "t.menu.item.ex.plano";
 	public static final String T_MENU_ITEM_EXPORTAR_XML = "t.menu.item.ex.xml";
 	public static final String T_MENU_ITEM_EXPORTAR_JSON = "t.menu.item.ex.json";
-	
 
-	
-	
-	
-	
+
+
+
+
+
 }

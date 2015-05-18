@@ -6,7 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import modelo.dao.GestorLibro;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class JPanelImage extends JPanel{
 
 	private static final long serialVersionUID = 1L;

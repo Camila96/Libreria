@@ -7,7 +7,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import controlador.Controlador;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class BarraHerramientas extends JToolBar {
 
 	/**
@@ -31,7 +34,7 @@ public class BarraHerramientas extends JToolBar {
 	private JRadioButton jrBtnNombre;
 	private ButtonGroup btnGroup;
 
-	
+
 	public BarraHerramientas(Controlador controlador) {
 		setEnabled(false);
 		btnAgregarLibro = new JButton(createImageIcon("/img/book.png"));
@@ -39,76 +42,76 @@ public class BarraHerramientas extends JToolBar {
 		btnAgregarLibro.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_LIBRO);
 		btnAgregarLibro.setToolTipText("Agregar Libro");
 		add(btnAgregarLibro);
-		
+
 		btnEditarLibro = new JButton(createImageIcon("/img/editb.png"));
 		btnEditarLibro.addActionListener(controlador);
 		btnEditarLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_EDITAR_SITIO);
 		btnEditarLibro.setToolTipText("Editar Libro");
 		add(btnEditarLibro);
-		
+
 		btnEliminarLibro = new JButton(createImageIcon("/img/borrarb.png"));
 		btnEliminarLibro.addActionListener(controlador);
 		btnEliminarLibro.setActionCommand(Controlador.A_ELIMINAR_LIBRO);
 		btnEliminarLibro.setToolTipText("Eliminar Libro");
 		add(btnEliminarLibro);
-		
+
 		btnBuscarLibro = new JButton(createImageIcon("/img/buscarb.png"));
 		btnBuscarLibro.addActionListener(controlador);
 		btnBuscarLibro.setActionCommand(Controlador.A_BUSCAR_LIBRO);
 		btnBuscarLibro.setToolTipText("Buscar Libro");
 		add(btnBuscarLibro);
-		
+
 		btnAgregarCliente = new JButton(createImageIcon("/img/clientea.png"));
 		btnAgregarCliente.addActionListener(controlador);
 		btnAgregarCliente.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_CLIENTE);
 		btnAgregarCliente.setToolTipText("Agregar Cliente");
 		add(btnAgregarCliente);
-		
+
 		btnEditarCliente = new JButton(createImageIcon("/img/editarc.png"));
 		btnEditarCliente.addActionListener(controlador);
 		btnEditarCliente.setActionCommand(Controlador.A_EDITAR_CLIENTE);
 		btnEditarCliente.setToolTipText("Editar Cliente");
 		add(btnEditarCliente);
-		
+
 		btnEliminarCliente = new JButton(createImageIcon("/img/eliminarc.png"));
 		btnEliminarCliente.addActionListener(controlador);
 		btnEliminarCliente.setActionCommand(Controlador.A_ELIMINAR_CLIENTE);
 		btnEliminarCliente.setToolTipText("Eliminar Cliente");
 		add(btnEliminarCliente);
-		
+
 		btnBuscarCliente = new JButton(createImageIcon("/img/buscarc.png"));
 		btnBuscarCliente.addActionListener(controlador);
 		btnBuscarCliente.setActionCommand(Controlador.A_BUSCAR_CLIENTE);
 		btnBuscarCliente.setToolTipText("Buscar Cliente");
 		add(btnBuscarCliente);
-		
+
 		btnAgregarAutor = new JButton(createImageIcon("/img/autora.png"));
 		btnAgregarAutor.addActionListener(controlador);
 		btnAgregarAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
 		btnAgregarAutor.setToolTipText("Agregar Autor");
 		add(btnAgregarAutor);
-				
+
 		btnEditarAutor = new JButton(createImageIcon("/img/editara.png"));
 		btnEditarAutor.addActionListener(controlador);
 		btnEditarAutor.setActionCommand(Controlador.A_EDITAR_AUTOR);
 		btnEditarAutor.setToolTipText("Editar Autor");
 		add(btnEditarAutor);
-		
+
 		btnEliminarAutor = new JButton(createImageIcon("/img/eliminara.png"));
 		btnEliminarAutor.addActionListener(controlador);
 		btnEliminarAutor.setActionCommand(Controlador.A_ELIMINAR_AUTOR);
 		btnEliminarAutor.setToolTipText("Eliminar Autor");
 		add(btnEliminarAutor);
-		
+
 		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
 		btnBuscarAutor.addActionListener(controlador);
 		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnBuscarAutor.setToolTipText("Bucar Autor");
 		add(btnBuscarAutor);
-		
+
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar);
-		
+
 		btnGroup = new ButtonGroup();
 		jrBtnId = new JRadioButton("Buscar por Id");
 		jrBtnId.addActionListener(controlador);
@@ -122,7 +125,7 @@ public class BarraHerramientas extends JToolBar {
 		btnGroup.add(jrBtnNombre);
 		add(jrBtnNombre);
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

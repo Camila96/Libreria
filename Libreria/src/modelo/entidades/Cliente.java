@@ -1,7 +1,10 @@
 package modelo.entidades;
 
 import java.util.ArrayList;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class Cliente {
 
 	private String nombre;
@@ -9,7 +12,7 @@ public class Cliente {
 	private double credito;
 	private static int consecutivo;
 	private ArrayList<Libro> listaLibro;
-	
+
 	public Cliente(String nombre, double credito) {
 		this.nombre = nombre;
 		this.id = consecutivo;
@@ -48,7 +51,7 @@ public class Cliente {
 	public void setListaLibro(ArrayList<Libro> listaLibro) {
 		this.listaLibro = listaLibro;
 	}
-	
+
 	@Override
 	public String toString() {
 		return nombre + ","+ credito;

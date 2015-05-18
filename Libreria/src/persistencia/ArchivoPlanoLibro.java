@@ -10,14 +10,17 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 
 import modelo.entidades.Libro;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class ArchivoPlanoLibro {
 
 	private static FileReader leerArchivo;
 	private static BufferedWriter escribir;
 	private static BufferedReader leer;
 	public static final String RUTA = "src/data/";
-	
+
 	public static void guardarArchivo(Libro libro){
 		File archivoLibro = new File(RUTA  );
 		try {
@@ -59,7 +62,7 @@ public class ArchivoPlanoLibro {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		try {
 			leer.close();
 		} catch (IOException e) {

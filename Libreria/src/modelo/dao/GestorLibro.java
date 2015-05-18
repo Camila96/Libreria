@@ -9,8 +9,10 @@ import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import modelos.util.Util;
-
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class GestorLibro {
 
 	private ArrayList<Libro> listaLibro;
@@ -44,7 +46,7 @@ public class GestorLibro {
 		}
 		throw new ExcepcionLibroNoEncontrado(nombre);
 	}
-	
+
 	public static Libro crearLibro(String nombre,String descripcion,String valor,String genero,String autor,String copiasVendidas, String image){
 		if (Util.validarValor(valor)&& Util.validarCopias(copiasVendidas)) {
 			return new Libro(nombre, descripcion,Double.parseDouble(valor),

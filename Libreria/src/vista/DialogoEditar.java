@@ -17,9 +17,11 @@ import javax.swing.filechooser.FileSystemView;
 import modelo.dao.GestorLibro;
 import modelo.entidades.Libro;
 import controlador.Controlador;
-
+/**
+ * @author Maria Camila Preciado Rojas y 
+ * Angel Isidro Gutierrez Guerrero
+ */
 public class DialogoEditar extends JDialog {
-
 
 	private JLabel lbNombre;
 	private JLabel lbDescripcion;
@@ -52,7 +54,7 @@ public class DialogoEditar extends JDialog {
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
-		
+
 		lbNombre = new JLabel(ConstantesGUI.T_AGREGAR_NOMBRE);
 		lbNombre.setBounds(30,0,100,100);
 
@@ -66,21 +68,21 @@ public class DialogoEditar extends JDialog {
 		txtDescripcion = new JTextArea();
 		txtDescripcion.setBounds(150, 75, 150, 50);
 		txtDescripcion.setBackground(ConstantesGUI.COlOR_DATOS);
-		
+
 		lbValor = new JLabel(ConstantesGUI.T_AGREGAR_VALOR);
 		lbValor.setBounds(30,110,100,100);
 
 		txtValor = new JTextField();
 		txtValor.setBounds(150, 140, 150, 30);
 		txtValor.setBackground(ConstantesGUI.COlOR_DATOS);
-		
+
 		lbGenero = new JLabel(ConstantesGUI.T_AGREGAR_GENERO);
 		lbGenero.setBounds(30,155,100,100);
 
 		txtGenero = new JTextField();
 		txtGenero.setBounds(150, 185, 150, 30);
 		txtGenero.setBackground(ConstantesGUI.COlOR_DATOS);
-		
+
 		lbAutor = new JLabel(ConstantesGUI.T_AGREGAR_AUTOR);
 		lbAutor.setBounds(30,200,100,100);
 
@@ -94,14 +96,14 @@ public class DialogoEditar extends JDialog {
 		txtCopiasVendidas = new JTextField();
 		txtCopiasVendidas.setBounds(150,280, 150, 30);
 		txtCopiasVendidas.setBackground(ConstantesGUI.COlOR_DATOS);
-		
+
 		lbImagen = new JLabel(ConstantesGUI.T_AGREGAR_IMAGEN);
 		lbImagen.setBounds(30,290,100,100);
 
 		txtImage = new JTextField();
 		txtImage.setBounds(150, 320, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
-		
+
 		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR);
 		btnEditar.addActionListener(controlador);
 		btnEditar.setActionCommand(Controlador.A_EDITAR_LIBRO);
@@ -116,7 +118,7 @@ public class DialogoEditar extends JDialog {
 		btnCargarImage.addActionListener(controlador);
 		btnCargarImage.setActionCommand(Controlador.A_CREAR_IMAGEN);
 		btnCargarImage.setBounds(310,320, 150, 30);
-		
+
 		add(lbNombre);
 		add(txtNombre);
 		add(lbDescripcion);
@@ -166,7 +168,7 @@ public class DialogoEditar extends JDialog {
 		dispose();
 		return libro;
 	}
-	
+
 	public void cambiarValores(Libro libro){
 		txtNombre.setText(libro.getNombre());
 		txtDescripcion.setText(libro.getDescripcion());
@@ -176,7 +178,7 @@ public class DialogoEditar extends JDialog {
 		txtCopiasVendidas.setText(Double.toString(libro.getCopiasVendidas()));
 		txtImage.setText(libro.getImage());
 	}
-	
+
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtDescripcion.getText(), txtValor.getText()
 				, txtGenero.getText(), txtAutor.getText(),txtCopiasVendidas.getText(),txtImage.getText());
