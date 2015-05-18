@@ -51,6 +51,8 @@ public class ConstantesGUI {
 	public static final String T_ITEM_CANCELAR= "Cancelar Sitio";
 	public static final String T_ITEM_CARGAR_IMAGEN= "Cargar imagen";
 	public static final String T_ITEM_EDITAR="editar";
+	public static final String T_AGREGAR_CREDITO = "Credito";
+	public static final String T_AGREGAR_ID = "Id";
 	
 	
 	

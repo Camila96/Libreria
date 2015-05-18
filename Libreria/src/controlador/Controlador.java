@@ -35,6 +35,7 @@ public class Controlador implements ActionListener {
 	public static final String A_MOSTRAR_CANCELAR_SITIO = "mostrar cancelar sitio";
 	public static final String A_CREAR_IMAGEN = "crear imagen";
 	public static final String A_MOSTRAR_DIALOGO_EDITAR_SITIO="Editar Dialogo";
+	public static final String A_MOSTRAR_CANCELAR_CLIENTE = "Mostrar agregar Cliente";
 	
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -115,6 +116,11 @@ public class Controlador implements ActionListener {
 			gestorLibro.agregarLibro(libro);
 			ventanaPrincipal.agregarLibro(libro);
 		}
+	}
+	
+	public void agregarCliente(){
+		Cliente cliente = dialogoCliente.crearCliente();
+		
 	}
 	
 	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
