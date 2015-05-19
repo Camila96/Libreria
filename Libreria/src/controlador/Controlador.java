@@ -59,10 +59,11 @@ public class Controlador implements ActionListener {
 	public static final String AC_IMPORT_ARCHIVO_PLANO_CLLIENTE = "Importar Plano";
 	public static final String AC_IMPORTAR_ARCHIVO_XML_CLIENTE = "Importar Xml";
 	public static final String AC_IMPORTAR_ARCHIVO_JSON_CLIENTE = "Importar Json";
-	public static final String AC_EXPORTAR_ARCHIVO_BINARIO_CLIENTE = "Exportar Binario";
+	public static final String AC_EXPORT_ARCHIVO_BINARIO_CLIENTE = "Exportar Binario";
 	public static final String AC_EXPORTAR_ARCHIVO_PLANO_CLIENTE = "Exportar Plano";
 	public static final String AC_EXPORTAR_ARCHIVO_XML_CLIENTE = "exportar xml";
 	public static final String AC_EXPORTAR_ARCHIVO_JSON_CLLIENTE = "exportar json";
+	private static final String AC_EXPORTAR_ARCHIVO_BINARIO_CLIENTE = "Export Binario";
 
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -173,8 +174,8 @@ public class Controlador implements ActionListener {
 			break;
 			
 		case AC_EXPORTAR_ARCHIVO_BINARIO_CLIENTE:
-			ArchivoBinarioCliente.guardarArchivoB(buscarId(ventanaPrincipal.retornarIdSeleccion()));
-
+			ArchivoBinarioCliente.guardarArchivoB(buscarIdC(ventanaPrincipal.retornarIdSeleccion()));
+			break;
 			
 		default:
 			break;
@@ -226,10 +227,10 @@ public class Controlador implements ActionListener {
 		return null;
 	}
 
-	public Libro buscarIdC(int id){
+	public Cliente buscarIdC(int id){
 		try {
 			return gestorCliente.buscarCliente(id);
-		} catch (ExcepcionLibroNoEncontrado e) {
+			} catch (ExcepcionClienteNoEncontrado e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -252,6 +253,12 @@ public class Controlador implements ActionListener {
 	public void buscarClienteId() throws ExcepcionClienteNoEncontrado{
 		gestorCliente.buscarCliente(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.buscarClienteId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
+	
+	public void buscarCllienteNombre() throws ExcepcionClienteNoEncontrado{
+		gestorCliente.buscarClliente(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.buscarLibroNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
 
