@@ -49,32 +49,32 @@ public class BarraMenu extends JMenuBar{
 		menuArchivo.setMnemonic('A');
 		menuArchivo.setMnemonic('F');
 
-		itemAgregarLibro = new JMenuItem();
+		itemAgregarLibro = new JMenuItem(createImageIcon("/img/addBook.png"));
 		itemAgregarLibro.addActionListener(controlador);
 		itemAgregarLibro.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_LIBRO);
 		menuArchivo.add(itemAgregarLibro);
 
-		itemAgregarCliente = new JMenuItem();
+		itemAgregarCliente = new JMenuItem(createImageIcon("/img/addClient.png"));
 		itemAgregarCliente.addActionListener(controlador);
 		itemAgregarCliente.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
 		menuArchivo.add(itemAgregarCliente);
 
-		itemAgregarAutor = new JMenuItem();
+		itemAgregarAutor = new JMenuItem(createImageIcon("/img/addAuthor.png"));
 		itemAgregarAutor.addActionListener(controlador);
 		itemAgregarAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
 		menuArchivo.add(itemAgregarAutor);
 
-		itemEliminarLibro = new JMenuItem();
+		itemEliminarLibro = new JMenuItem(createImageIcon("/img/deleteBook.png"));
 		itemEliminarLibro.addActionListener(controlador);
 		itemEliminarLibro.setActionCommand(Controlador.A_ELIMINAR_LIBRO);
 		menuArchivo.add(itemEliminarLibro);
 
-		itemEliminarCliente = new JMenuItem();
+		itemEliminarCliente = new JMenuItem(createImageIcon("/img/deleteCliente.png"));
 		itemEliminarCliente.addActionListener(controlador);
 		itemEliminarCliente.setActionCommand(Controlador.A_ELIMINAR_CLIENTE);
 		menuArchivo.add(itemEliminarCliente);
 
-		itemEliminarAutor = new JMenuItem();
+		itemEliminarAutor = new JMenuItem(createImageIcon("/img/deleteAutor.png"));
 		itemEliminarAutor.addActionListener(controlador);
 		itemEliminarAutor.setActionCommand(Controlador.A_ELIMINAR_AUTOR);
 		menuArchivo.add(itemEliminarAutor);

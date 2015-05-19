@@ -42,8 +42,6 @@ public class VentanaPrincipal  extends JFrame{
 	private DialogoLibro dialogoLibro;
 	private JPanelImage jPanelImage;
 
-
-
 	public VentanaPrincipal(final Controlador controlador) {
 		setIconImage(createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
 		setLayout(new BorderLayout());
@@ -73,7 +71,7 @@ public class VentanaPrincipal  extends JFrame{
 			}
 		});
 		add(new JScrollPane(tableLibro),BorderLayout.WEST);
-		add(jPanelImage,BorderLayout.SOUTH);
+		add(jPanelImage,BorderLayout.EAST);
 
 		modeloCliente = new DefaultTableModel(new String[]{"ID", "NOMBRE", "CREDITO"}, 0);
 		tableCliente = new JTable(modeloCliente);
@@ -83,7 +81,7 @@ public class VentanaPrincipal  extends JFrame{
 		modeloAutor = new DefaultTableModel(new String[]{"NOMBRE"}, 0);
 		tableAutor = new JTable(modeloAutor);
 		tableAutor.getTableHeader().setReorderingAllowed(false);
-		add(new JScrollPane(tableAutor),BorderLayout.EAST);
+		add(new JScrollPane(tableAutor),BorderLayout.SOUTH);
 		init();
 	}
 

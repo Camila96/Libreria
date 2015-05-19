@@ -103,17 +103,17 @@ public class DialogoLibro extends JDialog{
 		txtImage.setBounds(150, 320, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 
-		btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON);
+		btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON,createImageIcon("/img/add.png"));
 		btnAgregar.addActionListener(controlador);
 		btnAgregar.setActionCommand(Controlador.A_AGREGAR_LIBRO);
 		btnAgregar.setBounds(310,380, 150, 30);
 
-		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR);
+		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR,createImageIcon("/img/cancel.png"));
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_LIBRO);
 		btnCancelar.setBounds(100,380, 150, 30);
 
-		btnCargarImage = new JButton(ConstantesGUI.T_ITEM_CARGAR_IMAGEN);
+		btnCargarImage = new JButton(ConstantesGUI.T_ITEM_CARGAR_IMAGEN,createImageIcon("/img/load.png"));
 		btnCargarImage.addActionListener(controlador);
 		btnCargarImage.setActionCommand(Controlador.A_CREAR_IMAGEN);
 		btnCargarImage.setBounds(310,320, 150, 30);
@@ -137,6 +137,15 @@ public class DialogoLibro extends JDialog{
 		add(btnCargarImage);
 	}
 
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
+	}
+	
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtDescripcion.getText(), txtValor.getText()
 				, txtGenero.getText(), txtAutor.getText(),txtCopiasVendidas.getText(),txtImage.getText());
