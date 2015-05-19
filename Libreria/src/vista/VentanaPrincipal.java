@@ -149,42 +149,23 @@ public class VentanaPrincipal  extends JFrame{
 			JOptionPane.showMessageDialog(null, "No se encontro la ciudad");
 	}
 
-	public void buscarClienteId(int id){
-		boolean auxiliar = true;
-		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Ingrese un Cliente");
-			return;
-		}
-		for (int i = 0; i < tableCliente.getRowCount(); i++) {
-			int aux = Integer.parseInt((String) modeloCliente.getValueAt(i, 0));
-			if(id == aux){
-				tableCliente.setRowSelectionInterval(i, i);
-				break;
-			}
-		}
-		if(auxiliar == true){
-			JOptionPane.showMessageDialog(null, "Si se encontro el cliente");
-		}else
-			JOptionPane.showMessageDialog(null, "No se encontro el cliente");
-	}
-	
 	public void buscarLibroId(int id){
 		boolean auxiliar = true;
 		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Ingrese Un Cliente");
+			JOptionPane.showMessageDialog(null, "Ingrese una ciudad");
 			return;
 		}
-		for (int i = 0; i < tableCliente.getRowCount(); i++) {
-			int aux = Integer.parseInt((String) modeloCliente.getValueAt(i, 0));
+		for (int i = 0; i < tableLibro.getRowCount(); i++) {
+			int aux = Integer.parseInt((String) modeloLibro.getValueAt(i, 0));
 			if(id == aux){
-				tableCliente.setRowSelectionInterval(i, i);
+				tableLibro.setRowSelectionInterval(i, i);
 				break;
 			}
 		}
 		if(auxiliar == true){
-			JOptionPane.showMessageDialog(null, "Si se encontro el liente");
+			JOptionPane.showMessageDialog(null, "Si se encontro la ciudad");
 		}else
-			JOptionPane.showMessageDialog(null, "No se encontro el cliente");
+			JOptionPane.showMessageDialog(null, "No se encontro la ciudad");
 	}
 
 	protected ImageIcon createImageIcon(String path) {

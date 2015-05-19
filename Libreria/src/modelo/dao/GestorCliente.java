@@ -2,7 +2,9 @@ package modelo.dao;
 
 import java.util.ArrayList;
 
+import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
+import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelos.util.Util;
 /**
@@ -25,7 +27,7 @@ public class GestorCliente {
 		listaCliente.remove(cliente);	
 	}
 
-	public Cliente buscarCliente(int id) throws ExcepcionClienteNoEncontrado{
+	public Cliente buscarSitioTuristico(int id) throws ExcepcionClienteNoEncontrado{
 		for (Cliente cliente: listaCliente) {
 			if (cliente.getId() == id) {
 				return cliente;
@@ -34,7 +36,7 @@ public class GestorCliente {
 		throw new ExcepcionClienteNoEncontrado(id);
 	}
 
-	public Cliente buscarClliente(String nombre) throws ExcepcionClienteNoEncontrado{
+	public Cliente buscarAutor(String nombre) throws ExcepcionClienteNoEncontrado{
 		for (Cliente cliente : listaCliente) {
 			if (cliente.getNombre().equalsIgnoreCase(nombre)) {
 				return cliente;
