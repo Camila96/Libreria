@@ -160,11 +160,12 @@ public class VentanaPrincipal  extends JFrame{
 		modeloCliente.fireTableDataChanged();
 	}
 	
-	public void actualizarVentana(Autor autor, int fila){
-		modeloCliente.setValueAt(cliente.getId(),fila,0);
-		modeloCliente.setValueAt(cliente.getNombre(),fila, 1);
-		modeloCliente.fireTableDataChanged();
+	public void actualizarVentanaAutor(Autor autor, int fila){
+		modeloAutor.setValueAt(autor.getId(),fila,0);
+		modeloAutor.setValueAt(autor.getNombre(),fila, 1);
+		modeloAutor.fireTableDataChanged();
 	}
+	
 	public void buscarLibroNombre(String nombre){
 		boolean auxiliar = true;
 		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {

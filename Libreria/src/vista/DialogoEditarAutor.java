@@ -29,44 +29,48 @@ public class DialogoEditarAutor extends JDialog{
 	private JButton btnCancelar;
 	private JButton btnCargarImagen;
 	private JLabel lbImagen;
+	private JLabel lbImageFondo;
 	private VentanaPrincipal ventanaPrincipal;
 
 	public DialogoEditarAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
-		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
+		setSize(500, 300);
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
 
+		lbImageFondo = new JLabel(createImageIcon("/img/editAU.jpg"));
+		lbImageFondo.setBounds(0,0,500,480);
+		
 		lbNombre = new JLabel(ConstantesGUI.T_AGREGAR_NOMBRE);
-		lbNombre.setBounds(30,0,100,100);
+		lbNombre.setBounds(30,20,100,100);
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(150, 30, 150, 30);
+		txtNombre.setBounds(150, 60, 150, 30);
 		txtNombre.setBackground(ConstantesGUI.COlOR_DATOS);
 		
 		lbImagen = new JLabel(ConstantesGUI.T_AGREGAR_IMAGEN);
-		lbImagen.setBounds(30,290,100,100);
+		lbImagen.setBounds(30,90,100,100);
 
 		txtImage = new JTextField();
-		txtImage.setBounds(150, 320, 150, 30);
+		txtImage.setBounds(150, 120, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 
-		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR_AUTOR);
+		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR_AUTOR,createImageIcon("/img/add.png"));
 		btnEditar.addActionListener(controlador);
 		btnEditar.setActionCommand(Controlador.A_EDITAR_AUTOR);
 		btnEditar.setBounds(100, 185, 150, 30);
 
-		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR_AUTOR);
+		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR_AUTOR,createImageIcon("/img/cancel.png"));
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_AUTOR);
 		btnCancelar.setBounds(320, 185, 150, 30);
 
-		btnCargarImagen = new JButton(ConstantesGUI.T_AGREGAR_IMAGEN_AUTOR);
+		btnCargarImagen = new JButton(ConstantesGUI.T_AGREGAR_IMAGEN_AUTOR,createImageIcon("/img/load.png"));
 		btnCargarImagen.addActionListener(controlador);
 		btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN);
-		btnCargarImagen.setBounds(310,140, 150, 30);
+		btnCargarImagen.setBounds(320,120, 150, 30);
 		
 		add(lbNombre);
 		add(txtNombre);
@@ -75,6 +79,7 @@ public class DialogoEditarAutor extends JDialog{
 		add(btnEditar);
 		add(btnCancelar);
 		add(btnCargarImagen);
+		add(lbImageFondo);
 		
 	}
 
@@ -113,6 +118,15 @@ public class DialogoEditarAutor extends JDialog{
 		}
 		return image;
 	}
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
+	}
+	
 
 	public JLabel getLbNombre() {
 		return lbNombre;

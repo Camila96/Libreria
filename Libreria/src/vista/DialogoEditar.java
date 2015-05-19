@@ -45,6 +45,7 @@ public class DialogoEditar extends JDialog {
 	private JButton btnEditar;
 	private JButton btnCancelar;
 	private JButton btnCargarImage;
+	private JLabel lbImageFondo;
 	private VentanaPrincipal ventanaPrincipal;
 
 	public DialogoEditar(VentanaPrincipal ventanaPrincipal, Controlador controlador) {
@@ -55,6 +56,9 @@ public class DialogoEditar extends JDialog {
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
 
+		lbImageFondo = new JLabel(createImageIcon("/img/editBook.JPG"));
+		lbImageFondo.setBounds(0,0,500,480);
+		
 		lbNombre = new JLabel(ConstantesGUI.T_AGREGAR_NOMBRE);
 		lbNombre.setBounds(30,0,100,100);
 
@@ -104,17 +108,17 @@ public class DialogoEditar extends JDialog {
 		txtImage.setBounds(150, 320, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 
-		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR);
+		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR,createImageIcon("/img/editC.png"));
 		btnEditar.addActionListener(controlador);
 		btnEditar.setActionCommand(Controlador.A_EDITAR_LIBRO);
-		btnEditar.setBounds(310,380, 150, 30);
+		btnEditar.setBounds(310,380, 90, 30);
 
-		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR);
+		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR,createImageIcon("/img/cancel.png"));
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_LIBRO);
 		btnCancelar.setBounds(100,380, 150, 30);
 
-		btnCargarImage = new JButton(ConstantesGUI.T_ITEM_CARGAR_IMAGEN);
+		btnCargarImage = new JButton(ConstantesGUI.T_ITEM_CARGAR_IMAGEN,createImageIcon("/img/load.png"));
 		btnCargarImage.addActionListener(controlador);
 		btnCargarImage.setActionCommand(Controlador.A_CREAR_IMAGEN);
 		btnCargarImage.setBounds(310,320, 150, 30);
@@ -136,6 +140,7 @@ public class DialogoEditar extends JDialog {
 		add(btnEditar);
 		add(btnCancelar);
 		add(btnCargarImage);
+		add(lbImageFondo);
 	}
 
 	public ImageIcon importarImagen(){

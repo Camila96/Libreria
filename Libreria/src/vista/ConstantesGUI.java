@@ -46,7 +46,7 @@ public class ConstantesGUI {
 	public static final String T_ITEM_AGREGAR_BUTTON_AUTOR = "Agregar Autor";
 	public static final String  T_ITEM_CANCELAR_AUTOR= "Cancelar Autor";
 	public static final String T_AGREGAR_IMAGEN_AUTOR ="Imagen Autor";
-	public static final String T_ITEM_EDITAR_AUTOR = "Editar autor";
+	public static final String T_ITEM_EDITAR_AUTOR = "Editar Autor";
 	/**
 	 * barra menu
 	 */
