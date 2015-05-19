@@ -46,6 +46,7 @@ public class ConstantesGUI {
 	public static final String T_ITEM_AGREGAR_BUTTON_AUTOR = "Agregar Autor";
 	public static final String  T_ITEM_CANCELAR_AUTOR= "Cancelar Autor";
 	public static final String T_AGREGAR_IMAGEN_AUTOR ="Imagen Autor";
+	public static final String T_ITEM_EDITAR_AUTOR = "Editar autor";
 	/**
 	 * barra menu
 	 */
@@ -73,5 +74,6 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_EXPORTAR_PLANI = "t.menu.item.ex.plano";
 	public static final String T_MENU_ITEM_EXPORTAR_XML = "t.menu.item.ex.xml";
 	public static final String T_MENU_ITEM_EXPORTAR_JSON = "t.menu.item.ex.json";
+	
 
 }

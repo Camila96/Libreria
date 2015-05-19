@@ -53,7 +53,7 @@ public class DialogoEditarAutor extends JDialog{
 		txtImage.setBounds(150, 320, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 
-		btnEditar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON_AUTOR);
+		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR_AUTOR);
 		btnEditar.addActionListener(controlador);
 		btnEditar.setActionCommand(Controlador.A_EDITAR_AUTOR);
 		btnEditar.setBounds(100, 185, 150, 30);

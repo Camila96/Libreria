@@ -44,6 +44,7 @@ public class DialogoLibro extends JDialog{
 	private JButton btnAgregar;
 	private JButton btnCancelar;
 	private JButton btnCargarImage;
+	private JLabel lbImageFondo;
 	private VentanaPrincipal ventanaPrincipal;
 
 	public DialogoLibro(VentanaPrincipal ventanaPrincipal, Controlador controlador) {
@@ -54,6 +55,9 @@ public class DialogoLibro extends JDialog{
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
 
+		lbImageFondo = new JLabel(createImageIcon("/img/bookDialogo.jpg"));
+		lbImageFondo.setBounds(0,0,500,480);
+		
 		lbNombre = new JLabel(ConstantesGUI.T_AGREGAR_NOMBRE);
 		lbNombre.setBounds(30,0,100,100);
 
@@ -134,6 +138,7 @@ public class DialogoLibro extends JDialog{
 		add(txtImage);
 		add(btnAgregar);
 		add(btnCancelar);
+		add(lbImageFondo);
 		add(btnCargarImage);
 	}
 

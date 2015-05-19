@@ -116,12 +116,14 @@ public class BarraHerramientas extends JToolBar {
 		jrBtnId = new JRadioButton("Buscar por Id");
 		jrBtnId.addActionListener(controlador);
 		jrBtnId.setActionCommand(Controlador.A_BUSCAR_LIBRO);
+		jrBtnId.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnGroup.add(jrBtnId);
 		add(jrBtnId);
 
 		jrBtnNombre = new JRadioButton("Buscar por Nombre");
 		jrBtnNombre.addActionListener(controlador);
 		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_LIBRO);
+		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnGroup.add(jrBtnNombre);
 		add(jrBtnNombre);
 	}

@@ -156,10 +156,10 @@ public class Controlador implements ActionListener {
 			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			dialogoEditar.setVisible(true);
 			break;
-		case A_MOSTRAR_DIALOGO_EDITAR_AUTOR:
-			dialogoEditarAutor.cambiarValores(buscarIdAutor(ventanaPrincipal.retornarIdSeleccion()));
-			dialogoEditarAutor.setVisible(true);
-			break;
+//		case A_MOSTRAR_DIALOGO_EDITAR_AUTOR:
+//			dialogoEditarAutor.cambiarValores(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+//			dialogoEditarAutor.setVisible(true);
+//			break;
 		case A_EDITAR_LIBRO:
 			editarLibro();
 			break;
@@ -170,6 +170,13 @@ public class Controlador implements ActionListener {
 			try {
 				buscar();
 			} catch (ExcepcionLibroNoEncontrado e1) {
+				e1.printStackTrace();
+			}
+			break;
+		case A_BUSCAR_AUTOR:
+			try {
+				buscarAutor();
+			} catch (ExcepcionAutorNoEncontrado e1) {
 				e1.printStackTrace();
 			}
 			break;
@@ -267,8 +274,8 @@ public class Controlador implements ActionListener {
 	
 	public void editarAutor(){
 		try {
-			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccion()));
-			ventanaPrincipal.actualizarVentana(buscarIdAutor(ventanaPrincipal.retornarIdSeleccion()), ventanaPrincipal.retornarIdSeleccion());
+			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+			ventanaPrincipal.actualizarVentana(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
 		} catch (Exception e) {
 		}
 	}
@@ -293,24 +300,45 @@ public class Controlador implements ActionListener {
 
 	public void buscar() throws ExcepcionLibroNoEncontrado{
 		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
-			buscarSitioId();
+			buscarLibroId();
 		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombre().isSelected()) {
-			buscarSitioNombre();
+			buscarLibroNombre();
 		}
 	}
 
-	public void buscarSitioId() throws ExcepcionLibroNoEncontrado{
+	public void buscarLibroId() throws ExcepcionLibroNoEncontrado{
 		gestorLibro.buscarLibro(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.buscarLibroId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
 
-	public void buscarSitioNombre() throws ExcepcionLibroNoEncontrado{
+	public void buscarLibroNombre() throws ExcepcionLibroNoEncontrado{
 		gestorLibro.buscarLibro(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
 		ventanaPrincipal.buscarLibroNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
 
+	public void buscarAutor() throws ExcepcionAutorNoEncontrado{
+		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
+			buscarAutorId();
+		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombre().isSelected()) {
+			buscarAutorNombre();
+		}
+	}
+
+	public void buscarAutorId() throws ExcepcionAutorNoEncontrado{
+		gestorAutor.buscarAutor(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.buscarAutorId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
+
+	public void buscarAutorNombre() throws ExcepcionAutorNoEncontrado{
+		gestorAutor.buscarAutor(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.buscarAutorNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
+
+	
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
 	}
