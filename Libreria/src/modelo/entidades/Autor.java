@@ -7,10 +7,12 @@ public class Autor {
 
 	private String nombre;
 	private int id;
+	private static int consecutivo;
 
 	public Autor(String nombre) {
+		this.id = consecutivo;
 		this.nombre = nombre;
-		this.id = id;
+		consecutivo++;
 	}
 	public String getNombre() {
 		return nombre;

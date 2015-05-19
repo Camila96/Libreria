@@ -14,12 +14,14 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
+import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import vista.BarraMenu;
 import vista.ConstantesGUI;
 import vista.DialogoAutor;
 import vista.DialogoCliente;
 import vista.DialogoEditar;
+import vista.DialogoEditarAutor;
 import vista.DialogoLibro;
 import vista.JDialogoPrincipal;
 import vista.VentanaPrincipal;
@@ -45,7 +47,7 @@ public class Controlador implements ActionListener {
 	public static final String A_MOSTRAR_AGREGAR_LIBRO="mostrar libro";
 	public static final String A_MOSTRAR_CANCELAR_LIBRO = "mostrar cancelar sitio";
 	public static final String A_CREAR_IMAGEN = "crear imagen";
-	public static final String A_MOSTRAR_DIALOGO_EDITAR_SITIO="Editar Dialogo";
+	public static final String A_MOSTRAR_DIALOGO_EDITAR_LIBRO="Editar Dialogo";
 	public static final String A_MOSTRAR_CANCELAR_CLIENTE = "Mostrar agregar Cliente";
 	public static final String A_MOSTRAR_AGREGAR_CLIENTE = "Mostrar Agregar Cliente";
 	public static final String A_IMPORTAR_ARCHIVO_BINARIO_LIBRO = "importar binario";
@@ -58,6 +60,9 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
 	public static final String A_AGREGAR_ADMINISTRADOR = "administrador";
 	public static final String A_MOSTRAR_USUARIO = "usuario";
+	public static final String A_MOSTRAR_AGREGAR_AUTOR = "mostrar autor";
+	public static final String A_MOSTRAR_CANCELAR_AUTOR = "cancelar autor";
+	public  static final String A_MOSTRAR_DIALOGO_EDITAR_AUTOR = "mostar editar autor";
 
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -73,6 +78,7 @@ public class Controlador implements ActionListener {
 	private DialogoEditar dialogoEditar;
 	private DialogoCliente dialogoCliente;
 	private DialogoAutor dialogoAutor;
+	private DialogoEditarAutor dialogoEditarAutor;
 	private JDialogoPrincipal dialogoPrincipal;
 
 	public Controlador() {
@@ -84,6 +90,7 @@ public class Controlador implements ActionListener {
 		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
 		dialogoCliente = new DialogoCliente(ventanaPrincipal, this);
 		dialogoEditar = new DialogoEditar(ventanaPrincipal, this);
+		dialogoEditarAutor = new DialogoEditarAutor(ventanaPrincipal, this);
 		dialogoAutor = new DialogoAutor(ventanaPrincipal, this);
 		dialogoPrincipal = new JDialogoPrincipal(this);
 		dialogoPrincipal.setVisible(true);
@@ -102,39 +109,62 @@ public class Controlador implements ActionListener {
 		case A_MOSTRAR_AGREGAR_CLIENTE:
 			dialogoCliente.setVisible(true);
 			break;
+		case A_MOSTRAR_AGREGAR_AUTOR:
+			dialogoAutor.setVisible(true);
+			break;
 		case A_AGREGAR_CLIENTE:
 			agregarCliente();
-			dialogoCliente.eliminarDatosTableCliente();
-			
-			
+			dialogoCliente.eliminarDatosTableCliente();		
 			break;
-
 		case A_AGREGAR_LIBRO:
 			agregarLibro();
 			dialogoLibro.eliminarDatosTabla();
+			break;
+		case A_AGREGAR_AUTOR:
+			agregarAutor();
+			dialogoAutor.eliminarDatosTablaAutor();
 			break;
 		case A_MOSTRAR_CANCELAR_LIBRO:
 			dialogoLibro.setVisible(false);
 			break; 
 
+		case A_MOSTRAR_CANCELAR_AUTOR:
+			dialogoAutor.setVisible(false);
+			break;
 		case A_ELIMINAR_LIBRO:
 			try {
-				borrarSitio();
+				borrarLibro();
 			} catch (ExcepcionLibroNoEncontrado e1) {
 
 				e1.printStackTrace();
 			}
 			dialogoLibro.eliminarDatosTabla();
 			break;
+		case A_ELIMINAR_AUTOR:
+			try {
+				borrarAutor();
+			} catch (ExcepcionAutorNoEncontrado e1) {
+
+				e1.printStackTrace();
+			}
+			dialogoAutor.eliminarDatosTablaAutor();
+			break;
 		case A_CREAR_IMAGEN:
 			dialogoLibro.importarImagen();
 			break;
-		case A_MOSTRAR_DIALOGO_EDITAR_SITIO:
+		case A_MOSTRAR_DIALOGO_EDITAR_LIBRO:
 			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			dialogoEditar.setVisible(true);
 			break;
+		case A_MOSTRAR_DIALOGO_EDITAR_AUTOR:
+			dialogoEditarAutor.cambiarValores(buscarIdAutor(ventanaPrincipal.retornarIdSeleccion()));
+			dialogoEditarAutor.setVisible(true);
+			break;
 		case A_EDITAR_LIBRO:
-			editarSitio();
+			editarLibro();
+			break;
+		case A_EDITAR_AUTOR:
+			editarAutor();
 			break;
 		case A_BUSCAR_LIBRO:
 			try {
@@ -217,15 +247,28 @@ public class Controlador implements ActionListener {
 		}
 	}
 
-	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
+	public void borrarLibro() throws ExcepcionLibroNoEncontrado{
 		int id = ventanaPrincipal.eliminarLibro();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
 	}
+	
+	public void borrarAutor() throws ExcepcionAutorNoEncontrado{
+		int id = ventanaPrincipal.eliminarAutor();
+		gestorAutor.eliminarAutor(gestorAutor.buscarAutor(id));
+	}
 
-	public void editarSitio(){
+	public void editarLibro(){
 		try {
 			dialogoEditar.editar(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			ventanaPrincipal.actualizarVentana(buscarId(ventanaPrincipal.retornarIdSeleccion()), ventanaPrincipal.retornarIdSeleccion());
+		} catch (Exception e) {
+		}
+	}
+	
+	public void editarAutor(){
+		try {
+			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccion()));
+			ventanaPrincipal.actualizarVentana(buscarIdAutor(ventanaPrincipal.retornarIdSeleccion()), ventanaPrincipal.retornarIdSeleccion());
 		} catch (Exception e) {
 		}
 	}
@@ -234,6 +277,15 @@ public class Controlador implements ActionListener {
 		try {
 			return gestorLibro.buscarLibro(id);
 		} catch (ExcepcionLibroNoEncontrado e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Autor buscarIdAutor(int id){
+		try {
+			return gestorAutor.buscarAutor(id);
+		} catch (ExcepcionAutorNoEncontrado e) {
 			e.printStackTrace();
 		}
 		return null;

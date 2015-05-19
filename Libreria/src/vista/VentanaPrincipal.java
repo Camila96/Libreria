@@ -56,7 +56,7 @@ public class VentanaPrincipal  extends JFrame{
 		add(barraHerramientas, BorderLayout.PAGE_START);
 
 
-		modeloLibro = new DefaultTableModel(new String[]{"N°ORDEN" ,"NOMBRE", "DESCRIPCION","VALOR","GENERO","AUTOR", "COPIAS VENDIDAS"}, 0);
+		modeloLibro = new DefaultTableModel(new String[]{"ID" ,"NOMBRE", "DESCRIPCION","VALOR","GENERO","AUTOR", "COPIAS VENDIDAS"}, 0);
 		tableLibro = new JTable(modeloLibro);
 		jPanelImage = new JPanelImage();
 		tableLibro.getTableHeader().setReorderingAllowed(false);
@@ -78,7 +78,7 @@ public class VentanaPrincipal  extends JFrame{
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableCliente),BorderLayout.CENTER);
 
-		modeloAutor = new DefaultTableModel(new String[]{"NOMBRE"}, 0);
+		modeloAutor = new DefaultTableModel(new String[]{"ID","NOMBRE"}, 0);
 		tableAutor = new JTable(modeloAutor);
 		tableAutor.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableAutor),BorderLayout.WEST);

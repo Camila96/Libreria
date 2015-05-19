@@ -23,7 +23,7 @@ public class DialogoAutor extends JDialog{
 	
 		private static final long serialVersionUID = 1L;
 		private JLabel lbNombre;
-		ImageIcon image;
+		private ImageIcon image;
 
 		private JTextField txtNombre;
 		private JTextField txtImage;
@@ -31,6 +31,7 @@ public class DialogoAutor extends JDialog{
 		private JButton btnAgregar;
 		private JButton btnCancelar;
 		private JButton btnCargarImagen;
+		private JLabel lbImagen;
 		private VentanaPrincipal ventanaPrincipal;
 
 		public DialogoAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
@@ -47,35 +48,47 @@ public class DialogoAutor extends JDialog{
 			txtNombre = new JTextField();
 			txtNombre.setBounds(150, 30, 150, 30);
 			txtNombre.setBackground(ConstantesGUI.COlOR_DATOS);
+			
+			lbImagen = new JLabel(ConstantesGUI.T_AGREGAR_IMAGEN);
+			lbImagen.setBounds(30,290,100,100);
 
-			btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON);
+			txtImage = new JTextField();
+			txtImage.setBounds(150, 320, 150, 30);
+			txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
+
+			btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON_AUTOR);
 			btnAgregar.addActionListener(controlador);
-			btnAgregar.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
+			btnAgregar.setActionCommand(Controlador.A_AGREGAR_AUTOR);
 			btnAgregar.setBounds(100, 185, 150, 30);
 
-			btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR);
+			btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR_AUTOR);
 			btnCancelar.addActionListener(controlador);
-			btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_CLIENTE);
+			btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_AUTOR);
 			btnCancelar.setBounds(320, 185, 150, 30);
 
-			btnCargarImagen = new JButton(ConstantesGUI.T_AGREGAR_IMAGEN);
+			btnCargarImagen = new JButton(ConstantesGUI.T_AGREGAR_IMAGEN_AUTOR);
 			btnCargarImagen.addActionListener(controlador);
 			btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN);
 			btnCargarImagen.setBounds(310,140, 150, 30);
 			
 			add(lbNombre);
 			add(txtNombre);
+			add(lbImagen);
+			add(txtImage);
+			add(btnAgregar);
+			add(btnCancelar);
+			add(btnCargarImagen);
 			
 		}
 
 		public Autor crearAutor(){
 			Autor autor  = GestorAutor.crearAutor(txtNombre.getText());
 			dispose();
-			eliminarDatosTableCliente();
+			eliminarDatosTablaAutor();
 			return autor;
 		}
 
-		public void eliminarDatosTableCliente(){
+		public void eliminarDatosTablaAutor(){
 			txtNombre.setText("");
 		}
 

@@ -45,7 +45,7 @@ public class BarraHerramientas extends JToolBar {
 
 		btnEditarLibro = new JButton(createImageIcon("/img/editb.png"));
 		btnEditarLibro.addActionListener(controlador);
-		btnEditarLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_EDITAR_SITIO);
+		btnEditarLibro.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_EDITAR_LIBRO);
 		btnEditarLibro.setToolTipText("Editar Libro");
 		add(btnEditarLibro);
 
@@ -87,13 +87,13 @@ public class BarraHerramientas extends JToolBar {
 
 		btnAgregarAutor = new JButton(createImageIcon("/img/autora.png"));
 		btnAgregarAutor.addActionListener(controlador);
-		btnAgregarAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
+		btnAgregarAutor.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_AUTOR);
 		btnAgregarAutor.setToolTipText("Agregar Autor");
 		add(btnAgregarAutor);
 
 		btnEditarAutor = new JButton(createImageIcon("/img/editara.png"));
 		btnEditarAutor.addActionListener(controlador);
-		btnEditarAutor.setActionCommand(Controlador.A_EDITAR_AUTOR);
+		btnEditarAutor.setActionCommand(Controlador.A_MOSTRAR_DIALOGO_EDITAR_AUTOR);
 		btnEditarAutor.setToolTipText("Editar Autor");
 		add(btnEditarAutor);
 
