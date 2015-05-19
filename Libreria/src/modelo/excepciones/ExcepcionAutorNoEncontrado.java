@@ -11,4 +11,9 @@ public class ExcepcionAutorNoEncontrado  extends Exception{
 	public ExcepcionAutorNoEncontrado(String nombre) {
 		super(ERROR_AUTOR_NO_ENCONTRADO + "("+ nombre+")");
 	}
+	
+	public ExcepcionAutorNoEncontrado(int id) {
+		super(ERROR_AUTOR_NO_ENCONTRADO + "("+ id+")");
+	}
+
 }

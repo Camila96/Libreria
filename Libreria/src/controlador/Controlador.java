@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
+
 import persistencia.ArchivoBinarioLibro;
 import persistencia.ArchivoJsonLibro;
 import persistencia.ArchivoPlanoLibro;
@@ -15,11 +17,13 @@ import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import vista.BarraMenu;
 import vista.ConstantesGUI;
+import vista.DialogoAutor;
 import vista.DialogoCliente;
 import vista.DialogoEditar;
 import vista.DialogoLibro;
 import vista.JDialogoPrincipal;
 import vista.VentanaPrincipal;
+import vista.VentanaUsuario;
 /**
  * @author Maria Camila Preciado Rojas y 
  * Angel Isidro Gutierrez Guerrero
@@ -58,6 +62,7 @@ public class Controlador implements ActionListener {
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;
+	private VentanaUsuario ventanaUsuario;
 	private GestorAutor gestorAutor;
 	private GestorCliente gestorCliente;
 	private GestorLibro gestorLibro;
@@ -67,6 +72,7 @@ public class Controlador implements ActionListener {
 	private DialogoLibro dialogoLibro;
 	private DialogoEditar dialogoEditar;
 	private DialogoCliente dialogoCliente;
+	private DialogoAutor dialogoAutor;
 	private JDialogoPrincipal dialogoPrincipal;
 
 	public Controlador() {
@@ -74,9 +80,11 @@ public class Controlador implements ActionListener {
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
 		ventanaPrincipal = new VentanaPrincipal(this);
+		ventanaUsuario = new VentanaUsuario(this);
 		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
 		dialogoCliente = new DialogoCliente(ventanaPrincipal, this);
 		dialogoEditar = new DialogoEditar(ventanaPrincipal, this);
+		dialogoAutor = new DialogoAutor(ventanaPrincipal, this);
 		dialogoPrincipal = new JDialogoPrincipal(this);
 		dialogoPrincipal.setVisible(true);
 //		ventanaPrincipal.setVisible(true);
@@ -171,7 +179,7 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.setVisible(true);
 			break;
 		case A_MOSTRAR_USUARIO:
-			ventanaPrincipal.setVisible(true);
+			ventanaUsuario.setVisible(true);
 			break;
 		default:
 			break;
@@ -200,9 +208,17 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.agregarCliente(cliente);
 		}
 	}
+	
+	public void agregarAutor(){
+		Autor autor =dialogoAutor.crearAutor();
+		if (autor != null) {
+			gestorAutor.agregarAutor(autor);
+			ventanaPrincipal.agregarAutor(autor);
+		}
+	}
 
 	public void borrarSitio() throws ExcepcionLibroNoEncontrado{
-		int id = ventanaPrincipal.eliminarSitio();
+		int id = ventanaPrincipal.eliminarLibro();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
 	}
 

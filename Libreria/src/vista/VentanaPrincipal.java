@@ -70,7 +70,7 @@ public class VentanaPrincipal  extends JFrame{
 
 			}
 		});
-		add(new JScrollPane(tableLibro),BorderLayout.WEST);
+		add(new JScrollPane(tableLibro),BorderLayout.SOUTH);
 		add(jPanelImage,BorderLayout.EAST);
 
 		modeloCliente = new DefaultTableModel(new String[]{"ID", "NOMBRE", "CREDITO"}, 0);
@@ -81,7 +81,7 @@ public class VentanaPrincipal  extends JFrame{
 		modeloAutor = new DefaultTableModel(new String[]{"NOMBRE"}, 0);
 		tableAutor = new JTable(modeloAutor);
 		tableAutor.getTableHeader().setReorderingAllowed(false);
-		add(new JScrollPane(tableAutor),BorderLayout.SOUTH);
+		add(new JScrollPane(tableAutor),BorderLayout.WEST);
 		init();
 	}
 
@@ -91,7 +91,11 @@ public class VentanaPrincipal  extends JFrame{
 
 
 	public void agregarLibro(Libro libro){
-		modeloLibro.addRow(Util.sitioAVector(libro));
+		modeloLibro.addRow(Util.libroAVector(libro));
+	}
+	
+	public void agregarAutor(Autor autor){
+		modeloAutor.addRow(Util.autorAVector(autor));
 	}
 
 	public void agregarCliente(Cliente cliente){
@@ -101,8 +105,11 @@ public class VentanaPrincipal  extends JFrame{
 	public int retornarIdSeleccion(){
 		return Integer.parseInt((String) modeloLibro.getValueAt(tableLibro.getSelectedRow(), 0));
 	}
+	public int retornarIdSeleccionAutor(){
+		return Integer.parseInt((String) modeloAutor.getValueAt(tableAutor.getSelectedRow(), 0));
+	}
 
-	public int eliminarSitio(){
+	public int eliminarLibro(){
 
 		int auxiliar = Integer.parseInt((String) modeloLibro.getValueAt(tableLibro.getSelectedRow(), 0));
 		int ob = JOptionPane.showConfirmDialog(this, "SEGURO QUE QUIERE ELIMINAR?.");
@@ -112,6 +119,15 @@ public class VentanaPrincipal  extends JFrame{
 		return auxiliar;
 	}
 
+	public int eliminarAutor(){
+
+		int auxiliar = Integer.parseInt((String) modeloAutor.getValueAt(tableAutor.getSelectedRow(), 0));
+		int ob = JOptionPane.showConfirmDialog(this, "SEGURO QUE QUIERE ELIMINAR?.");
+		if(ob == JOptionPane.YES_OPTION){
+			modeloAutor.removeRow(tableAutor.getSelectedRow());
+		}
+		return auxiliar;
+	}
 
 	public void actualizarVentana(Libro libro, int fila){
 		modeloLibro.setValueAt(libro.getId(),fila,0);
@@ -130,11 +146,16 @@ public class VentanaPrincipal  extends JFrame{
 		modeloCliente.setValueAt(cliente.getCredito(),fila, 2);
 		modeloCliente.fireTableDataChanged();
 	}
-
+	
+	public void actualizarVentana(Autor autor, int fila){
+		modeloCliente.setValueAt(cliente.getId(),fila,0);
+		modeloCliente.setValueAt(cliente.getNombre(),fila, 1);
+		modeloCliente.fireTableDataChanged();
+	}
 	public void buscarLibroNombre(String nombre){
 		boolean auxiliar = true;
 		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Ingrese una ciudad");
+			JOptionPane.showMessageDialog(null, "Ingrese un libro");
 		}
 		for (int i = 0; i < modeloLibro.getRowCount(); i++) {
 			String aux = (String) modeloLibro.getValueAt(i, 1);
@@ -144,15 +165,15 @@ public class VentanaPrincipal  extends JFrame{
 				break;
 			}
 		}if (auxiliar == true) {
-			JOptionPane.showMessageDialog(null, "Si se encontro la ciudad");	
+			JOptionPane.showMessageDialog(null, "Si se encontro la libro");	
 		}else
-			JOptionPane.showMessageDialog(null, "No se encontro la ciudad");
+			JOptionPane.showMessageDialog(null, "No se encontro la libro");
 	}
 
 	public void buscarLibroId(int id){
 		boolean auxiliar = true;
 		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Ingrese una ciudad");
+			JOptionPane.showMessageDialog(null, "Ingrese una libro");
 			return;
 		}
 		for (int i = 0; i < tableLibro.getRowCount(); i++) {
@@ -163,11 +184,47 @@ public class VentanaPrincipal  extends JFrame{
 			}
 		}
 		if(auxiliar == true){
-			JOptionPane.showMessageDialog(null, "Si se encontro la ciudad");
+			JOptionPane.showMessageDialog(null, "Si se encontro la libro");
 		}else
-			JOptionPane.showMessageDialog(null, "No se encontro la ciudad");
+			JOptionPane.showMessageDialog(null, "No se encontro la libro");
 	}
 
+	public void buscarAutorNombre(String nombre){
+		boolean auxiliar = true;
+		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Ingrese un autor");
+		}
+		for (int i = 0; i < modeloAutor.getRowCount(); i++) {
+			String aux = (String) modeloAutor.getValueAt(i, 1);
+			if (aux.equalsIgnoreCase(nombre)) {
+				auxiliar= true;
+				tableAutor.setRowSelectionInterval(i, i);
+				break;
+			}
+		}if (auxiliar == true) {
+			JOptionPane.showMessageDialog(null, "Si se encontro la autor");	
+		}else
+			JOptionPane.showMessageDialog(null, "No se encontro la autor");
+	}
+
+	public void buscarAutorId(int id){
+		boolean auxiliar = true;
+		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Ingrese un autor");
+			return;
+		}
+		for (int i = 0; i < tableAutor.getRowCount(); i++) {
+			int aux = Integer.parseInt((String) modeloAutor.getValueAt(i, 0));
+			if(id == aux){
+				tableAutor.setRowSelectionInterval(i, i);
+				break;
+			}
+		}
+		if(auxiliar == true){
+			JOptionPane.showMessageDialog(null, "Si se encontro la autor");
+		}else
+			JOptionPane.showMessageDialog(null, "No se encontro la autor");
+	}
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

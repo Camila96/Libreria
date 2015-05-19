@@ -1,5 +1,6 @@
 package modelos.util;
 
+import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 /**
@@ -25,7 +26,7 @@ public class Util {
 		}
 		return true;
 	}
-	public static String[] sitioAVector(Libro libro){
+	public static String[] libroAVector(Libro libro){
 		return new String[]{Integer.toString(libro.getId()),libro.getNombre(),
 				libro.getDescripcion(),Double.toString(libro.getValor()),libro.getGenero(),
 				libro.getAutor(),Double.toString(libro.getCopiasVendidas()),libro.getImage()};
@@ -34,5 +35,9 @@ public class Util {
 	public static String[] clienteAVector(Cliente cliente){
 		return new String[]{Integer.toString(cliente.getId()),cliente.getNombre(),
 				Double.toString(cliente.getCredito())};
+	}
+	
+	public static String[] autorAVector(Autor autor){
+		return new String[]{Integer.toString(autor.getId()),autor.getNombre()};
 	}
 }

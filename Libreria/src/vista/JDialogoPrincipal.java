@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.UIManager;
 
 import controlador.Controlador;
@@ -16,6 +17,7 @@ public class JDialogoPrincipal extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JButton btnAdministrador;
 	private JButton btnUsuario;
+	
 	
 	public JDialogoPrincipal(Controlador controlador) {
 		UIManager.put("Button.background", Color.lightGray);
