@@ -7,29 +7,28 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import javax.swing.JFileChooser;
 
+import modelo.entidades.Autor;
 import modelo.entidades.Libro;
-/**
- * @author Maria Camila Preciado Rojas y 
- * Angel Isidro Gutierrez Guerrero
- */
-public class ArchivoPlanoLibro {
 
+public class ArchivoPlanoAutor {
+	
 	private static FileReader leerArchivo;
 	private static BufferedWriter escribir;
 	private static BufferedReader leer;
 	public static final String RUTA = "src/data/";
 
-	public static void guardarArchivo(Libro libro){
-		File archivoLibro = new File(RUTA + libro.getNombre() + ".txt");
+	public static void guardarArchivo(Autor autor){
+		File archivoLibro = new File(RUTA+ autor.getNombre() + ".txt");
 		try {
 			escribir = new BufferedWriter(new FileWriter(archivoLibro, true));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			escribir.write(libro.toString());
+			escribir.write(autor.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -40,11 +39,11 @@ public class ArchivoPlanoLibro {
 		}
 	}
 
-	public static Libro abrirArchivo(){
+	public static Autor abrirArchivo(){
 		File nuevoArchivo = null;
 		FileReader fileReader = null;
 		JFileChooser jf = new JFileChooser(RUTA);
-		Libro libro = null;
+		Autor autor = null;
 		int option = jf.showOpenDialog(null);
 		if (option == JFileChooser.APPROVE_OPTION) {
 			nuevoArchivo = jf.getSelectedFile();
@@ -57,8 +56,7 @@ public class ArchivoPlanoLibro {
 		leer = new BufferedReader(fileReader);
 		try {
 			String[] items =  leer.readLine().split(",");
-			libro = new Libro(items[0], items[1], Double.parseDouble(items[2]),
-					items[3],items[4],Double.parseDouble(items[5]),items[6]);
+			autor = new Autor(items[0], items[1]);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -68,6 +66,6 @@ public class ArchivoPlanoLibro {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return libro;
+		return autor;
 	}
 }

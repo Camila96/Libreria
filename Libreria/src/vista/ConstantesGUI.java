@@ -74,6 +74,14 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_EXPORTAR_PLANI = "t.menu.item.ex.plano";
 	public static final String T_MENU_ITEM_EXPORTAR_XML = "t.menu.item.ex.xml";
 	public static final String T_MENU_ITEM_EXPORTAR_JSON = "t.menu.item.ex.json";
+	public static final String T_MENU_ITEM_IMPORTAR_AUTOR = "t.menu.item.im.binario.a";
+	public static final String T_MENU_ITEM_IMPORTAR_AUTOR_PL = "t.menu.item.im.plano.a";
+	public static final String T_MENU_ITEM_IMPORTAR_AUTOR_XM = "t.menu.item.im.xml.a";
+	public static final String T_MENU_ITEM_IMPORTAR_AUTOR_JS = "t.menu.item.im.json.a";
+	public static final String T_MENU_ITEM_EXPORTAR_AUTOR = "t.menu.item.ex.binario.a";
+	public static final String T_MENU_ITEM_EXPORTAR_AUTOR_PL = "t.menu.item.ex.plano.a";
+	public static final String T_MENU_ITEM_EXPORTAR_AUTOR_XM = "t.menu.item.ex.xml.a";
+	public static final String T_MENU_ITEM_EXPORTAR_AUTOR_JS = "t.menu.item.ex.json.a";
 	
 
 }

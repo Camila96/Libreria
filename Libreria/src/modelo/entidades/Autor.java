@@ -1,10 +1,17 @@
 package modelo.entidades;
+
+import java.io.Serializable;
+
 /**
  * @author Maria Camila Preciado Rojas y 
  * Angel Isidro Gutierrez Guerrero
  */
-public class Autor {
+public class Autor implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private int id;
 	private String image;
@@ -29,7 +36,6 @@ public class Autor {
 		this.id = id;
 	}
 
-	
 	public String getImage() {
 		return image;
 	}
