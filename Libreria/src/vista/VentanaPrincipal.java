@@ -80,8 +80,21 @@ public class VentanaPrincipal  extends JFrame{
 
 		modeloAutor = new DefaultTableModel(new String[]{"ID","NOMBRE"}, 0);
 		tableAutor = new JTable(modeloAutor);
+		jPanelImage = new JPanelImage();
+		tableAutor.getTableHeader().setReorderingAllowed(false);
+		tableAutor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
+
+			public void valueChanged(ListSelectionEvent e) {		
+				if(modeloAutor.getRowCount() > 0){
+					jPanelImage.setRutaImagen(controlador.buscarIdAutor(retornarIdSeleccionAutor()).getImage());
+					jPanelImage.repaint();
+				}
+
+			}
+		});
 		tableAutor.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableAutor),BorderLayout.WEST);
+		add(jPanelImage,BorderLayout.EAST);
 		init();
 	}
 

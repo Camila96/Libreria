@@ -16,6 +16,7 @@ public class JPanelImage extends JPanel{
 	private GestorLibro gestorLibro;
 	private String rutaImagen;
 	private DialogoLibro dialogoLibro;
+	private DialogoAutor dialogoAutor;
 
 
 	@Override

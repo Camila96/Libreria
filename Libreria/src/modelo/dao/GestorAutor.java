@@ -43,10 +43,11 @@ public class GestorAutor {
 		}
 		throw new ExcepcionAutorNoEncontrado(id);
 	}
-	public static Autor crearAutor(String nombre){
-		return new Autor(nombre);	
+	
+	public static Autor crearAutor(String nombre, String image){
+			return new Autor(nombre, image);	
 	}
-
+	
 	public ArrayList<Autor> getListaAutor() {
 		return listaAutor;
 	}

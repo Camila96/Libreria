@@ -71,7 +71,7 @@ public class DialogoAutor extends JDialog{
 
 		btnCargarImagen = new JButton(ConstantesGUI.T_AGREGAR_IMAGEN_AUTOR,createImageIcon("/img/load.png"));
 		btnCargarImagen.addActionListener(controlador);
-		btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN);
+		btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN_AUTOR);
 		btnCargarImagen.setBounds(310,70, 150, 30);
 
 		add(lbNombre);
@@ -86,7 +86,7 @@ public class DialogoAutor extends JDialog{
 	}
 
 	public Autor crearAutor(){
-		Autor autor  = GestorAutor.crearAutor(txtNombre.getText());
+		Autor autor  = GestorAutor.crearAutor(txtNombre.getText(),txtImage.getText());
 		dispose();
 		eliminarDatosTablaAutor();
 		return autor;
@@ -96,7 +96,7 @@ public class DialogoAutor extends JDialog{
 		txtNombre.setText("");
 	}
 
-	public ImageIcon importarImagen(){
+	public ImageIcon importarImagenAutor(){
 		JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView());
 		fc.showOpenDialog(null);
 		File file = fc.getSelectedFile();

@@ -33,6 +33,9 @@ public class BarraHerramientas extends JToolBar {
 	private JRadioButton jrBtnId;
 	private JRadioButton jrBtnNombre;
 	private ButtonGroup btnGroup;
+	private JRadioButton jrBtnIdAutor;
+	private JRadioButton jrBtnNombreAutor;
+	private ButtonGroup btnGroupAutor;
 
 
 	public BarraHerramientas(Controlador controlador) {
@@ -55,12 +58,6 @@ public class BarraHerramientas extends JToolBar {
 		btnEliminarLibro.setToolTipText("Eliminar Libro");
 		add(btnEliminarLibro);
 
-		btnBuscarLibro = new JButton(createImageIcon("/img/buscarb.png"));
-		btnBuscarLibro.addActionListener(controlador);
-		btnBuscarLibro.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		btnBuscarLibro.setToolTipText("Buscar Libro");
-		add(btnBuscarLibro);
-
 		btnAgregarCliente = new JButton(createImageIcon("/img/clientea.png"));
 		btnAgregarCliente.addActionListener(controlador);
 		btnAgregarCliente.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_CLIENTE);
@@ -78,12 +75,6 @@ public class BarraHerramientas extends JToolBar {
 		btnEliminarCliente.setActionCommand(Controlador.A_ELIMINAR_CLIENTE);
 		btnEliminarCliente.setToolTipText("Eliminar Cliente");
 		add(btnEliminarCliente);
-
-		btnBuscarCliente = new JButton(createImageIcon("/img/buscarc.png"));
-		btnBuscarCliente.addActionListener(controlador);
-		btnBuscarCliente.setActionCommand(Controlador.A_BUSCAR_CLIENTE);
-		btnBuscarCliente.setToolTipText("Buscar Cliente");
-		add(btnBuscarCliente);
 
 		btnAgregarAutor = new JButton(createImageIcon("/img/autora.png"));
 		btnAgregarAutor.addActionListener(controlador);
@@ -103,29 +94,34 @@ public class BarraHerramientas extends JToolBar {
 		btnEliminarAutor.setToolTipText("Eliminar Autor");
 		add(btnEliminarAutor);
 
-		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
-		btnBuscarAutor.addActionListener(controlador);
-		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
-		btnBuscarAutor.setToolTipText("Bucar Autor");
-		add(btnBuscarAutor);
-
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar);
 
 		btnGroup = new ButtonGroup();
-		jrBtnId = new JRadioButton("Buscar por Id");
+		jrBtnId = new JRadioButton("Buscar por Id Libro");
 		jrBtnId.addActionListener(controlador);
 		jrBtnId.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		jrBtnId.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnGroup.add(jrBtnId);
 		add(jrBtnId);
 
-		jrBtnNombre = new JRadioButton("Buscar por Nombre");
+		jrBtnNombre = new JRadioButton("Buscar por Nombre Libro");
 		jrBtnNombre.addActionListener(controlador);
 		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnGroup.add(jrBtnNombre);
 		add(jrBtnNombre);
+		
+		btnGroupAutor = new ButtonGroup();
+		jrBtnIdAutor = new JRadioButton("Buscar por Id Autor");
+		jrBtnIdAutor.addActionListener(controlador);
+		jrBtnIdAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
+		btnGroupAutor.add(jrBtnIdAutor);
+		add(jrBtnIdAutor);
+
+		jrBtnNombreAutor = new JRadioButton("Buscar por Nombre Autor");
+		jrBtnNombreAutor.addActionListener(controlador);
+		jrBtnNombreAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
+		btnGroupAutor.add(jrBtnNombreAutor);
+		add(jrBtnNombreAutor);
 	}
 
 	protected ImageIcon createImageIcon(String path) {
@@ -265,4 +261,29 @@ public class BarraHerramientas extends JToolBar {
 	public void setTxtBuscar(JTextField txtBuscar) {
 		this.txtBuscar = txtBuscar;
 	}
+
+	public JRadioButton getJrBtnIdAutor() {
+		return jrBtnIdAutor;
+	}
+
+	public void setJrBtnIdAutor(JRadioButton jrBtnIdAutor) {
+		this.jrBtnIdAutor = jrBtnIdAutor;
+	}
+
+	public JRadioButton getJrBtnNombreAutor() {
+		return jrBtnNombreAutor;
+	}
+
+	public void setJrBtnNombreAutor(JRadioButton jrBtnNombreAutor) {
+		this.jrBtnNombreAutor = jrBtnNombreAutor;
+	}
+
+	public ButtonGroup getBtnGroupAutor() {
+		return btnGroupAutor;
+	}
+
+	public void setBtnGroupAutor(ButtonGroup btnGroupAutor) {
+		this.btnGroupAutor = btnGroupAutor;
+	}
+	
 }

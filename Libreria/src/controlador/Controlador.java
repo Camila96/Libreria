@@ -63,6 +63,7 @@ public class Controlador implements ActionListener {
 	public static final String A_MOSTRAR_AGREGAR_AUTOR = "mostrar autor";
 	public static final String A_MOSTRAR_CANCELAR_AUTOR = "cancelar autor";
 	public  static final String A_MOSTRAR_DIALOGO_EDITAR_AUTOR = "mostar editar autor";
+	public static final String A_CREAR_IMAGEN_AUTOR ="Crear Autor";
 
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -152,14 +153,17 @@ public class Controlador implements ActionListener {
 		case A_CREAR_IMAGEN:
 			dialogoLibro.importarImagen();
 			break;
+		case A_CREAR_IMAGEN_AUTOR:
+			dialogoAutor.importarImagenAutor();
+			break;
 		case A_MOSTRAR_DIALOGO_EDITAR_LIBRO:
 			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			dialogoEditar.setVisible(true);
 			break;
-//		case A_MOSTRAR_DIALOGO_EDITAR_AUTOR:
-//			dialogoEditarAutor.cambiarValores(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-//			dialogoEditarAutor.setVisible(true);
-//			break;
+		case A_MOSTRAR_DIALOGO_EDITAR_AUTOR:
+			dialogoEditarAutor.cambiarValores(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+			dialogoEditarAutor.setVisible(true);
+			break;
 		case A_EDITAR_LIBRO:
 			editarLibro();
 			break;
@@ -319,9 +323,9 @@ public class Controlador implements ActionListener {
 	}
 
 	public void buscarAutor() throws ExcepcionAutorNoEncontrado{
-		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
+		if (ventanaPrincipal.getBarraHerramientas().getJrBtnIdAutor().isSelected()) {
 			buscarAutorId();
-		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombre().isSelected()) {
+		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombreAutor().isSelected()) {
 			buscarAutorNombre();
 		}
 	}

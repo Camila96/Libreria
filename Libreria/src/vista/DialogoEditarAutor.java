@@ -79,7 +79,7 @@ public class DialogoEditarAutor extends JDialog{
 	}
 
 	public Autor crearAutor(){
-		Autor autor  = GestorAutor.crearAutor(txtNombre.getText());
+		Autor autor  = GestorAutor.crearAutor(txtNombre.getText(),txtImage.getText());
 		dispose();
 		eliminarDatosTablaAutor();
 		return autor;
@@ -87,7 +87,7 @@ public class DialogoEditarAutor extends JDialog{
 	
 	public Autor editarAutor(Autor autor){
 		autor.setNombre(txtNombre.getText());
-//		autor.setImage(txtImage.getText());
+		autor.setImage(txtImage.getText());
 		eliminarDatosTablaAutor();
 		dispose();
 		return autor;
@@ -95,11 +95,12 @@ public class DialogoEditarAutor extends JDialog{
 	
 	public void cambiarValores(Autor autor){
 		txtNombre.setText(autor.getNombre());
-//		txtImage.setText(autor.getImage());
+		txtImage.setText(autor.getImage());
 	}
 
 	public void eliminarDatosTablaAutor(){
 		txtNombre.setText("");
+		txtImage.setText("");
 	}
 
 	public ImageIcon importarImagen(){

@@ -61,7 +61,7 @@ public class BarraMenu extends JMenuBar{
 
 		itemAgregarAutor = new JMenuItem(createImageIcon("/img/addAuthor.png"));
 		itemAgregarAutor.addActionListener(controlador);
-		itemAgregarAutor.setActionCommand(Controlador.A_AGREGAR_AUTOR);
+		itemAgregarAutor.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_AUTOR);
 		menuArchivo.add(itemAgregarAutor);
 
 		itemEliminarLibro = new JMenuItem(createImageIcon("/img/deleteBook.png"));
