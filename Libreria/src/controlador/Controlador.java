@@ -18,6 +18,7 @@ import vista.ConstantesGUI;
 import vista.DialogoCliente;
 import vista.DialogoEditar;
 import vista.DialogoLibro;
+import vista.JDialogoPrincipal;
 import vista.VentanaPrincipal;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -51,6 +52,8 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_PLANO_LIBRO = "Exportar Plano";
 	public static final String A_EXPORTAR_ARCHIVO_XML_LIBRO = "exportar xml";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
+	public static final String A_AGREGAR_ADMINISTRADOR = "administrador";
+	public static final String A_MOSTRAR_USUARIO = "usuario";
 
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -64,6 +67,7 @@ public class Controlador implements ActionListener {
 	private DialogoLibro dialogoLibro;
 	private DialogoEditar dialogoEditar;
 	private DialogoCliente dialogoCliente;
+	private JDialogoPrincipal dialogoPrincipal;
 
 	public Controlador() {
 		gestorAutor = new GestorAutor();
@@ -73,13 +77,16 @@ public class Controlador implements ActionListener {
 		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
 		dialogoCliente = new DialogoCliente(ventanaPrincipal, this);
 		dialogoEditar = new DialogoEditar(ventanaPrincipal, this);
-		ventanaPrincipal.setVisible(true);
+		dialogoPrincipal = new JDialogoPrincipal(this);
+		dialogoPrincipal.setVisible(true);
+//		ventanaPrincipal.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
 
+		
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
 			break;
@@ -87,10 +94,11 @@ public class Controlador implements ActionListener {
 		case A_MOSTRAR_AGREGAR_CLIENTE:
 			dialogoCliente.setVisible(true);
 			break;
-
 		case A_AGREGAR_CLIENTE:
 			agregarCliente();
 			dialogoCliente.eliminarDatosTableCliente();
+			
+			
 			break;
 
 		case A_AGREGAR_LIBRO:
@@ -158,6 +166,12 @@ public class Controlador implements ActionListener {
 			break;
 		case A_EXPORTAR_ARCHIVO_JSON_LIBRO:
 			ArchivoJsonLibro.guardarArchivoJson(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+			break;
+		case A_AGREGAR_ADMINISTRADOR:
+			ventanaPrincipal.setVisible(true);
+			break;
+		case A_MOSTRAR_USUARIO:
+			ventanaPrincipal.setVisible(true);
 			break;
 		default:
 			break;

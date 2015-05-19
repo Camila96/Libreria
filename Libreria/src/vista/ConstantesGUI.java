@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.Color;
+
+import javax.swing.Icon;
 /**
  * @author Maria Camila Preciado Rojas y 
  * Angel Isidro Gutierrez Guerrero
@@ -38,6 +40,9 @@ public class ConstantesGUI {
 	public static final String T_ITEM_EDITAR="editar";
 	public static final String T_AGREGAR_CREDITO = "Credito";
 	public static final String T_AGREGAR_ID = "Id";
+	
+	public static final String T_ITEM_AGREGAR_ADMINISTRADOR = "Agregar adminitrador";
+	public static final String T_ITEM_AGREGAR_USUARIO = "Agregar usurio";
 
 	/**
 	 * barra menu
@@ -66,6 +71,8 @@ public class ConstantesGUI {
 	public static final String T_MENU_ITEM_EXPORTAR_PLANI = "t.menu.item.ex.plano";
 	public static final String T_MENU_ITEM_EXPORTAR_XML = "t.menu.item.ex.xml";
 	public static final String T_MENU_ITEM_EXPORTAR_JSON = "t.menu.item.ex.json";
+	
+
 
 
 
