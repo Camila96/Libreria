@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import persistencia.ArchivoBinarioCliente;
 import persistencia.ArchivoBinarioLibro;
 import persistencia.ArchivoJsonLibro;
 import persistencia.ArchivoPlanoLibro;
@@ -12,6 +14,7 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
+import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import vista.BarraMenu;
 import vista.ConstantesGUI;
@@ -51,6 +54,15 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_PLANO_LIBRO = "Exportar Plano";
 	public static final String A_EXPORTAR_ARCHIVO_XML_LIBRO = "exportar xml";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
+	
+	public static final String AC_IMPORT_ARCHIVO_BINARIO_CLIENTE = "Importar Binario";
+	public static final String AC_IMPORT_ARCHIVO_PLANO_CLLIENTE = "Importar Plano";
+	public static final String AC_IMPORTAR_ARCHIVO_XML_CLIENTE = "Importar Xml";
+	public static final String AC_IMPORTAR_ARCHIVO_JSON_CLIENTE = "Importar Json";
+	public static final String AC_EXPORTAR_ARCHIVO_BINARIO_CLIENTE = "Exportar Binario";
+	public static final String AC_EXPORTAR_ARCHIVO_PLANO_CLIENTE = "Exportar Plano";
+	public static final String AC_EXPORTAR_ARCHIVO_XML_CLIENTE = "exportar xml";
+	public static final String AC_EXPORTAR_ARCHIVO_JSON_CLLIENTE = "exportar json";
 
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
@@ -159,6 +171,11 @@ public class Controlador implements ActionListener {
 		case A_EXPORTAR_ARCHIVO_JSON_LIBRO:
 			ArchivoJsonLibro.guardarArchivoJson(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			break;
+			
+		case AC_EXPORTAR_ARCHIVO_BINARIO_CLIENTE:
+			ArchivoBinarioCliente.guardarArchivoB(buscarId(ventanaPrincipal.retornarIdSeleccion()));
+
+			
 		default:
 			break;
 		}
@@ -209,6 +226,15 @@ public class Controlador implements ActionListener {
 		return null;
 	}
 
+	public Libro buscarIdC(int id){
+		try {
+			return gestorCliente.buscarCliente(id);
+		} catch (ExcepcionLibroNoEncontrado e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public void buscar() throws ExcepcionLibroNoEncontrado{
 		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
 			buscarSitioId();
@@ -220,6 +246,12 @@ public class Controlador implements ActionListener {
 	public void buscarSitioId() throws ExcepcionLibroNoEncontrado{
 		gestorLibro.buscarLibro(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.buscarLibroId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
+	
+	public void buscarClienteId() throws ExcepcionClienteNoEncontrado{
+		gestorCliente.buscarCliente(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.buscarClienteId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
 
