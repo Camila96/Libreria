@@ -20,14 +20,14 @@ public class ArchivoJsonCliente {
 	public static final String C_ID = "Id";
 	public static final String C_CREDITO = "Credito";
 	public static final String C_IMAGEN = "Imagen";
-	public static final String RUTA_GUARDAR_JSON = "src/archivos/File.json";
+	public static final String RUTA_GUARDAR_JSON = "src/data/Cliente.json";
 
 
-	@SuppressWarnings("unchecked")
 	public static void guardarArchivoJson(Cliente cliente){
 		JSONObject objeto = new JSONObject();
 		objeto.put(C_ID, cliente.getId());
 		objeto.put(C_NOMBRE, cliente.getNombre());
+		objeto.put(C_CREDITO, cliente.getCredito());
 		
 		try {
 			FileWriter archivo = new FileWriter(RUTA_GUARDAR_JSON);

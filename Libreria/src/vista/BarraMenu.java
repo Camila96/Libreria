@@ -48,6 +48,15 @@ public class BarraMenu extends JMenuBar{
 	private JMenuItem itemExPlanoAutor;
 	private JMenuItem itemExXmlAutor;
 	private JMenuItem itemExJsonAutor;
+	
+	private JMenuItem itemImBinarioCliente;
+	private JMenuItem itemImPlanoCliente;
+	private JMenuItem itemImXmlCliente;
+	private JMenuItem itemImJsonCliente;
+	private JMenuItem itemExBinarioCliente;
+	private JMenuItem itemExPlanoCliente;
+	private JMenuItem itemExXmlCliente;
+	private JMenuItem itemExJsonCliente;
 
 	public BarraMenu(Controlador controlador) {
 		properties = new Properties();
@@ -129,8 +138,28 @@ public class BarraMenu extends JMenuBar{
 		itemImJsonAutor.addActionListener(controlador);
 		itemImJsonAutor.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_JSON_AUTOR);
 		menuImportarArchivo.add(itemImJsonAutor);
-		menuArchivo.add(menuImportarArchivo);
 		
+		itemImBinarioCliente = new JMenuItem();
+		itemImBinarioCliente.addActionListener(controlador);
+		itemImBinarioCliente.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_BINARIO_CLIENTE);
+		menuImportarArchivo.add(itemImBinarioCliente);
+
+		itemImPlanoCliente = new JMenuItem();
+		itemImPlanoCliente.addActionListener(controlador);
+		itemImPlanoCliente.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_PLANO_CLIENTE);
+		menuImportarArchivo.add(itemImPlanoCliente);
+
+		itemImXmlCliente = new JMenuItem();
+		itemImXmlCliente.addActionListener(controlador);
+		itemImXmlCliente.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_XML_CLIENTE);
+		menuImportarArchivo.add(itemImXmlCliente);
+
+		itemImJsonCliente = new JMenuItem();
+		itemImJsonCliente.addActionListener(controlador);
+		itemImJsonCliente.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_JSON_CLIENTE);
+		menuImportarArchivo.add(itemImJsonCliente);
+		
+		menuArchivo.add(menuImportarArchivo);
 		
 		menuExportarArchivo = new JMenu();
 
@@ -174,9 +203,28 @@ public class BarraMenu extends JMenuBar{
 		itemExJsonAutor.addActionListener(controlador);
 		itemExJsonAutor.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_JSON_AUTOR);
 		menuExportarArchivo.add(itemExJsonAutor);
+//
+		itemExBinarioCliente = new JMenuItem();
+		itemExBinarioCliente.addActionListener(controlador);
+		itemExBinarioCliente.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE);
+		menuExportarArchivo.add(itemExBinarioCliente);
+
+		itemExPlanoCliente = new JMenuItem();
+		itemExPlanoCliente.addActionListener(controlador);
+		itemExPlanoCliente.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_PLANO_CLIENTE);
+		menuExportarArchivo.add(itemExPlanoCliente);
+
+		itemExXmlCliente = new JMenuItem();
+		itemExXmlCliente.addActionListener(controlador);
+		itemExXmlCliente.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_XML_CLIENTE);
+		menuExportarArchivo.add(itemExXmlCliente);
+
+		itemExJsonCliente = new JMenuItem();
+		itemExJsonCliente.addActionListener(controlador);
+		itemExJsonCliente.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_JSON_CLIENTE);
+		menuExportarArchivo.add(itemExJsonCliente);
+		
 		menuArchivo.add(menuExportarArchivo);
-
-
 		add(menuArchivo);
 
 		menuPreferencias= new JMenu();
@@ -233,6 +281,14 @@ public class BarraMenu extends JMenuBar{
 		itemExPlanoAutor.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_AUTOR_PL));
 		itemExXmlAutor.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_AUTOR_XM));
 		itemExJsonAutor.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_AUTOR_JS));
+		itemImBinarioCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_IMPORTAR_CLIENTE));
+		itemImPlanoCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_IMPORTAR_CLIENTE_PL));
+		itemImXmlCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_IMPORTAR_CLIENTE_XM));
+		itemImJsonCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_IMPORTAR_CLIENTE_JS));
+		itemExBinarioCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_CLIENTE));
+		itemExPlanoCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_CLIENTE_PL));
+		itemExXmlCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_CLIENTE_XM));
+		itemExJsonCliente.setText(properties.getProperty(ConstantesGUI.T_MENU_ITEM_EXPORTAR_CLIENTE_JS));
 	}
 
 	public void cargarPropiedades(String archivo){

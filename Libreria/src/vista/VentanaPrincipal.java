@@ -76,8 +76,19 @@ public class VentanaPrincipal  extends JFrame{
 		modeloCliente = new DefaultTableModel(new String[]{"ID", "NOMBRE", "CREDITO"}, 0);
 		tableCliente = new JTable(modeloCliente);
 		tableCliente.getTableHeader().setReorderingAllowed(false);
-		add(new JScrollPane(tableCliente),BorderLayout.CENTER);
+		tableCliente.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
 
+			public void valueChanged(ListSelectionEvent e) {		
+				if(modeloCliente.getRowCount() > 0){
+//					jPanelImage.setRutaImagen(controlador.buscarIdCliente(retornarIdSeleccionCliente()).getImage());
+					jPanelImage.repaint();
+				}
+
+			}
+		});
+		tableCliente.getTableHeader().setReorderingAllowed(false);
+		add(new JScrollPane(tableCliente),BorderLayout.CENTER);
+		
 		modeloAutor = new DefaultTableModel(new String[]{"ID","NOMBRE"}, 0);
 		tableAutor = new JTable(modeloAutor);
 		jPanelImage = new JPanelImage();
@@ -132,6 +143,16 @@ public class VentanaPrincipal  extends JFrame{
 		int ob = JOptionPane.showConfirmDialog(this, "SEGURO QUE QUIERE ELIMINAR?.");
 		if(ob == JOptionPane.YES_OPTION){
 			modeloLibro.removeRow(tableLibro.getSelectedRow());
+		}
+		return auxiliar;
+	}
+	
+	public int eliminarCliente(){
+
+		int auxiliar = Integer.parseInt((String) modeloCliente.getValueAt(tableCliente.getSelectedRow(), 0));
+		int ob = JOptionPane.showConfirmDialog(this, "SEGURO QUE QUIERE ELIMINAR?.");
+		if(ob == JOptionPane.YES_OPTION){
+			modeloCliente.removeRow(tableCliente.getSelectedRow());
 		}
 		return auxiliar;
 	}
@@ -224,6 +245,43 @@ public class VentanaPrincipal  extends JFrame{
 		}else
 			JOptionPane.showMessageDialog(null, "No se encontro la autor");
 	}
+	
+	public void buscarClienteNombre(String nombre){
+		boolean auxiliar = true;
+		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Ingrese un Cliente");
+		}
+		for (int i = 0; i < modeloCliente.getRowCount(); i++) {
+			String aux = (String) modeloCliente.getValueAt(i, 1);
+			if (aux.equalsIgnoreCase(nombre)) {
+				auxiliar= true;
+				tableCliente.setRowSelectionInterval(i, i);
+				break;
+			}
+		}if (auxiliar == true) {
+			JOptionPane.showMessageDialog(null, "Si se encontro el Cliente");	
+		}else
+			JOptionPane.showMessageDialog(null, "No se encontro el Clienet");
+	}
+	
+	public void buscarClienteId(int id){
+		boolean auxiliar = true;
+		if (barraHerramientas.getTxtBuscar().getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Ingrese un Cliente");
+			return;
+		}
+		for (int i = 0; i < tableCliente.getRowCount(); i++) {
+			int aux = Integer.parseInt((String) modeloCliente.getValueAt(i, 0));
+			if(id == aux){
+				tableCliente.setRowSelectionInterval(i, i);
+				break;
+			}
+		}
+		if(auxiliar == true){
+			JOptionPane.showMessageDialog(null, "Si se encontro el Cliente");
+		}else
+			JOptionPane.showMessageDialog(null, "No se encontro el cliente");
+	}
 
 	public void buscarAutorId(int id){
 		boolean auxiliar = true;
@@ -243,6 +301,7 @@ public class VentanaPrincipal  extends JFrame{
 		}else
 			JOptionPane.showMessageDialog(null, "No se encontro la autor");
 	}
+	
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {

@@ -19,7 +19,7 @@ import modelo.entidades.*;
 
 public class ArchivoBinarioCliente {
 
-	public static final String RUTA_ARCHIVO = "src/archivos/F.cam";
+	public static final String RUTA_ARCHIVO = "src/data/F.cam";
 	//sitio turitoco//guardar un sitio turistico
 	private VentanaPrincipal ventanaPrincipal;
 

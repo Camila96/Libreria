@@ -32,7 +32,7 @@ import modelo.entidades.Libro;
 
 public class ArchivoXmlCliente {
 
-	public static final String RUTA_GUARDAR_XML = "src/archivos/";
+	public static final String RUTA_GUARDAR_XML = "src/data/";
 	public static final String C_NOMBRE = "Nombre";
 	public static final String C_ID = "id";
 	public static final String C_CREDITO = "Valor";

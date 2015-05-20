@@ -18,7 +18,7 @@ public class ArchivoPlanoCliente {
 	private static FileReader lectorArchivo;
 	private static BufferedWriter escribir;
 	private static BufferedReader leer;
-	public static final String RUTA = "src/archivos/";
+	public static final String RUTA = "src/data/";
 
 
 	public static void guardarArchivo(Cliente cliente){
