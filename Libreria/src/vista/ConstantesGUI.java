@@ -41,8 +41,8 @@ public class ConstantesGUI {
 	public static final String T_AGREGAR_CREDITO = "Credito";
 	public static final String T_AGREGAR_ID = "Id";
 	
-	public static final String T_ITEM_AGREGAR_ADMINISTRADOR = "Agregar adminitrador";
-	public static final String T_ITEM_AGREGAR_USUARIO = "Agregar usurio";
+	public static final String T_ITEM_AGREGAR_ADMINISTRADOR = "Adminitrador";
+	public static final String T_ITEM_AGREGAR_USUARIO = "Usurio";
 	public static final String T_ITEM_AGREGAR_BUTTON_AUTOR = "Agregar Autor";
 	public static final String  T_ITEM_CANCELAR_AUTOR= "Cancelar Autor";
 	public static final String T_AGREGAR_IMAGEN_AUTOR ="Imagen Autor";

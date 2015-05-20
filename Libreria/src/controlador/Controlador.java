@@ -5,12 +5,16 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import persistencia.ArchivoBinarioAutor;
+import persistencia.ArchivoBinarioCliente;
 import persistencia.ArchivoBinarioLibro;
 import persistencia.ArchivoJsonAutor;
+import persistencia.ArchivoJsonCliente;
 import persistencia.ArchivoJsonLibro;
 import persistencia.ArchivoPlanoAutor;
+import persistencia.ArchivoPlanoCliente;
 import persistencia.ArchivoPlanoLibro;
 import persistencia.ArchivoXmlAutor;
+import persistencia.ArchivoXmlCliente;
 import persistencia.ArchivoXmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
@@ -19,6 +23,7 @@ import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
+import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import vista.BarraMenu;
 import vista.ConstantesGUI;
@@ -77,6 +82,15 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_XML_AUTOR = "ex xml autor";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_AUTOR = "ex json autor";
 
+	public static final String A_IMPORTAR_ARCHIVO_BINARIO_CLIENTE = "Binario Cliente";
+	public static final String A_IMPORTAR_ARCHIVO_PLANO_CLIENTE = "Plano Cliente";
+	public static final String A_IMPORTAR_ARCHIVO_XML_CLIENTE = "Xml Cliente";
+	public static final String A_IMPORTAR_ARCHIVO_JSON_CLIENTE = "Json Cliente";
+	public static final String A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE = "Ex Binario Cliente";
+	public static final String A_EXPORTAR_ARCHIVO_PLANO_CLIENTE = "Ex Plano Cliente";
+	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
+	public static final String A_EXPORTAR_ARCHIVO_JSON_CLIENTE = "Ex Json Cliente";
+	
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;
@@ -258,6 +272,30 @@ public class Controlador implements ActionListener {
 		case A_EXPORTAR_ARCHIVO_JSON_AUTOR:
 			ArchivoJsonAutor.guardarArchivoJson(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			break;
+		case A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE:
+			ArchivoBinarioCliente.guardarArchivo(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
+			break;
+		case A_IMPORTAR_ARCHIVO_BINARIO_CLIENTE:
+			agregarCliente(ArchivoBinarioCliente.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_PLANO_CLIENTE:
+			ArchivoPlanoCliente.guardarArchivo(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
+			break;
+		case A_IMPORTAR_ARCHIVO_PLANO_CLIENTE:
+			agregarCliente(ArchivoPlanoCliente.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_XML_CLIENTE:
+			ArchivoXmlCliente.guardarXml(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
+			break;
+		case A_IMPORTAR_ARCHIVO_XML_CLIENTE:
+			agregarCliente(ArchivoXmlCliente.abrirArchivo());
+			break;
+		case A_EXPORTAR_ARCHIVO_JSON_CLIENTE:
+			ArchivoJsonCliente.guardarArchivoJson(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
+		break;
+		case A_IMPORTAR_ARCHIVO_JSON_CLIENTE:
+			agregarCliente(ArchivoJsonCliente.abrirArchivo());
+			break;
 		default:
 			break;
 		}
@@ -286,6 +324,12 @@ public class Controlador implements ActionListener {
 		}
 	}
 	
+	public void agregarCliente(Cliente Cliente){
+		if (libro != null) {
+			gestorCliente.agregarCliente(cliente);
+			ventanaPrincipal.agregarCliente(cliente);
+		}
+	}
 	public void agregarAutor(Autor autor){
 		if (autor != null) {
 			gestorAutor.agregarAutor(autor);
@@ -336,7 +380,14 @@ public class Controlador implements ActionListener {
 		return null;
 	}
 
-	
+	public Cliente buscarIdCliente(int id){
+		try {
+			return gestorCliente.buscarCliente(id);
+		} catch (ExcepcionClienteNoEncontrado e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public Autor buscarIdAutor(int id){
 		try {

@@ -2,6 +2,8 @@ package persistencia;
 
 import java.io.File;
 import java.io.IOException;
+
+import javax.swing.JFileChooser;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,13 +13,16 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
+import modelo.entidades.Libro;
 
 
 /**
@@ -79,23 +84,27 @@ public class ArchivoXmlCliente {
 			e.printStackTrace();
 		}
 	}
-
-	public static Cliente cargarArchivoXml(File archivo){
+	public static Cliente abrirArchivo(){
+		File nuevoArchivo = null;
+		JFileChooser jf = new JFileChooser(RUTA_GUARDAR_XML);
+		int option = jf.showOpenDialog(null);
+		if (option == JFileChooser.APPROVE_OPTION) {
+			nuevoArchivo = jf.getSelectedFile();
+		}
 		Cliente cliente = null;
 		try {
-		
+
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document documento;
 			try {
-				documento = docBuilder.parse(archivo);
+				documento = docBuilder.parse(nuevoArchivo);
 				documento.getDocumentElement().normalize();
 
 				Element doc = documento.getDocumentElement();
 				NodeList lista = doc.getChildNodes();
-				
-				System.out.println(lista.item(0).getTextContent());
-				cliente = new Cliente(lista.item(0).getTextContent(), Double.parseDouble(lista.item(1).getTextContent()));
+
+				cliente = new Cliente(lista.item(0).getTextContent(), Double.parseDouble(lista.item(2).getTextContent()));
 				cliente.setId(Integer.parseInt(doc.getAttribute(C_ID)));
 			} catch (SAXException e) {
 				e.printStackTrace();
@@ -109,5 +118,6 @@ public class ArchivoXmlCliente {
 		return cliente;
 	}
 }
+	
 	
 

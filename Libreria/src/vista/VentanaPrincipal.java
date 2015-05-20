@@ -121,6 +121,10 @@ public class VentanaPrincipal  extends JFrame{
 	public int retornarIdSeleccionAutor(){
 		return Integer.parseInt((String) modeloAutor.getValueAt(tableAutor.getSelectedRow(), 0));
 	}
+	
+	public int retornarIdSeleccionCliente(){
+		return Integer.parseInt((String) modeloCliente.getValueAt(tableCliente.getSelectedRow(), 0));
+	}
 
 	public int eliminarLibro(){
 
