@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -28,6 +29,8 @@ public class DialogoAcceso extends JFrame{
 		info.add(password);
 		JButton lnButton = new JButton("ENTRAR");
 		info.add(lnButton);
+		JButton btnCancelar = new JButton("Cancelar");
+		info.add(btnCancelar);
 		f.setLayout(new FlowLayout());
 		f.setResizable(false);
 		f.add(info);
