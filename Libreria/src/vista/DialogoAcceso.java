@@ -23,8 +23,8 @@ public class DialogoAcceso extends JFrame{
 		info.add(lbNombre);
 		JTextField userName = new JTextField(10);
 		info.add(userName);
-		JLabel lbContraseña= new JLabel("Contraseña");
-		info.add(lbContraseña);
+		JLabel lbContrasena= new JLabel("Contraseï¿½a");
+		info.add(lbContrasena);
 		JPasswordField password = new JPasswordField(10);
 		info.add(password);
 		JButton lnButton = new JButton("ENTRAR");

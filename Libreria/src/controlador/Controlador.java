@@ -2,7 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Vector;
+
+import javax.swing.JCheckBox;
 
 import persistencia.ArchivoBinarioAutor;
 import persistencia.ArchivoBinarioCliente;
@@ -90,7 +94,7 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_PLANO_CLIENTE = "Ex Plano Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_CLIENTE = "Ex Json Cliente";
-	
+	private int j;
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;
@@ -121,14 +125,14 @@ public class Controlador implements ActionListener {
 		dialogoAutor = new DialogoAutor(ventanaPrincipal, this);
 		dialogoPrincipal = new JDialogoPrincipal(this);
 		dialogoPrincipal.setVisible(true);
-//		ventanaPrincipal.setVisible(true);
+		//		ventanaPrincipal.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
 
-		
+
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
 			break;
@@ -292,7 +296,7 @@ public class Controlador implements ActionListener {
 			break;
 		case A_EXPORTAR_ARCHIVO_JSON_CLIENTE:
 			ArchivoJsonCliente.guardarArchivoJson(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
-		break;
+			break;
 		case A_IMPORTAR_ARCHIVO_JSON_CLIENTE:
 			agregarCliente(ArchivoJsonCliente.abrirArchivo());
 			break;
@@ -313,7 +317,24 @@ public class Controlador implements ActionListener {
 		if (libro != null) {
 			gestorLibro.agregarLibro(libro);
 			ventanaPrincipal.agregarLibro(libro);
+			//	dialogoCliente.getListaCheckboxsLibros();
+			for(j=0; j<gestorLibro.getListaLibro().size(); j++){
+				dialogoCliente.getListaCheckboxsLibros()[j] = new JCheckBox(gestorLibro.getListaLibro().get(j).getNombre());
+				dialogoCliente.getListaCheckboxsLibros()[j].addItemListener(new ItemListener() {
+					@Override
+					public void itemStateChanged(ItemEvent e) {
+						if (e.getStateChange() == ItemEvent.DESELECTED) {
+							System.out.println("ya no"+ dialogoCliente.getListaCheckboxsLibros()[j].getText());
+						}else {
+							if (e.getStateChange() == ItemEvent.SELECTED) {
+								System.out.println("ya si"+ dialogoCliente.getListaCheckboxsLibros()[j].getText());
+							}
+						}
+					}
+				});
+			}
 		}
+		dialogoCliente.getP1().add( dialogoCliente.getListaCheckboxsLibros()[j] );
 	}
 
 	public void agregarCliente(){
@@ -323,7 +344,7 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.agregarCliente(cliente);
 		}
 	}
-	
+
 	public void agregarCliente(Cliente Cliente){
 		if (libro != null) {
 			gestorCliente.agregarCliente(cliente);
@@ -336,12 +357,17 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.agregarAutor(autor);
 		}
 	}
-	
+	// no idea
 	public void agregarAutor(){
 		Autor autor =dialogoAutor.crearAutor();
 		if (autor != null) {
 			gestorAutor.agregarAutor(autor);
 			ventanaPrincipal.agregarAutor(autor);
+			dialogoLibro.getBoxAutor().removeAllItems();
+			for (int i = 0; i < gestorAutor.getListaAutor().size(); i++) {
+				dialogoLibro.getBoxAutor().addItem(gestorAutor.getListaAutor().get(i).getNombre());
+			}
+
 		}
 	}
 
@@ -349,7 +375,7 @@ public class Controlador implements ActionListener {
 		int id = ventanaPrincipal.eliminarLibro();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
 	}
-	
+
 	public void borrarAutor() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarAutor();
 		gestorAutor.eliminarAutor(gestorAutor.buscarAutor(id));
@@ -362,7 +388,7 @@ public class Controlador implements ActionListener {
 		} catch (Exception e) {
 		}
 	}
-	
+
 	public void editarAutor(){
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
@@ -438,8 +464,22 @@ public class Controlador implements ActionListener {
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
 
-	
+
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
 	}
+
+	public GestorAutor getGestorAutor() {
+		return gestorAutor;
+	}
+
+	public GestorCliente getGestorCliente() {
+		return gestorCliente;
+	}
+
+	public GestorLibro getGestorLibro() {
+		return gestorLibro;
+	}
+
+
 }
