@@ -15,7 +15,7 @@ public class Libro implements Serializable{
 	private String nombre;
 	private String descripcion;
 	private String genero;
-	private double copiasVendidas;
+	private int copiasVendidas;
 	private double valor;
 	private String image;
 	private String autor;
@@ -24,7 +24,7 @@ public class Libro implements Serializable{
 
 
 	public Libro(String nombre, String descripcion, double valor, String genero,String autor,
-			double copiasVendidas, String image) {
+			int copiasVendidas, String image) {
 		this.id = consecutivo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -56,7 +56,7 @@ public class Libro implements Serializable{
 		return copiasVendidas;
 	}
 
-	public void setCopiasVendidas(double copiasVendidas) {
+	public void setCopiasVendidas(int copiasVendidas) {
 		this.copiasVendidas = copiasVendidas;
 	}
 

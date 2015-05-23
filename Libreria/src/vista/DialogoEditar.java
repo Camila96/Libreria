@@ -5,6 +5,7 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -15,6 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
 import modelo.dao.GestorLibro;
+import modelo.entidades.EnumGeneroLibro;
 import modelo.entidades.Libro;
 import controlador.Controlador;
 /**
@@ -35,9 +37,11 @@ public class DialogoEditar extends JDialog {
 
 	private JTextField txtNombre;
 	private JTextArea txtDescripcion;
-	private JTextField txtGenero;
+	private JComboBox<String> boxAutor;
+	private JComboBox<EnumGeneroLibro> boxGenero;
+	private EnumGeneroLibro[] listaGenerosLibros;
 	private JTextField txtCopiasVendidas;
-	private JTextField txtAutor;
+	private JButton btnNewAutor;
 	private JTextField txtId;
 	private JTextField txtValor;
 	private JTextField txtImage;
@@ -83,16 +87,11 @@ public class DialogoEditar extends JDialog {
 		lbGenero = new JLabel(ConstantesGUI.T_AGREGAR_GENERO);
 		lbGenero.setBounds(30,155,100,100);
 
-		txtGenero = new JTextField();
-		txtGenero.setBounds(150, 185, 150, 30);
-		txtGenero.setBackground(ConstantesGUI.COlOR_DATOS);
+		
 
 		lbAutor = new JLabel(ConstantesGUI.T_AGREGAR_AUTOR);
 		lbAutor.setBounds(30,200,100,100);
 
-		txtAutor = new JTextField();
-		txtAutor.setBounds(150, 230, 150, 30);
-		txtAutor.setBackground(ConstantesGUI.COlOR_DATOS);
 
 		lbCopisVendidas = new JLabel(ConstantesGUI.T_AGREGAR_COPIAS_VENDIDAS);
 		lbCopisVendidas.setBounds(30,245,100,100);
@@ -122,6 +121,21 @@ public class DialogoEditar extends JDialog {
 		btnCargarImage.addActionListener(controlador);
 		btnCargarImage.setActionCommand(Controlador.A_CREAR_IMAGEN);
 		btnCargarImage.setBounds(310,320, 150, 30);
+		
+		boxAutor = new JComboBox<String>();
+		boxAutor.setBounds(150, 230, 200, 30);
+		
+		
+		boxGenero = new JComboBox<EnumGeneroLibro>();
+		boxGenero.setBounds(150, 180, 200, 30);
+		listaGenerosLibros = EnumGeneroLibro.values();
+		for (int i = 0; i < listaGenerosLibros.length; i++) {
+			boxGenero.addItem(listaGenerosLibros[i]);
+		}
+		btnNewAutor = new JButton(ConstantesGUI.T_ITEM_NEW_AUTOR_BUTTON,createImageIcon("/img/add.png"));
+		btnNewAutor.addActionListener(controlador);
+		btnNewAutor.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_AUTOR);
+		btnNewAutor.setBounds(350,230, 150, 30);
 
 		add(lbNombre);
 		add(txtNombre);
@@ -130,9 +144,10 @@ public class DialogoEditar extends JDialog {
 		add(lbValor);
 		add(txtValor);
 		add(lbGenero);
-		add(txtGenero);
+		add(btnNewAutor);
 		add(lbAutor);
-		add(txtAutor);
+		add(boxAutor);
+		add(boxGenero);
 		add(lbCopisVendidas);
 		add(txtCopiasVendidas);
 		add(lbImagen);
@@ -165,9 +180,9 @@ public class DialogoEditar extends JDialog {
 		libro.setNombre(txtNombre.getText());
 		libro.setDescripcion(txtDescripcion.getText());
 		libro.setValor(Double.parseDouble(txtValor.getText()));
-		libro.setGenero(txtGenero.getText());
-		libro.setAutor(txtAutor.getText());
-		libro.setCopiasVendidas(Double.parseDouble(txtCopiasVendidas.getText()));
+		libro.setGenero(boxGenero.getSelectedItem().toString());
+		libro.setAutor(boxAutor.getSelectedItem().toString());
+		libro.setCopiasVendidas(Integer.parseInt(txtCopiasVendidas.getText()));
 		libro.setImage(txtImage.getText());
 		eliminarDatosTabla();
 		dispose();
@@ -178,15 +193,15 @@ public class DialogoEditar extends JDialog {
 		txtNombre.setText(libro.getNombre());
 		txtDescripcion.setText(libro.getDescripcion());
 		txtValor.setText(Double.toString(libro.getValor()));
-		txtGenero.setText(libro.getGenero());
-		txtAutor.setText(libro.getAutor());
+		//txtGenero.setText(libro.getGenero());
+	//	txtAutor.setText(libro.getAutor());
 		txtCopiasVendidas.setText(Double.toString(libro.getCopiasVendidas()));
 		txtImage.setText(libro.getImage());
 	}
 
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtDescripcion.getText(), txtValor.getText()
-				, txtGenero.getText(), txtAutor.getText(),txtCopiasVendidas.getText(),txtImage.getText());
+				,  boxGenero.getSelectedItem().toString(), boxAutor.getSelectedItem().toString(),txtCopiasVendidas.getText(),txtImage.getText());
 		dispose();
 		eliminarDatosTabla();
 		return libro;		 
@@ -289,14 +304,7 @@ public class DialogoEditar extends JDialog {
 		this.txtDescripcion = txtDescripcion;
 	}
 
-	public JTextField getTxtGenero() {
-		return txtGenero;
-	}
-
-	public void setTxtGenero(JTextField txtGenero) {
-		this.txtGenero = txtGenero;
-	}
-
+	
 	public JTextField getTxtCopiasVendidas() {
 		return txtCopiasVendidas;
 	}
@@ -305,13 +313,7 @@ public class DialogoEditar extends JDialog {
 		this.txtCopiasVendidas = txtCopiasVendidas;
 	}
 
-	public JTextField getTxtAutor() {
-		return txtAutor;
-	}
-
-	public void setTxtAutor(JTextField txtAutor) {
-		this.txtAutor = txtAutor;
-	}
+	
 
 	public JTextField getTxtId() {
 		return txtId;
@@ -351,5 +353,12 @@ public class DialogoEditar extends JDialog {
 
 	public void setBtnCargarImage(JButton btnCargarImage) {
 		this.btnCargarImage = btnCargarImage;
+	}
+	public JComboBox<String> getBoxAutor() {
+		return boxAutor;
+	}
+	public static void main(String[] args) {
+		DialogoEditar editar = new DialogoEditar(null, null);
+		editar.setVisible(true);
 	}
 }

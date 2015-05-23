@@ -58,7 +58,7 @@ public class ArchivoPlanoLibro {
 		try {
 			String[] items =  leer.readLine().split(",");
 			libro = new Libro(items[0], items[1], Double.parseDouble(items[2]),
-					items[3],items[4],Double.parseDouble(items[5]),items[6]);
+					items[3],items[4],Integer.parseInt(items[5]),items[6]);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}

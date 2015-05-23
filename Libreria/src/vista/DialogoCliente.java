@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,8 +18,12 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
+import persistencia.XmlLibro;
 import modelo.dao.GestorCliente;
+import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
+import modelo.entidades.EnumGeneroLibro;
+import modelo.entidades.Libro;
 import controlador.Controlador;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -37,26 +42,26 @@ public class DialogoCliente  extends JDialog{
 	private JLabel lbLibrosAComprar;
 	ImageIcon image;
 	private JPanel p1;
-	private JCheckBox[]  listaCheckboxsLibros;
+	private ArrayList<JCheckBox>  listaCheckboxsLibros;
 	private JTextField txtNombre;
 	private JTextField txtId;
 	private JTextField txtcredito;
 	private JTextField txtImage;
-
 	private JButton btnAgregar;
 	private JButton btnCancelar;
 	private JButton btnCargarImagen;
 	private VentanaPrincipal ventanaPrincipal;
-	
-
+	private Controlador controlador;
+	private JCheckBox check;
 	public DialogoCliente(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
-		listaCheckboxsLibros = new JCheckBox[controlador.getGestorLibro().getListaLibro().size()]; 
+		this.controlador = controlador;
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
+		listaCheckboxsLibros = new ArrayList<JCheckBox>();
 
 		lbNombre = new JLabel(ConstantesGUI.T_AGREGAR_NOMBRE);
 		lbNombre.setBounds(30,0,100,100);
@@ -74,7 +79,7 @@ public class DialogoCliente  extends JDialog{
 
 		lbImagen = new JLabel(ConstantesGUI.T_AGREGAR_IMAGEN);
 		lbImagen.setBounds(30, 110, 100, 100);
-		
+
 		lbLibrosAComprar = new JLabel(ConstantesGUI.T_AGREGAR_LIBROS_A_COMPRAR);
 		lbLibrosAComprar.setBounds(30, 180, 150, 100);
 
@@ -111,6 +116,26 @@ public class DialogoCliente  extends JDialog{
 		p1.setLayout(new FlowLayout());
 		p1.setBackground(Color.blue);
 		p1.setBounds(200, 180, 200, 200);
+		for( int i=0; i<controlador.getGestorLibro().getListaLibro().size() ; i++){
+			int j = i;
+			check = listaCheckboxsLibros.get(j);
+			check = new JCheckBox(controlador.getGestorLibro().getListaLibro().get(i).getNombre());
+
+			check.addItemListener(new ItemListener() {
+
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					if (e.getStateChange() == ItemEvent.DESELECTED) {
+						System.out.println("ya no"+ check.getText());
+					}else {
+						if (e.getStateChange() == ItemEvent.SELECTED) {
+							System.out.println("ya si"+ check.getText());
+						}
+					}
+				}
+			});
+			p1.add( check );
+		}
 		add(p1); 
 	}
 
@@ -138,20 +163,15 @@ public class DialogoCliente  extends JDialog{
 		return image;
 	}
 
-	public JCheckBox[] getListaCheckboxsLibros() {
+	public ArrayList<JCheckBox> getListaCheckboxsLibros() {
 		return listaCheckboxsLibros;
 	}
 
-	public void setListaCheckboxsLibros(JCheckBox[] listaCheckboxsLibros) {
+	public void setListaCheckboxsLibros(ArrayList<JCheckBox> listaCheckboxsLibros) {
 		this.listaCheckboxsLibros = listaCheckboxsLibros;
 	}
 
 	public JPanel getP1() {
 		return p1;
 	}
-	
-	
-
-
-
-}
+	}

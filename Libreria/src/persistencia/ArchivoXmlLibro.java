@@ -119,7 +119,7 @@ public class ArchivoXmlLibro {
 
 				libro = new Libro(lista.item(0).getTextContent(), lista.item(1).getTextContent(),
 						Double.parseDouble(lista.item(2).getTextContent()),lista.item(3).getTextContent()
-						,lista.item(4).getTextContent(),Double.parseDouble(lista.item(5).getTextContent()),
+						,lista.item(4).getTextContent(),Integer.parseInt(lista.item(5).getTextContent()),
 						lista.item(6).getTextContent());
 				libro.setId(Integer.parseInt(doc.getAttribute(C_ID)));
 			} catch (SAXException e) {

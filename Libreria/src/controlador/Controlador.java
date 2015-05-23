@@ -95,6 +95,7 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_CLIENTE = "Ex Json Cliente";
 	private int j;
+	private JCheckBox posicion ;
 	private BarraMenu barraMenu;
 	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;
@@ -248,6 +249,7 @@ public class Controlador implements ActionListener {
 			break;
 		case A_AGREGAR_ADMINISTRADOR:
 			ventanaPrincipal.setVisible(true);
+
 			break;
 		case A_MOSTRAR_USUARIO:
 			ventanaUsuario.setVisible(true);
@@ -317,24 +319,9 @@ public class Controlador implements ActionListener {
 		if (libro != null) {
 			gestorLibro.agregarLibro(libro);
 			ventanaPrincipal.agregarLibro(libro);
-			//	dialogoCliente.getListaCheckboxsLibros();
-			for(j=0; j<gestorLibro.getListaLibro().size(); j++){
-				dialogoCliente.getListaCheckboxsLibros()[j] = new JCheckBox(gestorLibro.getListaLibro().get(j).getNombre());
-				dialogoCliente.getListaCheckboxsLibros()[j].addItemListener(new ItemListener() {
-					@Override
-					public void itemStateChanged(ItemEvent e) {
-						if (e.getStateChange() == ItemEvent.DESELECTED) {
-							System.out.println("ya no"+ dialogoCliente.getListaCheckboxsLibros()[j].getText());
-						}else {
-							if (e.getStateChange() == ItemEvent.SELECTED) {
-								System.out.println("ya si"+ dialogoCliente.getListaCheckboxsLibros()[j].getText());
-							}
-						}
-					}
-				});
-			}
+			
 		}
-		dialogoCliente.getP1().add( dialogoCliente.getListaCheckboxsLibros()[j] );
+
 	}
 
 	public void agregarCliente(){
@@ -363,14 +350,18 @@ public class Controlador implements ActionListener {
 		if (autor != null) {
 			gestorAutor.agregarAutor(autor);
 			ventanaPrincipal.agregarAutor(autor);
-			dialogoLibro.getBoxAutor().removeAllItems();
-			for (int i = 0; i < gestorAutor.getListaAutor().size(); i++) {
-				dialogoLibro.getBoxAutor().addItem(gestorAutor.getListaAutor().get(i).getNombre());
-			}
+			agrgegarAutoraChecKBox();
 
 		}
 	}
-
+	public void agrgegarAutoraChecKBox() {
+		dialogoLibro.getBoxAutor().removeAllItems();
+		dialogoEditar.getBoxAutor().removeAllItems();
+		for (int i = 0; i < gestorAutor.getListaAutor().size(); i++) {
+			dialogoLibro.getBoxAutor().addItem(gestorAutor.getListaAutor().get(i).getNombre());
+			dialogoEditar.getBoxAutor().addItem(gestorAutor.getListaAutor().get(i).getNombre());
+		}
+	}
 	public void borrarLibro() throws ExcepcionLibroNoEncontrado{
 		int id = ventanaPrincipal.eliminarLibro();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
@@ -393,6 +384,7 @@ public class Controlador implements ActionListener {
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
+			agrgegarAutoraChecKBox();
 		} catch (Exception e) {
 		}
 	}

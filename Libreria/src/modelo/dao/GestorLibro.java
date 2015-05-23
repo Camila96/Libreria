@@ -50,7 +50,7 @@ public class GestorLibro {
 	public static Libro crearLibro(String nombre,String descripcion,String valor,String genero,String autor,String copiasVendidas, String image){
 		if (Util.validarValor(valor)&& Util.validarCopias(copiasVendidas)) {
 			return new Libro(nombre, descripcion,Double.parseDouble(valor),
-					genero,autor,Double.parseDouble(copiasVendidas),image);	
+					genero,autor,Integer.parseInt(copiasVendidas),image);	
 		}
 		return null;
 	}

@@ -40,7 +40,7 @@ public class XmlLibro{
 	public void EscribirXML(ArrayList<Libro>  listaLibro, String ruta){
 		raiz = new Tag("Libros");
 		raiz.addAtributo(new Atributo("Cantidad-Libro", Integer.toString(listaLibro.size())));
-		raiz.addComentario(new Comentario("coemntario :v"));
+		raiz.addComentario(new Comentario("comentario :v"));
 		for (Libro libros : listaLibro) {
 			libro = new Tag("libro");
 			id = new Tag("id");
@@ -105,14 +105,14 @@ public class XmlLibro{
 				System.out.println("nombre: "+nombre.getContenido());
 				System.out.println("descripcion: "+ descripcion.getContenido());
 				System.out.println("valor: "+valor.getContenido());
-				System.out.println("genero: "+valor.getContenido());
-				System.out.println("autor: "+valor.getContenido());
-				System.out.println("copias: "+valor.getContenido());
+				System.out.println("genero: "+genero.getContenido());
+				System.out.println("autor: "+autor.getContenido());
+				System.out.println("copias: "+copias.getContenido());
 				System.out.println("Imagen peep: "+ pathImagenTag.getContenido());
 				System.out.println("------------------------------------ ");
 				lista.add(new  Libro(nombre.getContenido(),descripcion.getContenido(),
 						Double.parseDouble(valor.getContenido()),genero.getContenido(),
-						autor.getContenido(),Double.parseDouble(copias.getContenido())
+						autor.getContenido(),Integer.parseInt(copias.getContenido())
 						,pathImagenTag.getContenido()));
 			}
 		} catch (ParserConfigurationException ex) {
@@ -134,6 +134,7 @@ public class XmlLibro{
 		Libro libro2 = new Libro("pendejo", "sfddsadas", 2132212, EnumGeneroLibro.ROMANCE.toString(),autor.getNombre(), 26, "/sdads");
 		lista.add(libro);
 		lista.add(libro2);
+		//xml.EscribirXML(lista, "src/data/lol.xml");
 		xml.leerXML("src/data/lol.xml");
 		
 		}
