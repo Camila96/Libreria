@@ -98,26 +98,26 @@ public class BarraHerramientas extends JToolBar {
 		add(txtBuscar);
 
 		btnGroup = new ButtonGroup();
-		jrBtnId = new JRadioButton("Buscar por Id Libro");
+		jrBtnId = new JRadioButton("BuscarIdLibro");
 		jrBtnId.addActionListener(controlador);
 		jrBtnId.setActionCommand(Controlador.A_BUSCAR_LIBRO);
 		btnGroup.add(jrBtnId);
 		add(jrBtnId);
 
-		jrBtnNombre = new JRadioButton("Buscar por Nombre Libro");
+		jrBtnNombre = new JRadioButton("BuscarNombreLibro");
 		jrBtnNombre.addActionListener(controlador);
 		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_LIBRO);
 		btnGroup.add(jrBtnNombre);
 		add(jrBtnNombre);
 		
 		btnGroupAutor = new ButtonGroup();
-		jrBtnIdAutor = new JRadioButton("Buscar por Id Autor");
+		jrBtnIdAutor = new JRadioButton("BuscarIdAutor");
 		jrBtnIdAutor.addActionListener(controlador);
 		jrBtnIdAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnGroupAutor.add(jrBtnIdAutor);
 		add(jrBtnIdAutor);
 
-		jrBtnNombreAutor = new JRadioButton("Buscar por Nombre Autor");
+		jrBtnNombreAutor = new JRadioButton("BuscarNombreAutor");
 		jrBtnNombreAutor.addActionListener(controlador);
 		jrBtnNombreAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnGroupAutor.add(jrBtnNombreAutor);
