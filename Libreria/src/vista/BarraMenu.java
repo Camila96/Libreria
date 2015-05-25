@@ -175,7 +175,7 @@ public class BarraMenu extends JMenuBar{
 
 		itemExXmlLibro = new JMenuItem();
 		itemExXmlLibro.addActionListener(controlador);
-		itemExXmlLibro.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_XML_LIBRO);
+		itemExXmlLibro.setActionCommand(Controlador.GUARDAR_ARRAY_LIBROS);
 		menuExportarArchivo.add(itemExXmlLibro);
 
 		itemExJsonLibro = new JMenuItem();

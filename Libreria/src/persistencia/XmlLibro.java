@@ -26,18 +26,18 @@ import org.xml.sax.SAXException;
 
 public class XmlLibro{
 
-	private Tag raiz;
-	private Tag libro;
-	private Tag id;
-	private Tag nombre;
-	private Tag descripcion;
-	private Tag valor;
-	private Tag genero;
-	private Tag autor;
-	private Tag copias;
-	private Tag pathImagen;
+	private static Tag raiz;
+	private static Tag libro;
+	private static Tag id;
+	private static Tag nombre;
+	private static Tag descripcion;
+	private static Tag valor;
+	private static Tag genero;
+	private static Tag autor;
+	private static Tag copias;
+	private static Tag pathImagen;
 
-	public void EscribirXML(ArrayList<Libro>  listaLibro, String ruta){
+	public static void EscribirXML(ArrayList<Libro>  listaLibro, String ruta){
 		raiz = new Tag("Libros");
 		raiz.addAtributo(new Atributo("Cantidad-Libro", Integer.toString(listaLibro.size())));
 		raiz.addComentario(new Comentario("comentario :v"));
@@ -126,17 +126,5 @@ public class XmlLibro{
 		}
 		return lista;
 	}
-	public static void main(String[] args) {
-		ArrayList<Libro>lista = new ArrayList<Libro>();
-		XmlLibro xml = new XmlLibro();
-		Autor autor = new Autor("jose", "SRC/SDASD/SDAS.SA");
-		Libro libro = new Libro("hola", "sfds", 21312, EnumGeneroLibro.ACCION.toString(),autor.getNombre(), 6, "/sdads");
-		Libro libro2 = new Libro("pendejo", "sfddsadas", 2132212, EnumGeneroLibro.ROMANCE.toString(),autor.getNombre(), 26, "/sdads");
-		lista.add(libro);
-		lista.add(libro2);
-		//xml.EscribirXML(lista, "src/data/lol.xml");
-		xml.leerXML("src/data/lol.xml");
-		
-		}
 }
 

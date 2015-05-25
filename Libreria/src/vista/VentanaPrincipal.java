@@ -41,6 +41,7 @@ public class VentanaPrincipal  extends JFrame{
 	private DefaultTableModel modeloAutor;
 	private DialogoLibro dialogoLibro;
 	private JPanelImage jPanelImage;
+	private String ruta;
 
 	public VentanaPrincipal(final Controlador controlador) {
 		setIconImage(createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
@@ -428,6 +429,14 @@ public class VentanaPrincipal  extends JFrame{
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
 	}
 
 }

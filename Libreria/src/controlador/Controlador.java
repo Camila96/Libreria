@@ -19,7 +19,7 @@ import persistencia.ArchivoPlanoCliente;
 import persistencia.ArchivoPlanoLibro;
 import persistencia.ArchivoXmlAutor;
 import persistencia.ArchivoXmlCliente;
-import persistencia.ArchivoXmlLibro;
+import persistencia.XmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
 import modelo.dao.GestorLibro;
@@ -94,6 +94,7 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_PLANO_CLIENTE = "Ex Plano Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_CLIENTE = "Ex Json Cliente";
+	public  static final String GUARDAR_ARRAY_LIBROS = "guardar xml";
 	private int j;
 	private JCheckBox posicion ;
 	private BarraMenu barraMenu;
@@ -112,11 +113,13 @@ public class Controlador implements ActionListener {
 	private DialogoAutor dialogoAutor;
 	private DialogoEditarAutor dialogoEditarAutor;
 	private JDialogoPrincipal dialogoPrincipal;
+	private XmlLibro xmlLibro;
 
 	public Controlador() {
 		gestorAutor = new GestorAutor();
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
+		xmlLibro = new XmlLibro();
 		ventanaPrincipal = new VentanaPrincipal(this);
 		ventanaUsuario = new VentanaUsuario(this);
 		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
@@ -136,6 +139,9 @@ public class Controlador implements ActionListener {
 
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
+			break;
+		case GUARDAR_ARRAY_LIBROS:
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(),"src/data/arraylibros.xml");
 			break;
 
 		case A_MOSTRAR_AGREGAR_CLIENTE:
@@ -234,12 +240,6 @@ public class Controlador implements ActionListener {
 			break;
 		case A_EXPORTAR_ARCHIVO_PLANO_LIBRO:
 			ArchivoPlanoLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
-			break;
-		case A_IMPORTAR_ARCHIVO_XML_LIBRO:
-			agregarLibro(ArchivoXmlLibro.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_XML_LIBRO:
-			ArchivoXmlLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
 			break;
 		case A_IMPORTAR_ARCHIVO_JSON_LIBRO:
 			agregarLibro(ArchivoJsonLibro.abrirArchivo());
