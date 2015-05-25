@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JCheckBox;
@@ -113,13 +114,11 @@ public class Controlador implements ActionListener {
 	private DialogoAutor dialogoAutor;
 	private DialogoEditarAutor dialogoEditarAutor;
 	private JDialogoPrincipal dialogoPrincipal;
-	private XmlLibro xmlLibro;
 
 	public Controlador() {
 		gestorAutor = new GestorAutor();
 		gestorCliente = new GestorCliente();
 		gestorLibro = new GestorLibro();
-		xmlLibro = new XmlLibro();
 		ventanaPrincipal = new VentanaPrincipal(this);
 		ventanaUsuario = new VentanaUsuario(this);
 		dialogoLibro = new DialogoLibro(ventanaPrincipal, this);
@@ -319,7 +318,7 @@ public class Controlador implements ActionListener {
 		if (libro != null) {
 			gestorLibro.agregarLibro(libro);
 			ventanaPrincipal.agregarLibro(libro);
-			
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arraylibros.xml");
 		}
 
 	}
@@ -458,7 +457,7 @@ public class Controlador implements ActionListener {
 
 
 	public static void main(String[] args) {
-		Controlador controlador = new Controlador();
+		new Controlador();
 	}
 
 	public GestorAutor getGestorAutor() {
@@ -471,6 +470,10 @@ public class Controlador implements ActionListener {
 
 	public GestorLibro getGestorLibro() {
 		return gestorLibro;
+	}
+
+	public ArrayList<Libro> getListaLibros() {
+		return gestorLibro.getListaLibro();
 	}
 
 

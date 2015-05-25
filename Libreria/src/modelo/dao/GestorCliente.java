@@ -2,6 +2,7 @@ package modelo.dao;
 
 import java.util.ArrayList;
 
+import persistencia.XmlLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
@@ -58,5 +59,10 @@ public class GestorCliente {
 
 	public void setListaCliente(ArrayList<Cliente> listaCliente) {
 		this.listaCliente = listaCliente;
+	}
+
+	public void cargarDatos() {
+		XmlLibro.leerXML("");
+		
 	}
 }

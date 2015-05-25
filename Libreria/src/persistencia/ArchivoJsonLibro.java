@@ -70,7 +70,7 @@ public class ArchivoJsonLibro {
 			JSONObject jsonObjeto = (JSONObject) objeto;
 			libro = new Libro((String)jsonObjeto.get(C_NOMBRE), (String)jsonObjeto.get(C_DESCRIPCION),
 					(double)jsonObjeto.get(C_VALOR),(String)jsonObjeto.get(C_GENERO),
-					(String)jsonObjeto.get(C_AUTOR),(int)jsonObjeto.get(C_COPIAS_VENDIDAS),
+					(String)jsonObjeto.get(C_AUTOR), (String)jsonObjeto.get(C_COPIAS_VENDIDAS),
 					(String)jsonObjeto.get(C_IMAGEN)); 
 
 		} catch (FileNotFoundException e) {

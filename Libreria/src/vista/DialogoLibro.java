@@ -20,6 +20,7 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.EnumGeneroLibro;
 import modelo.entidades.Libro;
+import modelos.util.Util;
 import controlador.Controlador;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -39,7 +40,6 @@ public class DialogoLibro extends JDialog{
 	private JLabel lbImagen;
 	private JLabel lbAutor;
 	
-	private ImageIcon image;
 	private JComboBox<String> boxAutor;
 	private JComboBox<EnumGeneroLibro> boxGenero;
 	private EnumGeneroLibro[] listaGenerosLibros;
@@ -53,7 +53,6 @@ public class DialogoLibro extends JDialog{
 	private JButton btnCargarImage;
 	private JButton btnNewAutor;
 	private JLabel lbImageFondo;
-	private VentanaPrincipal ventanaPrincipal;
 
 	public DialogoLibro(VentanaPrincipal ventanaPrincipal, Controlador controlador) {
 		super(ventanaPrincipal);
@@ -139,8 +138,6 @@ public class DialogoLibro extends JDialog{
 		btnNewAutor.setActionCommand(Controlador.A_MOSTRAR_AGREGAR_AUTOR);
 		btnNewAutor.setBounds(350,230, 150, 30);
 		
-	
-
 		add(lbNombre);
 		add(txtNombre);
 		add(lbDescripcion);
@@ -174,22 +171,23 @@ public class DialogoLibro extends JDialog{
 	public Libro crearLibro(){
 		Libro libro = GestorLibro.crearLibro(txtNombre.getText(), txtDescripcion.getText(), txtValor.getText()
 				, boxGenero.getSelectedItem().toString(), boxAutor.getSelectedItem().toString(),txtCopiasVendidas.getText(),txtImage.getText());
+		String nombreImagen = libro.getNombre() + libro.getId();
+		Util.guardarImagen(nombreImagen, libro.getImage());
+		libro.setImage("/img/imgLibros/"+nombreImagen+".jpg");
 		dispose();
 		eliminarDatosTabla();
 		return libro;		 
 	}
 
-
-	public ImageIcon importarImagen(){
+	public void importarImagen(){
 		JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView());
 		fc.showOpenDialog(null);
 		File file = fc.getSelectedFile();
 		if(file != null){
 			txtImage.setText(file.getPath());
-			image= new ImageIcon(file.getPath());
 		}
-		return image;		
 	}
+	
 	public void eliminarDatosTabla(){
 		txtNombre.setText("");
 		txtDescripcion.setText("");

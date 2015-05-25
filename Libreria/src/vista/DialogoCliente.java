@@ -117,8 +117,6 @@ public class DialogoCliente  extends JDialog{
 		p1.setBackground(Color.blue);
 		p1.setBounds(200, 180, 200, 200);
 		for( int i=0; i<controlador.getGestorLibro().getListaLibro().size() ; i++){
-			int j = i;
-			check = listaCheckboxsLibros.get(j);
 			check = new JCheckBox(controlador.getGestorLibro().getListaLibro().get(i).getNombre());
 
 			check.addItemListener(new ItemListener() {
@@ -138,7 +136,6 @@ public class DialogoCliente  extends JDialog{
 		}
 		add(p1); 
 	}
-
 	public Cliente crearCliente(){
 		Cliente cliente = GestorCliente.crearCliente(txtNombre.getText(),
 				txtcredito.getText());
@@ -174,4 +171,9 @@ public class DialogoCliente  extends JDialog{
 	public JPanel getP1() {
 		return p1;
 	}
+	
+	public static void main(String[] args) {
+		DialogoCliente d = new DialogoCliente(null, null);
+		d.setVisible(true);
 	}
+}

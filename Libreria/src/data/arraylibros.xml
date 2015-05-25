@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libros Cantidad-Libro="3">
+<Libreria Cantidad-Libro="2">
     <!--comentario :v-->
     <libro>
         <id>0</id>
-        <nombre>camila</nombre>
-        <descripcion>preciado</descripcion>
-        <valor>3.0</valor>
-        <genero>ROMANCE</genero>
-        <autor>jd</autor>
-        <copias>3.0</copias>
-        <rutaImagen>C:\Users\CAMILA\Documents\218.jpg</rutaImagen>
+        <nombre>jaguar</nombre>
+        <descripcion>ksfhjv</descripcion>
+        <valor>12300.0</valor>
+        <genero>COMEDIA</genero>
+        <autor>jg</autor>
+        <copias>64</copias>
+        <rutaImagen>/img/imgLibros/jaguar0.jpg</rutaImagen>
     </libro>
     <libro>
         <id>1</id>
-        <nombre>angel</nombre>
-        <descripcion>gutierrez</descripcion>
-        <valor>45.0</valor>
-        <genero>COMEDIA</genero>
-        <autor>sdf</autor>
-        <copias>43.0</copias>
-        <rutaImagen>C:\Users\CAMILA\Documents\218.jpg</rutaImagen>
+        <nombre>reec</nombre>
+        <descripcion>sdjbc</descripcion>
+        <valor>4300.0</valor>
+        <genero>ACCION</genero>
+        <autor>jg</autor>
+        <copias>52</copias>
+        <rutaImagen>/img/imgLibros/reec1.jpg</rutaImagen>
     </libro>
-    <libro>
-        <id>2</id>
-        <nombre>robinson</nombre>
-        <descripcion>calderon</descripcion>
-        <valor>34.0</valor>
-        <genero>TERROR</genero>
-        <autor>as</autor>
-        <copias>45.0</copias>
-        <rutaImagen>C:\Users\CAMILA\Documents\218.jpg</rutaImagen>
-    </libro>
-</Libros>
+</Libreria>

@@ -24,12 +24,12 @@ public class Libro implements Serializable{
 
 
 	public Libro(String nombre, String descripcion, double valor, String genero,String autor,
-			int copiasVendidas, String image) {
+			String copiasVendidas, String image) {
 		this.id = consecutivo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.genero = genero;
-		this.copiasVendidas = copiasVendidas;
+		this.copiasVendidas = Integer.parseInt(copiasVendidas);
 		this.valor = valor;
 		this.image = image;
 		this.autor = autor;
@@ -52,7 +52,7 @@ public class Libro implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public double getCopiasVendidas() {
+	public int getCopiasVendidas() {
 		return copiasVendidas;
 	}
 

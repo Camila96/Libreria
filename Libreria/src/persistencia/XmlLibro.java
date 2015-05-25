@@ -38,7 +38,7 @@ public class XmlLibro{
 	private static Tag pathImagen;
 
 	public static void EscribirXML(ArrayList<Libro>  listaLibro, String ruta){
-		raiz = new Tag("Libros");
+		raiz = new Tag("Libreria");
 		raiz.addAtributo(new Atributo("Cantidad-Libro", Integer.toString(listaLibro.size())));
 		raiz.addComentario(new Comentario("comentario :v"));
 		for (Libro libros : listaLibro) {
@@ -57,7 +57,7 @@ public class XmlLibro{
 			valor.addContenido(Double.toString(libros.getValor()));
 			genero.addContenido(libros.getGenero());
 			autor.addContenido(libros.getAutor());
-			copias.addContenido(Double.toString(libros.getCopiasVendidas()));
+			copias.addContenido(Integer.toString(libros.getCopiasVendidas()));
 			pathImagen.addContenido(libros.getImage());
 			raiz.addTagHijo(libro);
 			libro.addTagHijo(id);
@@ -84,7 +84,7 @@ public class XmlLibro{
 		}
 	}
 	@SuppressWarnings("deprecation")
-	public ArrayList<Libro> leerXML(String ruta){
+	public static ArrayList<Libro> leerXML(String ruta){
 		JespXML xml = new JespXML(ruta);
 		ArrayList<Libro> lista = new ArrayList<>();
 		try {
@@ -110,10 +110,12 @@ public class XmlLibro{
 				System.out.println("copias: "+copias.getContenido());
 				System.out.println("Imagen peep: "+ pathImagenTag.getContenido());
 				System.out.println("------------------------------------ ");
+				
 				lista.add(new  Libro(nombre.getContenido(),descripcion.getContenido(),
 						Double.parseDouble(valor.getContenido()),genero.getContenido(),
-						autor.getContenido(),Integer.parseInt(copias.getContenido())
-						,pathImagenTag.getContenido()));
+						autor.getContenido(),
+						copias.getContenido(),
+						pathImagenTag.getContenido()));
 			}
 		} catch (ParserConfigurationException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);

@@ -2,6 +2,7 @@ package modelo.dao;
 
 import java.util.ArrayList;
 
+import persistencia.XmlLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Genero;
@@ -19,6 +20,7 @@ public class GestorLibro {
 
 	public GestorLibro() {
 		listaLibro = new ArrayList<Libro>();
+		cargarDatos();
 	}
 
 	public void agregarLibro(Libro libro){
@@ -50,7 +52,7 @@ public class GestorLibro {
 	public static Libro crearLibro(String nombre,String descripcion,String valor,String genero,String autor,String copiasVendidas, String image){
 		if (Util.validarValor(valor)&& Util.validarCopias(copiasVendidas)) {
 			return new Libro(nombre, descripcion,Double.parseDouble(valor),
-					genero,autor,Integer.parseInt(copiasVendidas),image);	
+					genero,autor,copiasVendidas,image);	
 		}
 		return null;
 	}
@@ -61,5 +63,9 @@ public class GestorLibro {
 
 	public void setListaLibro(ArrayList<Libro> listaLibro) {
 		this.listaLibro = listaLibro;
+	}
+	
+	public void cargarDatos() {
+		listaLibro = XmlLibro.leerXML("src/data/arraylibros.xml");
 	}
 }
