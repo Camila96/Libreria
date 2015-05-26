@@ -101,16 +101,6 @@ public class XmlLibro{
 				Tag copias = libro.getTagHijoByName("copias");
 				Tag pathImagenTag = libro.getTagHijoByName("rutaImagen");
 				
-				System.out.println("id: "+id.getContenido());
-				System.out.println("nombre: "+nombre.getContenido());
-				System.out.println("descripcion: "+ descripcion.getContenido());
-				System.out.println("valor: "+valor.getContenido());
-				System.out.println("genero: "+genero.getContenido());
-				System.out.println("autor: "+autor.getContenido());
-				System.out.println("copias: "+copias.getContenido());
-				System.out.println("Imagen peep: "+ pathImagenTag.getContenido());
-				System.out.println("------------------------------------ ");
-				
 				lista.add(new  Libro(nombre.getContenido(),descripcion.getContenido(),
 						Double.parseDouble(valor.getContenido()),genero.getContenido(),
 						autor.getContenido(),

@@ -96,6 +96,8 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_CLIENTE = "Ex Json Cliente";
 	public  static final String GUARDAR_ARRAY_LIBROS = "guardar xml";
+	public static final String A_MOSTRAR_COLECCION = "mostrar coleccion Usuario";
+	public static final String A_MOSTRAR_LIBROS_A_COMPRAR = "mostrar libros seleccionados para la compra";
 	private int j;
 	private JCheckBox posicion ;
 	private BarraMenu barraMenu;

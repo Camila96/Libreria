@@ -18,6 +18,7 @@ public class VentanaUsuario  extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private BarraHerramientasUsuario barraHerramientasUsuario;
 	private PanelLibrosUsuario panelLibrosUsuario;
+	private PanelOpcionesUsuario panelOpcionesUsuario;
 	private Controlador controlador;
 	
 	public VentanaUsuario(Controlador controlador) {
@@ -28,8 +29,12 @@ public class VentanaUsuario  extends JFrame{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		panelOpcionesUsuario = new PanelOpcionesUsuario(controlador);
+		add(panelOpcionesUsuario , BorderLayout.WEST);
+		
 		panelLibrosUsuario = new PanelLibrosUsuario(this);
-		add(panelLibrosUsuario);
+		add(panelLibrosUsuario , BorderLayout.CENTER);
+		
 		barraHerramientasUsuario = new BarraHerramientasUsuario(controlador);
 		add(barraHerramientasUsuario, BorderLayout.PAGE_START);
 
