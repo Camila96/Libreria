@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
 import controlador.Controlador;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
@@ -42,6 +45,10 @@ public class VentanaPrincipal  extends JFrame{
 	private DialogoLibro dialogoLibro;
 	private JPanelImage jPanelImage;
 	private String ruta;
+	private int selectionAutor;
+	private int selectionCliente;
+	private int selectionLibro;
+
 
 	public VentanaPrincipal(final Controlador controlador) {
 		setIconImage(createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
@@ -87,6 +94,7 @@ public class VentanaPrincipal  extends JFrame{
 
 			}
 		});
+		
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableCliente),BorderLayout.CENTER);
 		
@@ -107,7 +115,102 @@ public class VentanaPrincipal  extends JFrame{
 		tableAutor.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableAutor),BorderLayout.WEST);
 		add(jPanelImage,BorderLayout.EAST);
+		tableAutor.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectionAutor = Integer.parseInt((String)modeloAutor.getValueAt(tableAutor.getSelectedRow(), 0));
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		tableCliente.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectionCliente = Integer.parseInt((String)modeloCliente.getValueAt(tableCliente.getSelectedRow(), 0));
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		tableLibro.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectionLibro = Integer.parseInt((String)modeloLibro.getValueAt(tableLibro.getSelectedRow(), 0));
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
 		init();
+		
 	}
 
 	public void init(){
@@ -128,14 +231,14 @@ public class VentanaPrincipal  extends JFrame{
 	}
 
 	public int retornarIdSeleccion(){
-		return Integer.parseInt((String) modeloLibro.getValueAt(tableLibro.getSelectedRow(), 0));
+		return selectionLibro;
 	}
 	public int retornarIdSeleccionAutor(){
-		return Integer.parseInt((String) modeloAutor.getValueAt(tableAutor.getSelectedRow(), 0));
+		return  selectionAutor;
 	}
-	
+
 	public int retornarIdSeleccionCliente(){
-		return Integer.parseInt((String) modeloCliente.getValueAt(tableCliente.getSelectedRow(), 0));
+		return selectionCliente;
 	}
 
 	public int eliminarLibro(){
