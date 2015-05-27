@@ -19,13 +19,13 @@ public class ConstantesGUI {
 	public static final int DIALOGO_ANCHO = 500;
 	public static final int DIALOGO_ALTO = 480;
 	public static final String I_ICONO_VENTANA = "/img/icon.png";
-	public static final String T_TITULO_VENTANA = "LIBRERIA";
+	public static final String T_TITULO_VENTANA = "Libreria";
 
 
 	/**
 	 * Constantes dialogo
 	 */
-	public static final String T_TITULO = "SITIOS TURISTICOS";
+	public static final String T_TITULO = "Sitios Turisticos";
 	public static final String T_AGREGAR_NOMBRE = "Nombre";
 	public static final String T_AGREGAR_VALOR = "Valor";
 	public static final String T_AGREGAR_DESCRIPCION = "Descripcion";
@@ -39,12 +39,12 @@ public class ConstantesGUI {
 	public static final String T_ITEM_NEW_AUTOR_BUTTON= "Add Autor";
 	public static final String T_ITEM_CANCELAR= "Cancelar Libro";
 	public static final String T_ITEM_CARGAR_IMAGEN= "Cargar imagen";
-	public static final String T_ITEM_EDITAR="editar";
+	public static final String T_ITEM_EDITAR="Editar";
 	public static final String T_AGREGAR_CREDITO = "Credito";
 	public static final String T_AGREGAR_ID = "Id";
 	
-	public static final String T_ITEM_AGREGAR_ADMINISTRADOR = "Adminitrador";
-	public static final String T_ITEM_AGREGAR_USUARIO = "Usurio";
+	public static final String T_ITEM_AGREGAR_ADMINISTRADOR = "Administrador";
+	public static final String T_ITEM_AGREGAR_USUARIO = "Usuario";
 	public static final String T_ITEM_AGREGAR_BUTTON_AUTOR = "Agregar Autor";
 	public static final String  T_ITEM_CANCELAR_AUTOR= "Cancelar Autor";
 	public static final String T_AGREGAR_IMAGEN_AUTOR ="Imagen Autor";

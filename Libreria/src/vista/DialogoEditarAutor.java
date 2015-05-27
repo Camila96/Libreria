@@ -34,6 +34,8 @@ public class DialogoEditarAutor extends JDialog{
 
 	public DialogoEditarAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
+		setTitle("Editar Autor");	
+		setIconImage(createImageIcon("/img/editara.png").getImage());
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
 		setSize(500, 300);
@@ -62,7 +64,7 @@ public class DialogoEditarAutor extends JDialog{
 		btnEditar.setActionCommand(Controlador.A_EDITAR_AUTOR);
 		btnEditar.setBounds(100, 185, 150, 30);
 
-		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR_AUTOR,createImageIcon("/img/cancel.png"));
+		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR_AUTOR,createImageIcon("/img/cancelar.png"));
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_AUTOR);
 		btnCancelar.setBounds(320, 185, 150, 30);

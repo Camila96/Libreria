@@ -53,8 +53,10 @@ public class DialogoCliente  extends JDialog{
 	private VentanaPrincipal ventanaPrincipal;
 	private Controlador controlador;
 	private JCheckBox check;
+	
 	public DialogoCliente(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
+		setTitle("Agregar Cliente");	
 		this.controlador = controlador;
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
@@ -172,8 +174,8 @@ public class DialogoCliente  extends JDialog{
 		return p1;
 	}
 	
-	public static void main(String[] args) {
-		DialogoCliente d = new DialogoCliente(null, null);
-		d.setVisible(true);
-	}
+//	public static void main(String[] args) {
+//		DialogoCliente d = new DialogoCliente(null, null);
+//		d.setVisible(true);
+//	}
 }

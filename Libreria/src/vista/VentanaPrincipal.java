@@ -64,7 +64,7 @@ public class VentanaPrincipal  extends JFrame{
 		add(barraHerramientas, BorderLayout.PAGE_START);
 
 
-		modeloLibro = new DefaultTableModel(new String[]{"ID" ,"NOMBRE", "DESCRIPCION","VALOR","GENERO","AUTOR", "COPIAS VENDIDAS"}, 0);
+		modeloLibro = new DefaultTableModel(new String[]{"Id" ,"Nombre", "Descripcion","Valor","Genero","Autor", "Copias Vendidas"}, 0);
 		tableLibro = new JTable(modeloLibro);
 		jPanelImage = new JPanelImage();
 		tableLibro.getTableHeader().setReorderingAllowed(false);
@@ -81,7 +81,7 @@ public class VentanaPrincipal  extends JFrame{
 		add(new JScrollPane(tableLibro),BorderLayout.SOUTH);
 		add(jPanelImage,BorderLayout.EAST);
 
-		modeloCliente = new DefaultTableModel(new String[]{"ID", "NOMBRE", "CREDITO"}, 0);
+		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito"}, 0);
 		tableCliente = new JTable(modeloCliente);
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		tableCliente.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
@@ -98,7 +98,7 @@ public class VentanaPrincipal  extends JFrame{
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		add(new JScrollPane(tableCliente),BorderLayout.CENTER);
 		
-		modeloAutor = new DefaultTableModel(new String[]{"ID","NOMBRE"}, 0);
+		modeloAutor = new DefaultTableModel(new String[]{"Id","Nombre"}, 0);
 		tableAutor = new JTable(modeloAutor);
 		jPanelImage = new JPanelImage();
 		tableAutor.getTableHeader().setReorderingAllowed(false);

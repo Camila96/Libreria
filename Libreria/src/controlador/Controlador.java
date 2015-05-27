@@ -71,8 +71,8 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_PLANO_LIBRO = "Exportar Plano";
 	public static final String A_EXPORTAR_ARCHIVO_XML_LIBRO = "exportar xml";
 	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
-	public static final String A_AGREGAR_ADMINISTRADOR = "administrador";
-	public static final String A_MOSTRAR_USUARIO = "usuario";
+	public static final String A_AGREGAR_ADMINISTRADOR = "Administrador";
+	public static final String A_MOSTRAR_USUARIO = "Usuario";
 	public static final String A_MOSTRAR_AGREGAR_AUTOR = "mostrar autor";
 	public static final String A_MOSTRAR_CANCELAR_AUTOR = "cancelar autor";
 	public  static final String A_MOSTRAR_DIALOGO_EDITAR_AUTOR = "mostar editar autor";
@@ -407,7 +407,7 @@ public class Controlador implements ActionListener {
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
-			agrgegarAutoraChecKBox();
+//			agrgegarAutoraChecKBox();
 		} catch (Exception e) {
 		}
 	}

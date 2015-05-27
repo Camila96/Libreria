@@ -54,6 +54,8 @@ public class DialogoEditar extends JDialog {
 
 	public DialogoEditar(VentanaPrincipal ventanaPrincipal, Controlador controlador) {
 		super(ventanaPrincipal);
+		setTitle("Editar Libro");
+		setIconImage(createImageIcon("/img/editb.png").getImage());
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
@@ -87,11 +89,8 @@ public class DialogoEditar extends JDialog {
 		lbGenero = new JLabel(ConstantesGUI.T_AGREGAR_GENERO);
 		lbGenero.setBounds(30,155,100,100);
 
-		
-
 		lbAutor = new JLabel(ConstantesGUI.T_AGREGAR_AUTOR);
 		lbAutor.setBounds(30,200,100,100);
-
 
 		lbCopisVendidas = new JLabel(ConstantesGUI.T_AGREGAR_COPIAS_VENDIDAS);
 		lbCopisVendidas.setBounds(30,245,100,100);
@@ -110,9 +109,9 @@ public class DialogoEditar extends JDialog {
 		btnEditar = new JButton(ConstantesGUI.T_ITEM_EDITAR,createImageIcon("/img/editC.png"));
 		btnEditar.addActionListener(controlador);
 		btnEditar.setActionCommand(Controlador.A_EDITAR_LIBRO);
-		btnEditar.setBounds(310,380, 90, 30);
+		btnEditar.setBounds(310,380, 120, 30);
 
-		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR,createImageIcon("/img/cancel.png"));
+		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR,createImageIcon("/img/cancelar.png"));
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_LIBRO);
 		btnCancelar.setBounds(100,380, 150, 30);

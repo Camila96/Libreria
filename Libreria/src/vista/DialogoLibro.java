@@ -56,6 +56,7 @@ public class DialogoLibro extends JDialog{
 
 	public DialogoLibro(VentanaPrincipal ventanaPrincipal, Controlador controlador) {
 		super(ventanaPrincipal);
+		setTitle("Agregar Libro");	
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
@@ -107,12 +108,12 @@ public class DialogoLibro extends JDialog{
 		txtImage.setBounds(150, 320, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 
-		btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON,createImageIcon("/img/add.png"));
+		btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON,createImageIcon("/img/agregar.png"));
 		btnAgregar.addActionListener(controlador);
 		btnAgregar.setActionCommand(Controlador.A_AGREGAR_LIBRO);
 		btnAgregar.setBounds(310,380, 150, 30);
 
-		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR,createImageIcon("/img/cancel.png"));
+		btnCancelar = new JButton(ConstantesGUI.T_ITEM_CANCELAR,createImageIcon("/img/cancelar.png"));
 		btnCancelar.addActionListener(controlador);
 		btnCancelar.setActionCommand(Controlador.A_MOSTRAR_CANCELAR_LIBRO);
 		btnCancelar.setBounds(100,380, 150, 30);

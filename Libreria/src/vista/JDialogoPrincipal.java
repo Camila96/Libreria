@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.UIManager;
@@ -19,6 +20,8 @@ public class JDialogoPrincipal extends JDialog {
 	private JButton btnUsuario;
 	
 	public JDialogoPrincipal(Controlador controlador) {
+		setTitle(ConstantesGUI.T_TITULO_VENTANA);	
+		setIconImage(createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
 		UIManager.put("Button.background", Color.GRAY);
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
 		setLocationRelativeTo(null);
@@ -40,5 +43,14 @@ public class JDialogoPrincipal extends JDialog {
 		add(btnUsuario);
 		add(panelImg);
 		
+	}
+	
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
 	}
 }

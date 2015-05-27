@@ -36,6 +36,7 @@ public class DialogoAutor extends JDialog{
 	public DialogoAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		
 		super(ventanaPrincipal);
+		setTitle("Agregar Autor");	
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
