@@ -89,7 +89,7 @@ public class ArchivoXmlAutor {
 				Element doc = documento.getDocumentElement();
 				NodeList lista = doc.getChildNodes();
 
-				autor = new Autor(lista.item(0).getTextContent(), lista.item(1).getTextContent());
+				autor = new Autor(lista.item(0).getTextContent());
 				autor.setId(Integer.parseInt(doc.getAttribute(C_ID)));
 			} catch (SAXException e) {
 				e.printStackTrace();

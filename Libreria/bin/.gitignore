@@ -1,9 +1,5 @@
-/controlador/
-/data/
-/img/
-/librerias/
-/modelo/
-/modelos/
 /persistencia/
-/properties/
+/modelo/
+/controlador/
 /vista/
+/data/

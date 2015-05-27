@@ -131,7 +131,7 @@ public class BarraMenu extends JMenuBar{
 
 		itemImXmlAutor = new JMenuItem();
 		itemImXmlAutor.addActionListener(controlador);
-		itemImXmlAutor.setActionCommand(Controlador.A_IMPORTAR_ARCHIVO_XML_AUTOR);
+		itemImXmlAutor.setActionCommand(Controlador.GUARDAR_ARRAY_AUTOR);
 		menuImportarArchivo.add(itemImXmlAutor);
 
 		itemImJsonAutor = new JMenuItem();
@@ -196,7 +196,7 @@ public class BarraMenu extends JMenuBar{
 
 		itemExXmlAutor = new JMenuItem();
 		itemExXmlAutor.addActionListener(controlador);
-		itemExXmlAutor.setActionCommand(Controlador.A_EXPORTAR_ARCHIVO_XML_AUTOR);
+		itemExXmlAutor.setActionCommand(Controlador.GUARDAR_ARRAY_AUTOR);
 		menuExportarArchivo.add(itemExXmlAutor);
 
 		itemExJsonAutor = new JMenuItem();

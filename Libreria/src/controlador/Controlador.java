@@ -12,14 +12,12 @@ import javax.swing.JCheckBox;
 import persistencia.ArchivoBinarioAutor;
 import persistencia.ArchivoBinarioCliente;
 import persistencia.ArchivoBinarioLibro;
-import persistencia.ArchivoJsonAutor;
 import persistencia.ArchivoJsonCliente;
 import persistencia.ArchivoJsonLibro;
-import persistencia.ArchivoPlanoAutor;
 import persistencia.ArchivoPlanoCliente;
 import persistencia.ArchivoPlanoLibro;
-import persistencia.ArchivoXmlAutor;
 import persistencia.ArchivoXmlCliente;
+import persistencia.XmlAutor;
 import persistencia.XmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
@@ -98,6 +96,7 @@ public class Controlador implements ActionListener {
 	public  static final String GUARDAR_ARRAY_LIBROS = "guardar xml";
 	public static final String A_MOSTRAR_COLECCION = "mostrar coleccion Usuario";
 	public static final String A_MOSTRAR_LIBROS_A_COMPRAR = "mostrar libros seleccionados para la compra";
+	public static final String GUARDAR_ARRAY_AUTOR = "xmlautor";
 	private int j;
 	private JCheckBox posicion ;
 	private BarraMenu barraMenu;
@@ -143,6 +142,10 @@ public class Controlador implements ActionListener {
 			break;
 		case GUARDAR_ARRAY_LIBROS:
 			XmlLibro.EscribirXML(gestorLibro.getListaLibro(),"src/data/arraylibros.xml");
+			break;
+
+		case GUARDAR_ARRAY_AUTOR:
+			XmlAutor.EscribirXML(gestorAutor.getListaAutor(),"src/data/arrayAutor.xml");
 			break;
 
 		case A_MOSTRAR_AGREGAR_CLIENTE:
@@ -261,24 +264,24 @@ public class Controlador implements ActionListener {
 		case A_EXPORTAR_ARCHIVO_BINARIO_AUTOR:
 			ArchivoBinarioAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			break;
-		case A_IMPORTAR_ARCHIVO_PLANO_AUTOR:
-			agregarAutor(ArchivoPlanoAutor.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_PLANO_AUTOR:
-			ArchivoPlanoAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			break;
-		case A_IMPORTAR_ARCHIVO_XML_AUTOR:
-			agregarAutor(ArchivoXmlAutor.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_XML_AUTOR:
-			ArchivoXmlAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			break;
-		case A_IMPORTAR_ARCHIVO_JSON_AUTOR:
-			agregarAutor(ArchivoJsonAutor.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_JSON_AUTOR:
-			ArchivoJsonAutor.guardarArchivoJson(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			break;
+//		case A_IMPORTAR_ARCHIVO_PLANO_AUTOR:
+//			agregarAutor(ArchivoPlanoAutor.abrirArchivo());
+//			break;
+//		case A_EXPORTAR_ARCHIVO_PLANO_AUTOR:
+//			ArchivoPlanoAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+//			break;
+//		case A_IMPORTAR_ARCHIVO_XML_AUTOR:
+//			agregarAutor(XmlAutor.l);
+//			break;
+//		case A_EXPORTAR_ARCHIVO_XML_AUTOR:
+//			ArchivoXmlAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+//			break;
+//		case A_IMPORTAR_ARCHIVO_JSON_AUTOR:
+//			agregarAutor(ArchivoJsonAutor.abrirArchivo());
+//			break;
+//		case A_EXPORTAR_ARCHIVO_JSON_AUTOR:
+//			ArchivoJsonAutor.guardarArchivoJson(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+//			break;
 		case A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE:
 			ArchivoBinarioCliente.guardarArchivo(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
 			break;

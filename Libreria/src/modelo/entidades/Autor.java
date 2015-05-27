@@ -17,7 +17,7 @@ public class Autor implements Serializable {
 	private String image;
 	private static int consecutivo;
 
-	public Autor(String nombre, String image) {
+	public Autor(String nombre) {
 		this.id = consecutivo;
 		this.nombre = nombre;
 		this.image = image;

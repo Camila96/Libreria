@@ -86,7 +86,7 @@ public class DialogoAutor extends JDialog{
 	}
 
 	public Autor crearAutor(){
-		Autor autor  = GestorAutor.crearAutor(txtNombre.getText(),txtImage.getText());
+		Autor autor  = GestorAutor.crearAutor(txtNombre.getText());
 		dispose();
 		eliminarDatosTablaAutor();
 		return autor;
