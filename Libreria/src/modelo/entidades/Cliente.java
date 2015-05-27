@@ -12,6 +12,7 @@ public class Cliente {
 	private double credito;
 	private static int consecutivo;
 	private ArrayList<Libro> listaLibro;
+	private boolean activo;
 
 	public Cliente(String nombre, double credito) {
 		this.nombre = nombre;
@@ -55,5 +56,19 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return nombre + ","+ credito;
+	}
+
+	/**
+	 * @return the activo
+	 */
+	public boolean isActivo() {
+		return activo;
+	}
+
+	/**
+	 * @param activo the activo to set
+	 */
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 }

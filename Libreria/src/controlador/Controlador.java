@@ -34,6 +34,7 @@ import vista.DialogoAutor;
 import vista.DialogoCliente;
 import vista.DialogoEditar;
 import vista.DialogoEditarAutor;
+import vista.DialogoIniciarSesion;
 import vista.DialogoLibro;
 import vista.JDialogoPrincipal;
 import vista.VentanaPrincipal;
@@ -97,6 +98,8 @@ public class Controlador implements ActionListener {
 	public static final String A_MOSTRAR_COLECCION = "mostrar coleccion Usuario";
 	public static final String A_MOSTRAR_LIBROS_A_COMPRAR = "mostrar libros seleccionados para la compra";
 	public static final String GUARDAR_ARRAY_AUTOR = "xmlautor";
+	public static final String A_CANCELAR_INCIO_SESION = "cancelar incio de sesion";
+	public static final String A_INICIAR_SESION = "Iniciar sesion";
 	private int j;
 	private JCheckBox posicion ;
 	private BarraMenu barraMenu;
@@ -115,7 +118,9 @@ public class Controlador implements ActionListener {
 	private DialogoAutor dialogoAutor;
 	private DialogoEditarAutor dialogoEditarAutor;
 	private JDialogoPrincipal dialogoPrincipal;
-
+	private DialogoIniciarSesion dialogoIniciarSesion;
+	
+	
 	public Controlador() {
 		gestorAutor = new GestorAutor();
 		gestorCliente = new GestorCliente();
@@ -129,6 +134,7 @@ public class Controlador implements ActionListener {
 		dialogoAutor = new DialogoAutor(ventanaPrincipal, this);
 		dialogoPrincipal = new JDialogoPrincipal(this);
 		dialogoPrincipal.setVisible(true);
+		dialogoIniciarSesion = new DialogoIniciarSesion(dialogoPrincipal, this);
 		//		ventanaPrincipal.setVisible(true);
 	}
 
@@ -256,7 +262,7 @@ public class Controlador implements ActionListener {
 
 			break;
 		case A_MOSTRAR_USUARIO:
-			ventanaUsuario.setVisible(true);
+			dialogoIniciarSesion.setVisible(true);
 			break;
 		case A_IMPORTAR_ARCHIVO_BINARIO_AUTOR:
 			agregarAutor(ArchivoBinarioAutor.abrirArchivo());
@@ -306,9 +312,22 @@ public class Controlador implements ActionListener {
 		case A_IMPORTAR_ARCHIVO_JSON_CLIENTE:
 			agregarCliente(ArchivoJsonCliente.abrirArchivo());
 			break;
+		case A_MOSTRAR_COLECCION:
+			mostrarColeccionCliente();
+			break;
+		case A_CANCELAR_INCIO_SESION:
+			dialogoIniciarSesion.dispose();
+			break;
+		case A_INICIAR_SESION:
+			ventanaUsuario.setVisible(true);
+			break;
 		default:
 			break;
 		}
+	}
+
+	private void mostrarColeccionCliente() {
+				
 	}
 
 	public void agregarLibro(Libro libro){

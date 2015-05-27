@@ -32,7 +32,7 @@ public class VentanaUsuario  extends JFrame{
 		panelOpcionesUsuario = new PanelOpcionesUsuario(controlador);
 		add(panelOpcionesUsuario , BorderLayout.WEST);
 		
-		panelLibrosUsuario = new PanelLibrosUsuario(this);
+		panelLibrosUsuario = new PanelLibrosUsuario(getListaLibros());
 		add(panelLibrosUsuario , BorderLayout.CENTER);
 		
 		barraHerramientasUsuario = new BarraHerramientasUsuario(controlador);

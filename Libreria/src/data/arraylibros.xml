@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Libro="2">
+<Libreria Cantidad-Libro="4">
     <!--comentario :v-->
     <libro>
         <id>0</id>
@@ -20,5 +20,25 @@
         <autor>jg</autor>
         <copias>52</copias>
         <rutaImagen>/img/imgLibros/reec1.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>2</id>
+        <nombre>sen</nombre>
+        <descripcion>vasfkjvabfanmn</descripcion>
+        <valor>31400.0</valor>
+        <genero>TERROR</genero>
+        <autor>jj</autor>
+        <copias>23</copias>
+        <rutaImagen>/img/imgLibros/sen2.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>3</id>
+        <nombre>sasss</nombre>
+        <descripcion>lnjvfzk vn</descripcion>
+        <valor>473900.0</valor>
+        <genero>CULTURA</genero>
+        <autor>fer</autor>
+        <copias>54</copias>
+        <rutaImagen>/img/imgLibros/sasss3.jpg</rutaImagen>
     </libro>
 </Libreria>

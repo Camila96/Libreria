@@ -14,20 +14,13 @@ import modelo.entidades.Libro;
 public class PanelLibrosUsuario extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	private VentanaUsuario ventanaUsuario;
 	
-	public PanelLibrosUsuario(VentanaUsuario ventanaUsuario) {
-		this.ventanaUsuario = ventanaUsuario;
+	public PanelLibrosUsuario(ArrayList<Libro> lista) {
 		setLayout(new GridLayout(3,6 ));
-		init();
+		init(lista);
 	}
 	
-	public void init(){
-		cargarDatosLibros();
-	}
-	
-	public void cargarDatosLibros(){
-		ArrayList<Libro> lista = ventanaUsuario.getListaLibros();
+	public void init(ArrayList<Libro> lista){
 		this.removeAll();
 		for (Libro libro : lista) {
 			add(new PanelLibro(libro));
