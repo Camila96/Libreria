@@ -318,6 +318,9 @@ public class Controlador implements ActionListener {
 		case A_CANCELAR_INCIO_SESION:
 			dialogoIniciarSesion.dispose();
 			break;
+		case A_MOSTRAR_CANCELAR_CLIENTE:
+			dialogoCliente.dispose();
+			break;
 		case A_INICIAR_SESION:
 			ventanaUsuario.setVisible(true);
 			break;

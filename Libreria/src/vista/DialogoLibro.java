@@ -41,7 +41,7 @@ public class DialogoLibro extends JDialog{
 	private JLabel lbAutor;
 	
 	private JComboBox<String> boxAutor;
-	private JComboBox<EnumGeneroLibro> boxGenero;
+	private JComboBox<String> boxGenero;
 	private EnumGeneroLibro[] listaGenerosLibros;
 	private JTextField txtNombre;
 	private JTextArea txtDescripcion;
@@ -128,11 +128,11 @@ public class DialogoLibro extends JDialog{
 	
 	
 		
-		boxGenero = new JComboBox<EnumGeneroLibro>();
+		boxGenero = new JComboBox<String>();
 		boxGenero.setBounds(150, 180, 200, 30);
 		listaGenerosLibros = EnumGeneroLibro.values();
 		for (int i = 0; i < listaGenerosLibros.length; i++) {
-			boxGenero.addItem(listaGenerosLibros[i]);
+			boxGenero.addItem(listaGenerosLibros[i].getGenreSelected());
 		}
 		btnNewAutor = new JButton(ConstantesGUI.T_ITEM_NEW_AUTOR_BUTTON,createImageIcon("/img/add.png"));
 		btnNewAutor.addActionListener(controlador);

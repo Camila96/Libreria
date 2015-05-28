@@ -39,10 +39,7 @@ public class DialogoCliente  extends JDialog{
 	private JLabel lbId;
 	private JLabel lbcredito;
 	private JLabel lbImagen;
-	private JLabel lbLibrosAComprar;
 	ImageIcon image;
-	private JPanel p1;
-	private ArrayList<JCheckBox>  listaCheckboxsLibros;
 	private JTextField txtNombre;
 	private JTextField txtId;
 	private JTextField txtcredito;
@@ -63,8 +60,7 @@ public class DialogoCliente  extends JDialog{
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
-		listaCheckboxsLibros = new ArrayList<JCheckBox>();
-
+	
 		lbNombre = new JLabel(ConstantesGUI.T_AGREGAR_NOMBRE);
 		lbNombre.setBounds(30,0,100,100);
 
@@ -82,14 +78,12 @@ public class DialogoCliente  extends JDialog{
 		lbImagen = new JLabel(ConstantesGUI.T_AGREGAR_IMAGEN);
 		lbImagen.setBounds(30, 110, 100, 100);
 
-		lbLibrosAComprar = new JLabel(ConstantesGUI.T_AGREGAR_LIBROS_A_COMPRAR);
-		lbLibrosAComprar.setBounds(30, 180, 150, 100);
-
 		txtImage = new JTextField();
 		txtImage.setBounds(150, 140, 150, 30);
 		txtImage.setBackground(ConstantesGUI.COlOR_DATOS);
 
-		btnAgregar = new JButton(ConstantesGUI.T_ITEM_AGREGAR_BUTTON);
+		btnAgregar = new JButton(createImageIcon("/img/clientea.png"));
+		btnAgregar.setText(ConstantesGUI.T_ITEM_AGREGAR_BUTTON_CLIENTE);
 		btnAgregar.addActionListener(controlador);
 		btnAgregar.setActionCommand(Controlador.A_AGREGAR_CLIENTE);
 		btnAgregar.setBounds(100, 385, 150, 30);
@@ -109,34 +103,10 @@ public class DialogoCliente  extends JDialog{
 		add(lbcredito);
 		add(txtcredito);
 		add(lbImagen);
-		add(lbLibrosAComprar);
 		add(txtImage);
 		add(btnAgregar);
 		add(btnCancelar);
 		add(btnCargarImagen);
-		p1 = new JPanel(); 
-		p1.setLayout(new FlowLayout());
-		p1.setBackground(Color.blue);
-		p1.setBounds(200, 180, 200, 200);
-		for( int i=0; i<controlador.getGestorLibro().getListaLibro().size() ; i++){
-			check = new JCheckBox(controlador.getGestorLibro().getListaLibro().get(i).getNombre());
-
-			check.addItemListener(new ItemListener() {
-
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					if (e.getStateChange() == ItemEvent.DESELECTED) {
-						System.out.println("ya no"+ check.getText());
-					}else {
-						if (e.getStateChange() == ItemEvent.SELECTED) {
-							System.out.println("ya si"+ check.getText());
-						}
-					}
-				}
-			});
-			p1.add( check );
-		}
-		add(p1); 
 	}
 	public Cliente crearCliente(){
 		Cliente cliente = GestorCliente.crearCliente(txtNombre.getText(),
@@ -161,19 +131,14 @@ public class DialogoCliente  extends JDialog{
 		}
 		return image;
 	}
-
-	public ArrayList<JCheckBox> getListaCheckboxsLibros() {
-		return listaCheckboxsLibros;
+	protected ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			return null;
+		}
 	}
-
-	public void setListaCheckboxsLibros(ArrayList<JCheckBox> listaCheckboxsLibros) {
-		this.listaCheckboxsLibros = listaCheckboxsLibros;
-	}
-
-	public JPanel getP1() {
-		return p1;
-	}
-	
 //	public static void main(String[] args) {
 //		DialogoCliente d = new DialogoCliente(null, null);
 //		d.setVisible(true);

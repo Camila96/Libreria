@@ -35,10 +35,10 @@ public class DialogoIniciarSesion extends JDialog{
 		gb.gridx = 1;
 		add(txtNombre);
 		
-		JLabel lblContraseÃa = new JLabel("Contraseña: ");
+		JLabel lblContrasena = new JLabel("Contraseï¿½a: ");
 		gb.gridy = 1;
 		gb.gridx = 0;
-		add(lblContraseÃa , gb);
+		add(lblContrasena , gb);
 	
 		txtContrasena = new JPasswordField(10);
 		gb.gridx = 1;

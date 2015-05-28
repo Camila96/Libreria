@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Libro="5">
+<Libreria Cantidad-Libro="7">
     <!--comentario :v-->
     <libro>
         <id>0</id>
@@ -50,5 +50,25 @@
         <autor>sdf</autor>
         <copias>34</copias>
         <rutaImagen>/img/imgLibros/sfdsd4.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>5</id>
+        <nombre>hj</nombre>
+        <descripcion>gh</descripcion>
+        <valor>8.0</valor>
+        <genero>CIENCIA</genero>
+        <autor>sdf</autor>
+        <copias>45</copias>
+        <rutaImagen>/img/imgLibros/hj5.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>6</id>
+        <nombre>312</nombre>
+        <descripcion>213123</descripcion>
+        <valor>3213.0</valor>
+        <genero>CIENCIA</genero>
+        <autor>2132132</autor>
+        <copias>21321</copias>
+        <rutaImagen>/img/imgLibros/3126.jpg</rutaImagen>
     </libro>
 </Libreria>

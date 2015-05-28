@@ -1,8 +1,8 @@
 package modelo.entidades;
 
 public enum EnumGeneroLibro {			
-	ROMANCE("ROMANCE"), ACCION("ACCION"),COMEDIA("COMEDIA"),CIENCIA("CIENCIA"),
-	TERROR("TERROR"),CULTURA("CULTURA");
+	ROMANCE("Romance"), ACCION("Accion"),COMEDIA("Comedia"),CIENCIA("Ciencia"),
+	TERROR("Terror"),CULTURA("Cultura");
 	private String generoSelected;
 	
 
