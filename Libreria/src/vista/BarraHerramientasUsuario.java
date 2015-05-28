@@ -1,22 +1,27 @@
 package vista;
 
+import java.awt.Dimension;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
+import modelo.entidades.TipoBusqueda;
 import controlador.Controlador;
 
 public class BarraHerramientasUsuario extends JToolBar{
 
+	private static final long serialVersionUID = 1L;
+	private JComboBox cBox;
 	private JButton btnBuscarLibro;
 	private JButton btnBuscarCliente;
 	private JButton btnBuscarAutor;
 	private JTextField txtBuscar;
-	private JRadioButton jrBtnId;
-	private JRadioButton jrBtnNombre;
+	private JButton btnBuscar;
 	private ButtonGroup btnGroup;
 	
 	public BarraHerramientasUsuario(Controlador controlador) {
@@ -28,12 +33,7 @@ public class BarraHerramientasUsuario extends JToolBar{
 		btnBuscarLibro.setToolTipText("Buscar Libro");
 		add(btnBuscarLibro);
 		
-		btnBuscarCliente = new JButton(createImageIcon("/img/buscarc.png"));
-		btnBuscarCliente.addActionListener(controlador);
-		btnBuscarCliente.setActionCommand(Controlador.A_BUSCAR_CLIENTE);
-		btnBuscarCliente.setToolTipText("Buscar Cliente");
-		add(btnBuscarCliente);
-		
+				
 		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
 		btnBuscarAutor.addActionListener(controlador);
 		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
@@ -41,20 +41,19 @@ public class BarraHerramientasUsuario extends JToolBar{
 		add(btnBuscarAutor);
 
 		txtBuscar = new JTextField(5);	
-		add(txtBuscar);
-
-		btnGroup = new ButtonGroup();
-		jrBtnId = new JRadioButton("Buscar por Id");
-		jrBtnId.addActionListener(controlador);
-		jrBtnId.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		btnGroup.add(jrBtnId);
-		add(jrBtnId);
-
-		jrBtnNombre = new JRadioButton("Buscar por Nombre");
-		jrBtnNombre.addActionListener(controlador);
-		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		btnGroup.add(jrBtnNombre);
-		add(jrBtnNombre);
+		add(txtBuscar); 
+		
+		cBox = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
+		cBox.setPreferredSize(new Dimension(150, 10));
+		add(cBox);
+		cBox.addActionListener(controlador);
+		
+		btnBuscar = new JButton(createImageIcon("/img/Search.png"));
+		btnBuscar.addActionListener(controlador);
+		btnBuscar.setActionCommand(Controlador.A_BUSCAR_AUTOR);
+		btnBuscar.setToolTipText("Bucar Autor");
+		add(btnBuscar);
+		
 	}
 	
 	protected ImageIcon createImageIcon(String path) {
@@ -96,22 +95,6 @@ public class BarraHerramientasUsuario extends JToolBar{
 
 	public void setTxtBuscar(JTextField txtBuscar) {
 		this.txtBuscar = txtBuscar;
-	}
-
-	public JRadioButton getJrBtnId() {
-		return jrBtnId;
-	}
-
-	public void setJrBtnId(JRadioButton jrBtnId) {
-		this.jrBtnId = jrBtnId;
-	}
-
-	public JRadioButton getJrBtnNombre() {
-		return jrBtnNombre;
-	}
-
-	public void setJrBtnNombre(JRadioButton jrBtnNombre) {
-		this.jrBtnNombre = jrBtnNombre;
 	}
 
 	public ButtonGroup getBtnGroup() {

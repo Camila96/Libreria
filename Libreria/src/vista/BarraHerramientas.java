@@ -1,11 +1,16 @@
 package vista;
 
+import java.awt.Dimension;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+
+import modelo.entidades.TipoBusqueda;
 import controlador.Controlador;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -37,6 +42,8 @@ public class BarraHerramientas extends JToolBar {
 	private JRadioButton jrBtnNombreAutor;
 	private ButtonGroup btnGroupAutor;
 
+	private JButton btnBuscar;
+	private JComboBox cBox;
 
 	public BarraHerramientas(Controlador controlador) {
 		setEnabled(false);
@@ -97,31 +104,16 @@ public class BarraHerramientas extends JToolBar {
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar);
 
-		btnGroup = new ButtonGroup();
-		jrBtnId = new JRadioButton("BuscarIdLibro");
-		jrBtnId.addActionListener(controlador);
-		jrBtnId.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		btnGroup.add(jrBtnId);
-		add(jrBtnId);
-
-		jrBtnNombre = new JRadioButton("BuscarNombreLibro");
-		jrBtnNombre.addActionListener(controlador);
-		jrBtnNombre.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		btnGroup.add(jrBtnNombre);
-		add(jrBtnNombre);
+		cBox = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
+		cBox.setPreferredSize(new Dimension(150, 10));
+		add(cBox);
+		cBox.addActionListener(controlador);
 		
-		btnGroupAutor = new ButtonGroup();
-		jrBtnIdAutor = new JRadioButton("BuscarIdAutor");
-		jrBtnIdAutor.addActionListener(controlador);
-		jrBtnIdAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
-		btnGroupAutor.add(jrBtnIdAutor);
-		add(jrBtnIdAutor);
-
-		jrBtnNombreAutor = new JRadioButton("BuscarNombreAutor");
-		jrBtnNombreAutor.addActionListener(controlador);
-		jrBtnNombreAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
-		btnGroupAutor.add(jrBtnNombreAutor);
-		add(jrBtnNombreAutor);
+		btnBuscar = new JButton(createImageIcon("/img/Search.png"));
+		btnBuscar.addActionListener(controlador);
+		btnBuscar.setActionCommand(Controlador.A_BUSCAR_AUTOR);
+		btnBuscar.setToolTipText("Bucar Autor");
+		add(btnBuscar);
 	}
 
 	protected ImageIcon createImageIcon(String path) {
