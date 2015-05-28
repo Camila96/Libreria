@@ -34,7 +34,7 @@ public class BarraHerramientasUsuario extends JToolBar{
 		add(btnBuscarLibro);
 		
 				
-		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
+		btnBuscarAutor = new JButton(createImageIcon(""));
 		btnBuscarAutor.addActionListener(controlador);
 		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnBuscarAutor.setToolTipText("Bucar Autor");
