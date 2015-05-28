@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ import javax.swing.filechooser.FileSystemView;
 import modelo.dao.GestorLibro;
 import modelo.entidades.EnumGeneroLibro;
 import modelo.entidades.Libro;
+import modelos.util.Util;
 import controlador.Controlador;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -51,6 +53,7 @@ public class DialogoEditar extends JDialog {
 	private JButton btnCargarImage;
 	private JLabel lbImageFondo;
 	private VentanaPrincipal ventanaPrincipal;
+	private Libro libro;
 
 	public DialogoEditar(VentanaPrincipal ventanaPrincipal, Controlador controlador) {
 		super(ventanaPrincipal);
@@ -175,27 +178,36 @@ public class DialogoEditar extends JDialog {
 		txtImage.setText("");
 	}
 
-	public Libro editar(Libro libro){
-		libro.setNombre(txtNombre.getText());
-		libro.setDescripcion(txtDescripcion.getText());
-		libro.setValor(Double.parseDouble(txtValor.getText()));
-		libro.setGenero(boxGenero.getSelectedItem().toString());
-		libro.setAutor(boxAutor.getSelectedItem().toString());
-		libro.setCopiasVendidas(Integer.parseInt(txtCopiasVendidas.getText()));
-		libro.setImage(txtImage.getText());
-		eliminarDatosTabla();
-		dispose();
+	public Libro editar(){
+	HashMap<String, String> listaCampos = new HashMap<String, String>();
+		
+		if (!txtNombre.getText().equals(libro.getNombre())) {
+			listaCampos.put("NOMBRE", txtNombre.getText());
+		}
+		if (!txtDescripcion.getText().equals(libro.getDescripcion())) {
+			listaCampos.put("DETALLES", txtDescripcion.getText());
+		}
+		if (!txtValor.getText().equals(libro.getValor())) {
+			listaCampos.put("VALOR", txtValor.getText());
+		}
+		if (!txtImage.getText().equals(libro.getImage())) {
+			String nombreImagen = txtNombre.getText()+ libro.getId();
+			libro.setImage("/images/imgLibros/"+nombreImagen+".jpg");
+			Util.guardarImagen(nombreImagen, libro.getImage());
+			listaCampos.put("DIRECCION", libro.getImage());
+		}
+		GestorLibro.editarStioTuristico(libro, listaCampos);
 		return libro;
 	}
 
-	public void cambiarValores(Libro libro){
-		txtNombre.setText(libro.getNombre());
-		txtDescripcion.setText(libro.getDescripcion());
-		txtValor.setText(Double.toString(libro.getValor()));
-		//txtGenero.setText(libro.getGenero());
-	//	txtAutor.setText(libro.getAutor());
-		txtCopiasVendidas.setText(Double.toString(libro.getCopiasVendidas()));
-		txtImage.setText(libro.getImage());
+	public void cambiarValores(Libro libroViejo){
+		this.libro =  libroViejo;
+		txtNombre.setText( libroViejo.getNombre());
+		txtDescripcion.setText( libroViejo.getDescripcion());
+		txtValor.setText(Double.toString( libroViejo.getValor()));
+		boxGenero.setSelectedItem(libroViejo.getGenero());
+		txtCopiasVendidas.setText(Double.toString( libroViejo.getCopiasVendidas()));
+		txtImage.setText( libroViejo.getImage());
 	}
 
 	public Libro crearLibro(){
@@ -356,8 +368,5 @@ public class DialogoEditar extends JDialog {
 	public JComboBox<String> getBoxAutor() {
 		return boxAutor;
 	}
-	public static void main(String[] args) {
-		DialogoEditar editar = new DialogoEditar(null, null);
-		editar.setVisible(true);
-	}
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Libro="7">
+<Libreria Cantidad-Libro="10">
     <!--comentario :v-->
     <libro>
         <id>0</id>
@@ -70,5 +70,35 @@
         <autor>2132132</autor>
         <copias>21321</copias>
         <rutaImagen>/img/imgLibros/3126.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>7</id>
+        <nombre>peggle</nombre>
+        <descripcion>jrieikej</descripcion>
+        <valor>98250.0</valor>
+        <genero>Terror</genero>
+        <autor>g</autor>
+        <copias>524</copias>
+        <rutaImagen>/img/imgLibros/peggle7.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>8</id>
+        <nombre>ler</nombre>
+        <descripcion>iu3qceah</descripcion>
+        <valor>12000.0</valor>
+        <genero>Comedia</genero>
+        <autor>ws</autor>
+        <copias>536452</copias>
+        <rutaImagen>/img/imgLibros/ler8.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>9</id>
+        <nombre>trt</nombre>
+        <descripcion>uifsdakj</descripcion>
+        <valor>87348.0</valor>
+        <genero>Ciencia</genero>
+        <autor>fdn</autor>
+        <copias>674534</copias>
+        <rutaImagen>/img/imgLibros/trt9.jpg</rutaImagen>
     </libro>
 </Libreria>

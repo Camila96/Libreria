@@ -213,6 +213,7 @@ public class Controlador implements ActionListener {
 			break;
 		case A_EDITAR_LIBRO:
 			editarLibro();
+			dialogoEditar.dispose();
 			break;
 		case A_EDITAR_AUTOR:
 			editarAutor();
@@ -400,8 +401,8 @@ public class Controlador implements ActionListener {
 
 	public void editarLibro(){
 		try {
-			dialogoEditar.editar(buscarId(ventanaPrincipal.retornarIdSeleccion()));
-			ventanaPrincipal.actualizarVentana(buscarId(ventanaPrincipal.retornarIdSeleccion()), ventanaPrincipal.retornarIdSeleccion());
+			Libro libro = dialogoEditar.editar();
+			ventanaPrincipal.actualizarVentana(libro, ventanaPrincipal.filaSeleccionada());
 		} catch (Exception e) {
 		}
 	}

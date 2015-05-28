@@ -233,6 +233,10 @@ public class VentanaPrincipal  extends JFrame{
 	public int retornarIdSeleccion(){
 		return selectionLibro;
 	}
+	
+	public int filaSeleccionada(){
+		return tableLibro.getSelectedRow();
+	}
 	public int retornarIdSeleccionAutor(){
 		return  selectionAutor;
 	}
@@ -272,14 +276,8 @@ public class VentanaPrincipal  extends JFrame{
 	}
 
 	public void actualizarVentana(Libro libro, int fila){
-		modeloLibro.setValueAt(libro.getId(),fila,0);
-		modeloLibro.setValueAt(libro.getNombre(),fila, 1);
-		modeloLibro.setValueAt(libro.getDescripcion(),fila, 2);
-		modeloLibro.setValueAt(libro.getValor(),fila, 3);
-		modeloLibro.setValueAt(libro.getGenero(),fila,4);
-		modeloLibro.setValueAt(libro.getAutor(),fila,5);
-		modeloLibro.setValueAt(libro.getCopiasVendidas(),fila,6);		
-		modeloLibro.fireTableDataChanged();
+		modeloLibro.insertRow(fila, Util.libroAVector(libro));
+		modeloLibro.removeRow(fila+1);
 	}
 
 	public void actualizarVentana(Cliente cliente, int fila){

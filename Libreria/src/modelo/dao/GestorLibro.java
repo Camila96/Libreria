@@ -1,6 +1,7 @@
 package modelo.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import persistencia.XmlLibro;
 import modelo.entidades.Autor;
@@ -57,6 +58,21 @@ public class GestorLibro {
 		return null;
 	}
 
+	public static void editarStioTuristico(Libro libroViejo , HashMap<String, String> listaCampos ){
+		if (listaCampos.containsKey("NOMBRE")) {
+			libroViejo.setNombre(listaCampos.get("NOMBRE"));;
+		}
+		if (listaCampos.containsKey("DETALLES")) {
+			libroViejo.setDescripcion(listaCampos.get("DETALLES"));;
+		}
+		if (listaCampos.containsKey("VALOR")) {
+			libroViejo.setValor(Double.parseDouble(listaCampos.get("VALOR")));
+		}
+		if (listaCampos.containsKey("DIRECCION")) {
+			libroViejo.setImage(listaCampos.get("DIRECCION"));;
+		}
+	}
+	
 	public ArrayList<Libro> getListaLibro() {
 		return listaLibro;
 	}
