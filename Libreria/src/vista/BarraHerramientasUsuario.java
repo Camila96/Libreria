@@ -43,8 +43,7 @@ public class BarraHerramientasUsuario extends JToolBar{
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar); 
 		
-		cBox = new JComboBox<TipoBusqueda>
-);
+		cBox = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
 		cBox.setPreferredSize(new Dimension(150, 10));
 		add(cBox);
 		cBox.addActionListener(controlador);
