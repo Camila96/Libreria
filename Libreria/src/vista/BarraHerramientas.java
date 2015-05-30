@@ -109,7 +109,7 @@ public class BarraHerramientas extends JToolBar {
 		add(cBox);
 		cBox.addActionListener(controlador);
 		
-		btnBuscar = new JButton(createImageIcon(""));
+		btnBuscar = new JButton(createImageIcon("/img/Search.png"));
 		btnBuscar.addActionListener(controlador);
 		btnBuscar.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnBuscar.setToolTipText("Bucar Autor");
