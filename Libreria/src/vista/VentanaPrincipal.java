@@ -214,7 +214,7 @@ public class VentanaPrincipal  extends JFrame{
 	}
 
 	public void init(){
-		setTitle(ConstantesGUI.T_TITULO_VENTANA);		
+		setTitle(ConstantesGUI.T_TITULO_VENTANA_ADMINISTRADOR);		
 	}
 
 

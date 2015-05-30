@@ -23,7 +23,7 @@ public class VentanaUsuario  extends JFrame{
 	
 	public VentanaUsuario(Controlador controlador) {
 		this.controlador = controlador;
-		setTitle(ConstantesGUI.T_TITULO_VENTANA);	
+		setTitle(ConstantesGUI.T_TITULO_VENTANA_CLIENTE);	
 		setIconImage(Util.createImageIcon(ConstantesGUI.I_ICONO_VENTANA).getImage());
 		setLayout(new BorderLayout());
 		setSize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);

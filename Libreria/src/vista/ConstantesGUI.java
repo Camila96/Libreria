@@ -20,7 +20,8 @@ public class ConstantesGUI {
 	public static final int DIALOGO_ALTO = 480;
 	public static final String I_ICONO_VENTANA = "/img/icon.png";
 	public static final String T_TITULO_VENTANA = "Libreria";
-
+	public static final String T_TITULO_VENTANA_ADMINISTRADOR = "Libreria Administrador";
+	public static final String T_TITULO_VENTANA_CLIENTE = "Libreria Cliente";
 
 	/**
 	 * Constantes dialogo
