@@ -45,6 +45,7 @@ public class BarraHerramientas extends JToolBar {
 	private JButton btnBuscar;
 	private JComboBox cBox;
 
+
 	public BarraHerramientas(Controlador controlador) {
 		setEnabled(false);
 		btnAgregarLibro = new JButton(createImageIcon("/img/book.png"));
@@ -108,10 +109,10 @@ public class BarraHerramientas extends JToolBar {
 		cBox.setPreferredSize(new Dimension(150, 10));
 		add(cBox);
 		cBox.addActionListener(controlador);
-		
+
 		btnBuscar = new JButton(createImageIcon("/img/Search.png"));
 		btnBuscar.addActionListener(controlador);
-		btnBuscar.setActionCommand(Controlador.A_BUSCAR_AUTOR);
+		btnBuscar.setActionCommand(Controlador.A_BUSCAR);
 		btnBuscar.setToolTipText("Bucar Autor");
 		add(btnBuscar);
 	}
@@ -277,5 +278,9 @@ public class BarraHerramientas extends JToolBar {
 	public void setBtnGroupAutor(ButtonGroup btnGroupAutor) {
 		this.btnGroupAutor = btnGroupAutor;
 	}
-	
+
+	public JComboBox getcBox() {
+		return cBox;
+	}
+
 }

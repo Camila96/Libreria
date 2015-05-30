@@ -25,6 +25,7 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
+import modelo.entidades.TipoBusqueda;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
@@ -54,9 +55,6 @@ public class Controlador implements ActionListener {
 	public static final String A_EDITAR_LIBRO  = "editar libro";
 	public static final String A_EDITAR_CLIENTE  = "editar cliente";
 	public static final String A_EDITAR_AUTOR  = "editar autor";
-	public static final String A_BUSCAR_LIBRO = "buscar libro";
-	public static final String A_BUSCAR_CLIENTE = "buscar cliente";
-	public static final String A_BUSCAR_AUTOR = "buscar autor";
 	public static final String A_MOSTRAR_AGREGAR_LIBRO="mostrar libro";
 	public static final String A_MOSTRAR_CANCELAR_LIBRO = "mostrar cancelar sitio";
 	public static final String A_CREAR_IMAGEN = "crear imagen";
@@ -100,6 +98,7 @@ public class Controlador implements ActionListener {
 	public static final String GUARDAR_ARRAY_AUTOR = "xmlautor";
 	public static final String A_CANCELAR_INCIO_SESION = "cancelar incio de sesion";
 	public static final String A_INICIAR_SESION = "Iniciar sesion";
+	public static final String A_BUSCAR = "buscar";
 	private int j;
 	private JCheckBox posicion ;
 	private BarraMenu barraMenu;
@@ -119,8 +118,8 @@ public class Controlador implements ActionListener {
 	private DialogoEditarAutor dialogoEditarAutor;
 	private JDialogoPrincipal dialogoPrincipal;
 	private DialogoIniciarSesion dialogoIniciarSesion;
-	
-	
+
+
 	public Controlador() {
 		gestorAutor = new GestorAutor();
 		gestorCliente = new GestorCliente();
@@ -218,20 +217,18 @@ public class Controlador implements ActionListener {
 		case A_EDITAR_AUTOR:
 			editarAutor();
 			break;
-		case A_BUSCAR_LIBRO:
+		case A_BUSCAR:
 			try {
 				buscar();
-			} catch (ExcepcionLibroNoEncontrado e1) {
-				e1.printStackTrace();
+			} catch (ExcepcionLibroNoEncontrado e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			} catch (ExcepcionAutorNoEncontrado e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
 			}
 			break;
-		case A_BUSCAR_AUTOR:
-			try {
-				buscarAutor();
-			} catch (ExcepcionAutorNoEncontrado e1) {
-				e1.printStackTrace();
-			}
-			break;
+
 		case ConstantesGUI.C_JM_IDIOMA_INGLES:
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ENG);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();
@@ -271,24 +268,24 @@ public class Controlador implements ActionListener {
 		case A_EXPORTAR_ARCHIVO_BINARIO_AUTOR:
 			ArchivoBinarioAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			break;
-//		case A_IMPORTAR_ARCHIVO_PLANO_AUTOR:
-//			agregarAutor(ArchivoPlanoAutor.abrirArchivo());
-//			break;
-//		case A_EXPORTAR_ARCHIVO_PLANO_AUTOR:
-//			ArchivoPlanoAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-//			break;
-//		case A_IMPORTAR_ARCHIVO_XML_AUTOR:
-//			agregarAutor(XmlAutor.l);
-//			break;
-//		case A_EXPORTAR_ARCHIVO_XML_AUTOR:
-//			ArchivoXmlAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-//			break;
-//		case A_IMPORTAR_ARCHIVO_JSON_AUTOR:
-//			agregarAutor(ArchivoJsonAutor.abrirArchivo());
-//			break;
-//		case A_EXPORTAR_ARCHIVO_JSON_AUTOR:
-//			ArchivoJsonAutor.guardarArchivoJson(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-//			break;
+			//		case A_IMPORTAR_ARCHIVO_PLANO_AUTOR:
+			//			agregarAutor(ArchivoPlanoAutor.abrirArchivo());
+			//			break;
+			//		case A_EXPORTAR_ARCHIVO_PLANO_AUTOR:
+			//			ArchivoPlanoAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+			//			break;
+			//		case A_IMPORTAR_ARCHIVO_XML_AUTOR:
+			//			agregarAutor(XmlAutor.l);
+			//			break;
+			//		case A_EXPORTAR_ARCHIVO_XML_AUTOR:
+			//			ArchivoXmlAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+			//			break;
+			//		case A_IMPORTAR_ARCHIVO_JSON_AUTOR:
+			//			agregarAutor(ArchivoJsonAutor.abrirArchivo());
+			//			break;
+			//		case A_EXPORTAR_ARCHIVO_JSON_AUTOR:
+			//			ArchivoJsonAutor.guardarArchivoJson(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
+			//			break;
 		case A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE:
 			ArchivoBinarioCliente.guardarArchivo(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
 			break;
@@ -331,7 +328,7 @@ public class Controlador implements ActionListener {
 	}
 
 	private void mostrarColeccionCliente() {
-				
+
 	}
 
 	public void agregarLibro(Libro libro){
@@ -411,7 +408,7 @@ public class Controlador implements ActionListener {
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
-//			agrgegarAutoraChecKBox();
+			//			agrgegarAutoraChecKBox();
 		} catch (Exception e) {
 		}
 	}
@@ -443,11 +440,27 @@ public class Controlador implements ActionListener {
 		return null;
 	}
 
-	public void buscar() throws ExcepcionLibroNoEncontrado{
-		if (ventanaPrincipal.getBarraHerramientas().getJrBtnId().isSelected()) {
-			buscarLibroId();
-		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombre().isSelected()) {
-			buscarLibroNombre();
+	public void buscar() throws ExcepcionLibroNoEncontrado, ExcepcionAutorNoEncontrado{
+		String obtenercBoX = ventanaPrincipal.getBarraHerramientas().getcBox().getSelectedItem().toString();
+		if (obtenercBoX.equals(TipoBusqueda.IDAUTOR)) {
+			try {
+				buscarAutorId();
+			} catch (ExcepcionAutorNoEncontrado e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else{
+			if (obtenercBoX.equals(TipoBusqueda.AUTOR)) {
+				ventanaPrincipal.buscarAutorNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+			}else{
+				if (obtenercBoX.equals(TipoBusqueda.LIBRO)) {
+					buscarLibroNombre();
+				}else {
+					if (obtenercBoX.equals(TipoBusqueda.IDLIBRO)) {
+						buscarLibroId();
+					}
+				}
+			}
 		}
 	}
 
@@ -475,6 +488,7 @@ public class Controlador implements ActionListener {
 		gestorAutor.buscarAutor(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.buscarAutorId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+
 	}
 
 	public void buscarAutorNombre() throws ExcepcionAutorNoEncontrado{

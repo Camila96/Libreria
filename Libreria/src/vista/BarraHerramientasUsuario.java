@@ -23,44 +23,26 @@ public class BarraHerramientasUsuario extends JToolBar{
 	private JTextField txtBuscar;
 	private JButton btnBuscar;
 	private ButtonGroup btnGroup;
-	
+
 	public BarraHerramientasUsuario(Controlador controlador) {
 		setEnabled(false);
-		
-		btnBuscarLibro = new JButton(createImageIcon("/img/buscarb.png"));
-		btnBuscarLibro.addActionListener(controlador);
-		btnBuscarLibro.setActionCommand(Controlador.A_BUSCAR_LIBRO);
-		btnBuscarLibro.setToolTipText("Buscar Libro");
-		add(btnBuscarLibro);
-		
-				
-		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
-		btnBuscarAutor.addActionListener(controlador);
-		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
-		btnBuscarAutor.setToolTipText("Bucar Autor");
-		add(btnBuscarAutor);
 
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar); 
-		
-		cBox = new JComboBox<TipoBusqueda>();
+
+		cBox = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
 		cBox.setPreferredSize(new Dimension(150, 10));
 		add(cBox);
-		cBox.addItem(TipoBusqueda.SELECIONE.toString());
-		cBox.addItem(TipoBusqueda.AUTOR.toString());
-		cBox.addItem(TipoBusqueda.IDAUTOR.toString());
-		cBox.addItem(TipoBusqueda.LIBRO.toString());
-		cBox.addItem(TipoBusqueda.IDLIBRO.toString());
 		cBox.addActionListener(controlador);
-		
+
 		btnBuscar = new JButton(createImageIcon("/img/Search.png"));
 		btnBuscar.addActionListener(controlador);
-		btnBuscar.setActionCommand(Controlador.A_BUSCAR_AUTOR);
+		btnBuscar.setActionCommand(Controlador.A_BUSCAR);
 		btnBuscar.setToolTipText("Bucar Autor");
 		add(btnBuscar);
-		
+
 	}
-	
+
 	protected ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
