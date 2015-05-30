@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Libro="10">
+<Libreria Cantidad-Libro="13">
     <!--comentario :v-->
     <libro>
         <id>0</id>
@@ -100,5 +100,35 @@
         <autor>fdn</autor>
         <copias>674534</copias>
         <rutaImagen>/img/imgLibros/trt9.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>10</id>
+        <nombre>ewrrwewrwer</nombre>
+        <descripcion>23</descripcion>
+        <valor>3.1231231E7</valor>
+        <genero>Terror</genero>
+        <autor>213123332133</autor>
+        <copias>31232</copias>
+        <rutaImagen>/img/imgLibros/ewrrwewrwer10.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>11</id>
+        <nombre>adsasaa</nombre>
+        <descripcion>321312</descripcion>
+        <valor>321312.0</valor>
+        <genero>Romance</genero>
+        <autor>213121231213</autor>
+        <copias>213123</copias>
+        <rutaImagen>/img/imgLibros/adsasaa11.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>12</id>
+        <nombre>213213</nombre>
+        <descripcion>2312312</descripcion>
+        <valor>31233.0</valor>
+        <genero>Romance</genero>
+        <autor>32131312323123</autor>
+        <copias>213123</copias>
+        <rutaImagen>/img/imgLibros/21321312.jpg</rutaImagen>
     </libro>
 </Libreria>

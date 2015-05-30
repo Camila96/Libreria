@@ -145,6 +145,14 @@ public class Controlador implements ActionListener {
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
 			break;
+		case A_ELIMINAR_CLIENTE:
+			try {
+				borrarCliente();
+			} catch (ExcepcionAutorNoEncontrado e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			}
+			break;
 		case GUARDAR_ARRAY_LIBROS:
 			XmlLibro.EscribirXML(gestorLibro.getListaLibro(),"src/data/arraylibros.xml");
 			break;
@@ -221,9 +229,6 @@ public class Controlador implements ActionListener {
 			try {
 				buscar();
 			} catch (ExcepcionLibroNoEncontrado e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			} catch (ExcepcionAutorNoEncontrado e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
@@ -395,6 +400,15 @@ public class Controlador implements ActionListener {
 		int id = ventanaPrincipal.eliminarAutor();
 		gestorAutor.eliminarAutor(gestorAutor.buscarAutor(id));
 	}
+	public void borrarCliente() throws ExcepcionAutorNoEncontrado{
+		int id = ventanaPrincipal.eliminarCliente();
+		try {
+			gestorCliente.eliminarCliente(gestorCliente.buscarCliente(id));
+		} catch (ExcepcionClienteNoEncontrado e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void editarLibro(){
 		try {
@@ -440,9 +454,9 @@ public class Controlador implements ActionListener {
 		return null;
 	}
 
-	public void buscar() throws ExcepcionLibroNoEncontrado, ExcepcionAutorNoEncontrado{
+	public void buscar() throws ExcepcionLibroNoEncontrado{
 		String obtenercBoX = ventanaPrincipal.getBarraHerramientas().getcBox().getSelectedItem().toString();
-		if (obtenercBoX.equals(TipoBusqueda.IDAUTOR)) {
+		if (obtenercBoX.equals("ID Autor")) {
 			try {
 				buscarAutorId();
 			} catch (ExcepcionAutorNoEncontrado e) {
@@ -450,38 +464,68 @@ public class Controlador implements ActionListener {
 				e.printStackTrace();
 			}
 		}else{
-			if (obtenercBoX.equals(TipoBusqueda.AUTOR)) {
-				ventanaPrincipal.buscarAutorNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+			if (obtenercBoX.equals("Nombre Autor")) {
+				try {
+					buscarAutorNombre();
+				} catch (ExcepcionAutorNoEncontrado e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}else{
-				if (obtenercBoX.equals(TipoBusqueda.LIBRO)) {
+				if (obtenercBoX.equals("Nombre Libro")) {
 					buscarLibroNombre();
 				}else {
-					if (obtenercBoX.equals(TipoBusqueda.IDLIBRO)) {
+					if (obtenercBoX.equals("ID Libro")) {
 						buscarLibroId();
-					}
+					}else{
+						if (obtenercBoX.equals("Nombre Cliente")) {
+							buscarClienteId();
+						}else {
+							if (obtenercBoX.equals("ID Cliente")) {
+								buscarClienteNombre();
+							}
+						}
 				}
 			}
 		}
+		}
 	}
 
-	public void buscarLibroId() throws ExcepcionLibroNoEncontrado{
-		gestorLibro.buscarLibro(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
-		ventanaPrincipal.buscarLibroId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
-		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
-	}
+
+		public void buscarClienteId() throws ExcepcionLibroNoEncontrado{
+		try {
+			gestorCliente.buscarCliente(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExcepcionClienteNoEncontrado e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			ventanaPrincipal.buscarClienteId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+			ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+		}
 
 	public void buscarLibroNombre() throws ExcepcionLibroNoEncontrado{
 		gestorLibro.buscarLibro(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
 		ventanaPrincipal.buscarLibroNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
 		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
+	public void buscarLibroId() throws ExcepcionLibroNoEncontrado{
+		gestorLibro.buscarLibro(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.buscarLibroId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
 
-	public void buscarAutor() throws ExcepcionAutorNoEncontrado{
-		if (ventanaPrincipal.getBarraHerramientas().getJrBtnIdAutor().isSelected()) {
-			buscarAutorId();
-		}else if (ventanaPrincipal.getBarraHerramientas().getJrBtnNombreAutor().isSelected()) {
-			buscarAutorNombre();
+	public void buscarClienteNombre() throws ExcepcionLibroNoEncontrado{
+		try {
+			gestorCliente.buscarCliente(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		} catch (ExcepcionClienteNoEncontrado e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		ventanaPrincipal.buscarClienteNombre(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
 	}
 
 	public void buscarAutorId() throws ExcepcionAutorNoEncontrado{
