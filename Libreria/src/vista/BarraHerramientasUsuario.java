@@ -34,7 +34,7 @@ public class BarraHerramientasUsuario extends JToolBar{
 		add(btnBuscarLibro);
 		
 				
-		btnBuscarAutor = new JButton(createImageIcon(""));
+		btnBuscarAutor = new JButton(createImageIcon("/img/buscara.png"));
 		btnBuscarAutor.addActionListener(controlador);
 		btnBuscarAutor.setActionCommand(Controlador.A_BUSCAR_AUTOR);
 		btnBuscarAutor.setToolTipText("Bucar Autor");
@@ -43,9 +43,14 @@ public class BarraHerramientasUsuario extends JToolBar{
 		txtBuscar = new JTextField(5);	
 		add(txtBuscar); 
 		
-		cBox = new JComboBox<TipoBusqueda>(TipoBusqueda.values());
+		cBox = new JComboBox<TipoBusqueda>();
 		cBox.setPreferredSize(new Dimension(150, 10));
 		add(cBox);
+		cBox.addItem(TipoBusqueda.SELECIONE.toString());
+		cBox.addItem(TipoBusqueda.AUTOR.toString());
+		cBox.addItem(TipoBusqueda.IDAUTOR.toString());
+		cBox.addItem(TipoBusqueda.LIBRO.toString());
+		cBox.addItem(TipoBusqueda.IDLIBRO.toString());
 		cBox.addActionListener(controlador);
 		
 		btnBuscar = new JButton(createImageIcon("/img/Search.png"));

@@ -3,9 +3,7 @@ package modelo.entidades;
 public enum TipoBusqueda {
 	
 	SELECIONE("Selecione una Opción"),AUTOR("Nombre Autor"), LIBRO("Nombre Libro"), 
-	IDAUTOR("ID Autor"), IDLIBRO("ID Libro");
-	
-//	, CLIENTE("Nombre Cliente"), IDCLIENTE("ID Cliente")
+	IDAUTOR("ID Autor"), IDLIBRO("ID Libro"), CLIENTE("Nombre Cliente"), IDCLIENTE("ID Cliente");
 
 	private String name;
 	
