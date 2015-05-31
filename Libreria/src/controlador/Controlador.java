@@ -23,6 +23,7 @@ import vista.DialogoAutor;
 import vista.DialogoCliente;
 import vista.DialogoEditar;
 import vista.DialogoEditarAutor;
+import vista.DialogoEditarCliente;
 import vista.DialogoIniciarSesion;
 import vista.DialogoLibro;
 import vista.JDialogoPrincipal;
@@ -68,6 +69,12 @@ public class Controlador implements ActionListener {
 	public static final String A_CANCELAR_INCIO_SESION = "cancelar incio de sesion";
 	public static final String A_INICIAR_SESION = "Iniciar sesion";
 	public static final String A_BUSCAR = "buscar";
+	public static final String RUTA_CLIENTE = "src/data/arrayClientes.xml";
+	public static final String RUTA_AUTOR = "src/data/arrayAutor.xml";
+	public static final String RUTA_LIBRO = "src/data/arraylibros.xml";
+	public static final String A_CREAR_IMAGEN_CLIENTE = "CLIENTE";
+	public static final String A_MOSTRAR_EDITAR_CLIENTE = "EDITAR CLIENTE";
+	public static final String A_CREAR_IMAGEN_EDITAR_CLIENTE = "IMAGEN CLIENTE";
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaUsuario ventanaUsuario;
 	private GestorAutor gestorAutor;
@@ -82,7 +89,7 @@ public class Controlador implements ActionListener {
 	private DialogoEditarAutor dialogoEditarAutor;
 	private JDialogoPrincipal dialogoPrincipal;
 	private DialogoIniciarSesion dialogoIniciarSesion;
-
+	private DialogoEditarCliente dialogoEditarCliente;
 
 	public Controlador() {
 		gestorAutor = new GestorAutor();
@@ -98,7 +105,12 @@ public class Controlador implements ActionListener {
 		dialogoPrincipal = new JDialogoPrincipal(this);
 		dialogoPrincipal.setVisible(true);
 		dialogoIniciarSesion = new DialogoIniciarSesion(dialogoPrincipal, this);
-		gestorCliente.setListaCliente(XmlCliente.leerXML("src/data/arrayClientes.xml"));
+		dialogoEditarCliente = new DialogoEditarCliente(ventanaPrincipal, this);
+		gestorCliente.setListaCliente(XmlCliente.leerXML(RUTA_CLIENTE));
+		gestorAutor.setListaAutor(XmlAutor.leerXML(RUTA_AUTOR));
+		gestorLibro.setListaLibro(XmlLibro.leerXML(RUTA_LIBRO));
+		inicializaDatos();
+
 	}
 
 	@Override
@@ -118,11 +130,11 @@ public class Controlador implements ActionListener {
 			}
 			break;
 		case GUARDAR_ARRAY_LIBROS:
-			XmlLibro.EscribirXML(gestorLibro.getListaLibro(),"src/data/arraylibros.xml");
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), RUTA_LIBRO);
 			break;
 
 		case GUARDAR_ARRAY_AUTOR:
-			XmlAutor.EscribirXML(gestorAutor.getListaAutor(),"src/data/arrayAutor.xml");
+			XmlAutor.EscribirXML(gestorAutor.getListaAutor(),RUTA_AUTOR);
 			break;
 
 		case A_MOSTRAR_AGREGAR_CLIENTE:
@@ -145,10 +157,14 @@ public class Controlador implements ActionListener {
 			break;
 		case A_MOSTRAR_CANCELAR_LIBRO:
 			dialogoLibro.setVisible(false);
+			dialogoAutor.setVisible(false);
+			dialogoCliente.setVisible(false);
+			dialogoEditar.setVisible(false);
 			break; 
 
 		case A_MOSTRAR_CANCELAR_AUTOR:
 			dialogoAutor.setVisible(false);
+			dialogoEditarAutor.setVisible(false);
 			break;
 		case A_ELIMINAR_LIBRO:
 			try {
@@ -171,8 +187,14 @@ public class Controlador implements ActionListener {
 		case A_CREAR_IMAGEN:
 			dialogoLibro.importarImagen();
 			break;
+		case A_CREAR_IMAGEN_CLIENTE:
+			dialogoCliente.importarImagen();
+			break;
 		case A_CREAR_IMAGEN_AUTOR:
 			dialogoAutor.importarImagenAutor();
+			break;
+		case A_CREAR_IMAGEN_EDITAR_CLIENTE:
+			dialogoEditarCliente.importarImagen();
 			break;
 		case A_MOSTRAR_DIALOGO_EDITAR_LIBRO:
 			dialogoEditar.cambiarValores(buscarId(ventanaPrincipal.retornarIdSeleccion()));
@@ -188,6 +210,14 @@ public class Controlador implements ActionListener {
 			break;
 		case A_EDITAR_AUTOR:
 			editarAutor();
+			break;
+		case A_EDITAR_CLIENTE:
+			editarCliente();
+			dialogoEditarCliente.dispose();
+			break;
+		case A_MOSTRAR_EDITAR_CLIENTE:
+			dialogoEditarCliente.cambiarValores(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
+			dialogoEditarCliente.setVisible(true);
 			break;
 		case A_BUSCAR:
 			try {
@@ -214,10 +244,10 @@ public class Controlador implements ActionListener {
 			dialogoIniciarSesion.setVisible(true);
 			break;
 		case A_EXPORTAR_ARCHIVO_XML_CLIENTE:
-			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arrayClientes.xml");
+			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), RUTA_CLIENTE);
 			break;
 		case A_IMPORTAR_ARCHIVO_XML_CLIENTE:
-			XmlLibro.leerXML("src/data/arraylibros.xml");
+			XmlCliente.leerXML(RUTA_CLIENTE);
 			break;
 		case A_MOSTRAR_COLECCION:
 			mostrarColeccionCliente();
@@ -227,9 +257,14 @@ public class Controlador implements ActionListener {
 			break;
 		case A_MOSTRAR_CANCELAR_CLIENTE:
 			dialogoCliente.dispose();
+			dialogoEditarCliente.setVisible(false);
 			break;
 		case A_INICIAR_SESION:
-			login();
+			if (login()) {
+
+			}else {
+				JOptionPane.showMessageDialog(dialogoIniciarSesion, "Error de Acceso,intentelo de nuevo");
+			}
 			break;
 		default:
 			break;
@@ -252,7 +287,7 @@ public class Controlador implements ActionListener {
 		if (libro != null) {
 			gestorLibro.agregarLibro(libro);
 			ventanaPrincipal.agregarLibro(libro);
-			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arraylibros.xml");
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(),RUTA_LIBRO);
 		}
 
 	}
@@ -262,7 +297,18 @@ public class Controlador implements ActionListener {
 		if (cliente != null){
 			gestorCliente.agregarCliente(cliente);
 			ventanaPrincipal.agregarCliente(cliente);
-			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), "src/data/arraylibros.xml");
+			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), RUTA_CLIENTE);
+		}
+	}
+	public void inicializaDatos(){
+		for (int i = 0; i < gestorCliente.getListaCliente().size(); i++) {
+			ventanaPrincipal.agregarCliente(gestorCliente.getListaCliente().get(i));
+		}
+		for (int i = 0; i < gestorAutor.getListaAutor().size(); i++) {
+			ventanaPrincipal.agregarAutor(gestorAutor.getListaAutor().get(i));
+		}
+		for (int i = 0; i < gestorLibro.getListaLibro().size(); i++) {
+			ventanaPrincipal.agregarLibro( gestorLibro.getListaLibro().get(i));
 		}
 	}
 
@@ -285,6 +331,7 @@ public class Controlador implements ActionListener {
 			gestorAutor.agregarAutor(autor);
 			ventanaPrincipal.agregarAutor(autor);
 			agrgegarAutoraChecKBox();
+			XmlAutor.EscribirXML(gestorAutor.getListaAutor(), RUTA_AUTOR);
 
 		}
 	}
@@ -299,19 +346,19 @@ public class Controlador implements ActionListener {
 	public void borrarLibro() throws ExcepcionLibroNoEncontrado{
 		int id = ventanaPrincipal.eliminarLibro();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
-		XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arraylibros.xml");
+		XmlLibro.EscribirXML(gestorLibro.getListaLibro(), RUTA_LIBRO);
 	}
 
 	public void borrarAutor() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarAutor();
 		gestorAutor.eliminarAutor(gestorAutor.buscarAutor(id));
-		XmlAutor.EscribirXML(gestorAutor.getListaAutor(), "src/data/arrayAutores.xml");
+		XmlAutor.EscribirXML(gestorAutor.getListaAutor(), RUTA_AUTOR);
 	}
 	public void borrarCliente() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarCliente();
 		try {
 			gestorCliente.eliminarCliente(gestorCliente.buscarCliente(id));
-			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), "src/data/arrayClientes.xml");
+			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), RUTA_CLIENTE);
 		} catch (ExcepcionClienteNoEncontrado e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -321,8 +368,17 @@ public class Controlador implements ActionListener {
 	public void editarLibro(){
 		try {
 			Libro libro = dialogoEditar.editar();
-			ventanaPrincipal.actualizarVentana(libro, ventanaPrincipal.filaSeleccionada());
-			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arraylibros.xml");
+			ventanaPrincipal.actualizarVentana(libro, ventanaPrincipal.filaSeleccionadalibro());
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), RUTA_LIBRO);
+		} catch (Exception e) {
+		}
+	}
+
+	public void editarCliente(){
+		try {
+			Cliente cliente = dialogoEditarCliente.editar();
+			ventanaPrincipal.actualizarVentana(cliente, ventanaPrincipal.filaSeleccionadaCliente());
+			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), RUTA_CLIENTE);
 		} catch (Exception e) {
 		}
 	}
@@ -331,7 +387,7 @@ public class Controlador implements ActionListener {
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
-			XmlAutor.EscribirXML(gestorAutor.getListaAutor(), "src/data/arrayAutores.xml");
+			XmlAutor.EscribirXML(gestorAutor.getListaAutor(), RUTA_AUTOR);
 			//			agrgegarAutoraChecKBox();
 		} catch (Exception e) {
 		}
@@ -395,14 +451,14 @@ public class Controlador implements ActionListener {
 								buscarClienteNombre();
 							}
 						}
+					}
 				}
 			}
-		}
 		}
 	}
 
 
-		public void buscarClienteId() throws ExcepcionLibroNoEncontrado{
+	public void buscarClienteId() throws ExcepcionLibroNoEncontrado{
 		try {
 			gestorCliente.buscarCliente(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
 		} catch (NumberFormatException e) {
@@ -412,9 +468,9 @@ public class Controlador implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			ventanaPrincipal.buscarClienteId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
-			ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
-		}
+		ventanaPrincipal.buscarClienteId(Integer.parseInt(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText()));
+		ventanaPrincipal.getBarraHerramientas().getTxtBuscar().setText("");
+	}
 
 	public void buscarLibroNombre() throws ExcepcionLibroNoEncontrado{
 		gestorLibro.buscarLibro(ventanaPrincipal.getBarraHerramientas().getTxtBuscar().getText());
@@ -471,19 +527,18 @@ public class Controlador implements ActionListener {
 	public ArrayList<Libro> getListaLibros() {
 		return gestorLibro.getListaLibro();
 	}
-	public void login(){
+	public boolean login(){
+
 		char[] arrayC = dialogoIniciarSesion.getTxtContrasena().getPassword(); 
 		String pass = new String(arrayC); 
 		String name = dialogoIniciarSesion.getTxtNombre().getText();
 		for (int i = 0; i < gestorCliente.getListaCliente().size(); i++) {
-			if (name.equals(gestorCliente.getListaCliente().get(0).getNombre()) && pass.equals(gestorCliente.getListaCliente().get(0).getPassWord())) {
-
+			if (name.equals(gestorCliente.getListaCliente().get(i).getNombre()) && pass.equals(gestorCliente.getListaCliente().get(i).getPassWord())) {
 				ventanaUsuario.setVisible(true);
-			}else {
-				JOptionPane.showMessageDialog(dialogoIniciarSesion, "Error de Acceso,intentelo de nuevo");
+				return true;
 			}
 		}
+		return false;
 	}
-
 
 }

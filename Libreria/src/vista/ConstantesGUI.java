@@ -31,6 +31,7 @@ public class ConstantesGUI {
 	public static final String T_AGREGAR_DESCRIPCION = "Descripcion";
 	public static final String T_AGREGAR_LIBROS_A_COMPRAR = "Libros Disponibles";
 	public static final String T_AGREGAR_IMAGEN = "Imagen";
+	public static final String T_AGREGAR_PASS = "Contrasena";
 	public static final Color COlOR_DATOS = Color.decode("#E0ECF8");
 	public static final String T_AGREGAR_GENERO = "Genero";
 	public static final String T_AGREGAR_AUTOR = "Autor";
@@ -38,7 +39,7 @@ public class ConstantesGUI {
 	public static final String T_ITEM_AGREGAR_BUTTON= "Agregar Libro";
 	public static final String T_ITEM_AGREGAR_BUTTON_CLIENTE = "Agregar Cliente";
 	public static final String T_ITEM_NEW_AUTOR_BUTTON= "Add Autor";
-	public static final String T_ITEM_CANCELAR= "Cancelar Libro";
+	public static final String T_ITEM_CANCELAR= "Cancelar";
 	public static final String T_ITEM_CARGAR_IMAGEN= "Cargar imagen";
 	public static final String T_ITEM_EDITAR="Editar";
 	public static final String T_AGREGAR_CREDITO = "Credito";

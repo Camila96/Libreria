@@ -27,6 +27,7 @@ public class XmlCliente{
 	private static Tag nombre;
 	private static Tag saldo;
 	private static Tag contrasena;
+	private static Tag image;
 	
 	public static void EscribirXML(ArrayList<Cliente>  listaClientes, String ruta){
 		raiz = new Tag("Libreria");
@@ -37,15 +38,18 @@ public class XmlCliente{
 			nombre = new Tag("nombre");
 			saldo = new Tag("saldo");
 			contrasena = new Tag("contrasena");
+			image = new Tag("imagen");
 			id.addContenido(Integer.toString(cliente.getId()));
 			nombre.addContenido(cliente.getNombre());
 			saldo.addContenido(Double.toString(cliente.getCredito()));
 			contrasena.addContenido(cliente.getPassWord());
+			image.addContenido(cliente.getImage());
 			raiz.addTagHijo(libro);
 			libro.addTagHijo(id);
 			libro.addTagHijo(nombre);
 			libro.addTagHijo(saldo);
 			libro.addTagHijo(contrasena);
+			libro.addTagHijo(image);
 			JespXML xml = new JespXML(ruta, Encoding.UTF_8);
 			try {
 				xml.escribirXML(raiz);
@@ -72,9 +76,10 @@ public class XmlCliente{
 				Tag nombre = cliente.getTagHijoByName("nombre");
 				Tag descripcion = cliente.getTagHijoByName("saldo");
 				Tag valor = cliente.getTagHijoByName("contrasena");
+				Tag imagen = cliente.getTagHijoByName("imagen");
 				
 				Cliente c = new Cliente(nombre.getContenido(),
-						Double.parseDouble(descripcion.getContenido()),valor.getContenido()); 
+						Double.parseDouble(descripcion.getContenido()),valor.getContenido(),imagen.getContenido()); 
 				lista.add(c);
 			}
 		} catch (ParserConfigurationException ex) {

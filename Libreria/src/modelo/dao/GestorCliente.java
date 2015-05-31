@@ -1,6 +1,7 @@
 package modelo.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import persistencia.XmlLibro;
 import modelo.entidades.Cliente;
@@ -44,9 +45,9 @@ public class GestorCliente {
 		throw new ExcepcionClienteNoEncontrado(nombre);
 	}
 
-	public static Cliente crearCliente(String nombre, String valor, String passWord){
+	public static Cliente crearCliente(String nombre, String valor, String passWord,String image){
 		if (Util.validarValor(valor)) {
-			return new Cliente(nombre, Double.parseDouble(valor),passWord);	
+			return new Cliente(nombre, Double.parseDouble(valor),passWord,image);	
 		}
 		return null;
 	}
@@ -58,9 +59,18 @@ public class GestorCliente {
 	public void setListaCliente(ArrayList<Cliente> listaCliente) {
 		this.listaCliente = listaCliente;
 	}
-
-	public void cargarDatos() {
-		XmlLibro.leerXML("");
-		
+	public static void editar(Cliente clienteViejo , HashMap<String, String> listaCampos ){
+		if (listaCampos.containsKey("NOMBRE")) {
+			clienteViejo.setNombre(listaCampos.get("NOMBRE"));;
+		}
+		if (listaCampos.containsKey("CREDITO")) {
+			clienteViejo.setCredito(Double.parseDouble(listaCampos.get("CREDITO")));;
+		}
+		if (listaCampos.containsKey("PASS")) {
+			clienteViejo.setPassWord(listaCampos.get("PASS"));
+		}
+		if (listaCampos.containsKey("IMAGEN")) {
+			clienteViejo.setImage(listaCampos.get("IMAGEN"));;
+		}
 	}
 }

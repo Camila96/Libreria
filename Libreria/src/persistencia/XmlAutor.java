@@ -56,7 +56,7 @@ public class XmlAutor {
 		}
 	}
 	@SuppressWarnings("deprecation")
-	public ArrayList<Autor> leerXML(String ruta){
+	public static ArrayList<Autor> leerXML(String ruta){
 		JespXML xml = new JespXML(ruta);
 		ArrayList<Autor> lista = new ArrayList<>();
 		try {

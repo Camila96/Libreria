@@ -73,7 +73,7 @@ public class BarraHerramientas extends JToolBar {
 
 		btnEditarCliente = new JButton(createImageIcon("/img/editarc.png"));
 		btnEditarCliente.addActionListener(controlador);
-		btnEditarCliente.setActionCommand(Controlador.A_EDITAR_CLIENTE);
+		btnEditarCliente.setActionCommand(Controlador.A_MOSTRAR_EDITAR_CLIENTE);
 		btnEditarCliente.setToolTipText("Editar Cliente");
 		add(btnEditarCliente);
 

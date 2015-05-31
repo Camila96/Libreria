@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Clientes="1">
-    <!--comentario :v-->
+<Libreria Cantidad-Clientes="4">
     <Cliente>
-        <id>1</id>
-        <nombre>hola</nombre>
-        <saldo>2.1313123E7</saldo>
+        <id>169</id>
+        <nombre>holasas</nombre>
+        <saldo>213123.0</saldo>
         <contrasena>hola</contrasena>
+        <imagen/>
+    </Cliente>
+    <Cliente>
+        <id>170</id>
+        <nombre>duh</nombre>
+        <saldo>3213.0</saldo>
+        <contrasena>lol</contrasena>
+        <imagen>/images/imgCliente/duh166.jpg</imagen>
+    </Cliente>
+    <Cliente>
+        <id>171</id>
+        <nombre>hola</nombre>
+        <saldo>3213123.0</saldo>
+        <contrasena>hola</contrasena>
+        <imagen>/home/stefa/Escritorio/11061236_819246638143766_5845392720150265193_n.jpg</imagen>
+    </Cliente>
+    <Cliente>
+        <id>172</id>
+        <nombre>mariamulata</nombre>
+        <saldo>34324.0</saldo>
+        <contrasena>cosota</contrasena>
+        <imagen>/home/stefa/Escritorio/11061236_819246638143766_5845392720150265193_n.jpg</imagen>
     </Cliente>
 </Libreria>

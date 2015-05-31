@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Autor Cantidad-Autor="3">
+<Autor Cantidad-Autor="4">
     <!--comentario :v-->
     <autor>
         <id>0</id>
@@ -7,10 +7,14 @@
     </autor>
     <autor>
         <id>1</id>
-        <nombre>ada</nombre>
+        <nombre>adaaaaaaaa</nombre>
     </autor>
     <autor>
         <id>2</id>
         <nombre>arewr</nombre>
+    </autor>
+    <autor>
+        <id>55</id>
+        <nombre/>
     </autor>
 </Autor>

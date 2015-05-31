@@ -37,6 +37,7 @@ public class DialogoCliente  extends JDialog{
 	private JButton btnCancelar;
 	private JButton btnCargarImagen;
 	private JPasswordField jPasswordField;
+	private JLabel lbPass;
 	
 	public DialogoCliente(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
@@ -63,6 +64,9 @@ public class DialogoCliente  extends JDialog{
 
 		lbImagen = new JLabel(ConstantesGUI.T_AGREGAR_IMAGEN);
 		lbImagen.setBounds(30, 110, 100, 100);
+		
+		lbPass = new JLabel(ConstantesGUI.T_AGREGAR_PASS);
+		lbPass.setBounds(30, 200, 150, 30);
 
 		txtImage = new JTextField();
 		txtImage.setBounds(150, 140, 150, 30);
@@ -81,7 +85,7 @@ public class DialogoCliente  extends JDialog{
 
 		btnCargarImagen = new JButton(ConstantesGUI.T_AGREGAR_IMAGEN);
 		btnCargarImagen.addActionListener(controlador);
-		btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN);
+		btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN_CLIENTE);
 		btnCargarImagen.setBounds(350,140, 150, 30);
 		
 		jPasswordField = new JPasswordField();
@@ -97,12 +101,13 @@ public class DialogoCliente  extends JDialog{
 		add(btnCancelar);
 		add(btnCargarImagen);
 		add(jPasswordField);
+		add(lbPass);
 	}
 	public Cliente crearCliente(){
 		char[] arrayC = jPasswordField.getPassword(); 
 		String pass = new String(arrayC); 
 		Cliente cliente = GestorCliente.crearCliente(txtNombre.getText(),
-				txtcredito.getText(),pass);
+				txtcredito.getText(),pass,txtImage.getText());
 		dispose();
 		eliminarDatosTableCliente();
 		System.out.println(cliente.getPassWord());

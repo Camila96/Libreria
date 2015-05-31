@@ -15,12 +15,14 @@ public class Cliente {
 	private ArrayList<Libro> listaLibro;
 	private boolean activo;
 	private String passWord;
+	private String image;
 
-	public Cliente(String nombre, double credito, String passWord) {
+	public Cliente(String nombre, double credito, String passWord,String image) {
 		this.nombre = nombre;
 		this.id = Util.asignarId("src/data/Archivo Id Clientes.txt");
 		this.credito = credito;
 		this.passWord = passWord;
+		this.image = image;
 	}
 
 	public String getNombre() {
@@ -82,4 +84,13 @@ public class Cliente {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import persistencia.XmlLibro;
+import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import modelos.util.Util;
@@ -68,7 +69,6 @@ public class GestorLibro {
 			libroViejo.setImage(listaCampos.get("DIRECCION"));;
 		}
 	}
-	
 	public ArrayList<Libro> getListaLibro() {
 		return listaLibro;
 	}

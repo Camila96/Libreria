@@ -81,7 +81,7 @@ public class VentanaPrincipal  extends JFrame{
 		add(new JScrollPane(tableLibro),BorderLayout.SOUTH);
 		add(jPanelImage,BorderLayout.EAST);
 
-		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito","Contraseña"}, 0);
+		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito","Contraseï¿½a"}, 0);
 		tableCliente = new JTable(modeloCliente);
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		tableCliente.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
@@ -234,8 +234,11 @@ public class VentanaPrincipal  extends JFrame{
 		return selectionLibro;
 	}
 	
-	public int filaSeleccionada(){
+	public int filaSeleccionadalibro(){
 		return tableLibro.getSelectedRow();
+	}
+	public int filaSeleccionadaCliente(){
+		return tableCliente.getSelectedRow();
 	}
 	public int retornarIdSeleccionAutor(){
 		return  selectionAutor;
