@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Admin Cantidad-Admins="">
+    <!--login access :v-->
+    <Admin>
+        <nombre>admin1</nombre>
+        <contrasena>admin1</contrasena>
+    </Admin>
+</Admin>
