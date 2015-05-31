@@ -9,16 +9,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
-import modelo.entidades.EnumGeneroLibro;
-import modelo.entidades.Libro;
 
 import org.jespxml.JespXML;
-import org.jespxml.excepciones.AtributoNotFoundException;
 import org.jespxml.excepciones.TagHijoNotFoundException;
 import org.jespxml.modelo.Atributo;
-import org.jespxml.modelo.Comentario;
 import org.jespxml.modelo.Encoding;
 import org.jespxml.modelo.Tag;
 import org.xml.sax.SAXException;
@@ -36,7 +31,6 @@ public class XmlCliente{
 	public static void EscribirXML(ArrayList<Cliente>  listaClientes, String ruta){
 		raiz = new Tag("Libreria");
 		raiz.addAtributo(new Atributo("Cantidad-Clientes", Integer.toString(listaClientes.size())));
-		raiz.addComentario(new Comentario("comentario :v"));
 		for (Cliente cliente : listaClientes) {
 			libro = new Tag("Cliente");
 			id = new Tag("id");
@@ -69,7 +63,7 @@ public class XmlCliente{
 	@SuppressWarnings("deprecation")
 	public static ArrayList<Cliente> leerXML(String ruta){
 		JespXML xml = new JespXML(ruta);
-		ArrayList<Cliente> lista = new ArrayList<>();
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
 		try {
 			Tag raiz = xml.leerXML();
 		
@@ -78,10 +72,11 @@ public class XmlCliente{
 				Tag nombre = cliente.getTagHijoByName("nombre");
 				Tag descripcion = cliente.getTagHijoByName("saldo");
 				Tag valor = cliente.getTagHijoByName("contrasena");
-								
-				lista.add(new  Cliente(nombre.getContenido(),
-						Double.parseDouble(descripcion.getContenido()),valor.getContenido()));
-							}
+				
+				Cliente c = new Cliente(nombre.getContenido(),
+						Double.parseDouble(descripcion.getContenido()),valor.getContenido()); 
+				lista.add(c);
+			}
 		} catch (ParserConfigurationException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (SAXException ex) {

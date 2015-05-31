@@ -1,6 +1,8 @@
 package modelo.entidades;
 
 import java.util.ArrayList;
+
+import modelos.util.Util;
 /**
  * @author Maria Camila Preciado Rojas y 
  * Angel Isidro Gutierrez Guerrero
@@ -10,17 +12,15 @@ public class Cliente {
 	private String nombre;
 	private int id;
 	private double credito;
-	private static int consecutivo;
 	private ArrayList<Libro> listaLibro;
 	private boolean activo;
 	private String passWord;
 
 	public Cliente(String nombre, double credito, String passWord) {
 		this.nombre = nombre;
-		this.id = consecutivo;
+		this.id = Util.asignarId("src/data/Archivo Id Clientes.txt");
 		this.credito = credito;
 		this.passWord = passWord;
-		consecutivo++;
 	}
 
 	public String getNombre() {

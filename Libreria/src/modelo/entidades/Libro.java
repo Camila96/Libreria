@@ -1,6 +1,8 @@
 package modelo.entidades;
 
 import java.io.Serializable;
+
+import modelos.util.Util;
 /**
  * @author Maria Camila Preciado Rojas y 
  * Angel Isidro Gutierrez Guerrero
@@ -19,12 +21,10 @@ public class Libro implements Serializable{
 	private String image;
 	private String autor;
 	private int id;
-	private static int consecutivo;
-
 
 	public Libro(String nombre, String descripcion, double valor, String genero,String autor,
 			String copiasVendidas, String image) {
-		this.id = consecutivo;
+		this.id = Util.asignarId("src/data/Archivo Id Libros.txt");
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.genero = genero;
@@ -32,7 +32,6 @@ public class Libro implements Serializable{
 		this.valor = valor;
 		this.image = image;
 		this.autor = autor;
-		consecutivo++;
 	}	
 
 	public String getNombre() {

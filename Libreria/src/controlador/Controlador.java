@@ -98,7 +98,6 @@ public class Controlador implements ActionListener {
 		dialogoPrincipal = new JDialogoPrincipal(this);
 		dialogoPrincipal.setVisible(true);
 		dialogoIniciarSesion = new DialogoIniciarSesion(dialogoPrincipal, this);
-		//		ventanaPrincipal.setVisible(true);
 		gestorCliente.setListaCliente(XmlCliente.leerXML("src/data/arrayClientes.xml"));
 	}
 

@@ -67,10 +67,10 @@ public class XmlAutor {
 				Tag id = libro.getTagHijoByName("id");
 				Tag nombre = libro.getTagHijoByName("nombre");
 				
-				System.out.println("id: "+id.getContenido());
-				System.out.println("nombre: "+nombre.getContenido());
-				System.out.println("------------------------------------ ");
-				lista.add(new  Autor(nombre.getContenido()));
+				Autor aut = new Autor(nombre.getContenido());
+				aut.setId(Integer.parseInt(id.getContenido()));
+				
+				lista.add(aut);
 			}
 		} catch (ParserConfigurationException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);

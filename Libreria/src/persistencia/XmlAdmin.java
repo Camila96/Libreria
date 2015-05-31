@@ -10,8 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import modelo.entidades.Cliente;
-
 import org.jespxml.JespXML;
 import org.jespxml.excepciones.TagHijoNotFoundException;
 import org.jespxml.modelo.Atributo;
@@ -25,9 +23,7 @@ public class XmlAdmin{
 
 	private static Tag raiz;
 	private static Tag libro;
-	private static Tag id;
 	private static Tag nombre;
-	private static Tag saldo;
 	private static Tag contrasena;
 	
 	public static void EscribirXML(String admin,String pass, String ruta){

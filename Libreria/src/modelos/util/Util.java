@@ -7,12 +7,14 @@ import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 
+import persistencia.Texto;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 /**
  * @author Maria Camila Preciado Rojas y 
- * Angel Isidro Gutierrez Guerrero
+ * Angel Isidro Gutierrez Guerrero y 
+ * Johnn gutierrez
  */
 public class Util {
 
@@ -65,5 +67,25 @@ public class Util {
 		} catch (IOException e) {
 			System.out.println("error al guardar la imagen");
 		}
+	}
+	
+	public static int asignarId(String dir){
+		Texto.CrearArchivoTexto(dir);
+		Texto.abrir('r');
+		int numero = 0;
+		numero = cantidadDatos() + 1;
+		Texto.cerrar();
+		Texto.abrir('t');
+		Texto.grabar(Integer.toString(numero));
+		Texto.cerrar();
+		return numero;
+	}
+
+	public static int cantidadDatos(){
+		int cont = 0;
+		while (Texto.leer() != null) {
+			cont++;
+		}
+		return cont;
 	}
 }
