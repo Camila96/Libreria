@@ -10,7 +10,6 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -26,7 +25,7 @@ import controlador.Controlador;
  * Angel Isidro Gutierrez Guerrero
  */
 public class DialogoEditar extends JDialog {
-
+	private static final long serialVersionUID = 1L;
 	private JLabel lbNombre;
 	private JLabel lbDescripcion;
 	private JLabel lbGenero;
@@ -52,7 +51,6 @@ public class DialogoEditar extends JDialog {
 	private JButton btnCancelar;
 	private JButton btnCargarImage;
 	private JLabel lbImageFondo;
-	private VentanaPrincipal ventanaPrincipal;
 	private Libro libro;
 
 	public DialogoEditar(VentanaPrincipal ventanaPrincipal, Controlador controlador) {

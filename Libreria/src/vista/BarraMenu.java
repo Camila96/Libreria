@@ -33,7 +33,6 @@ public class BarraMenu extends JMenuBar{
 	private JMenu menuImportarArchivo;
 	private JMenu menuExportarArchivo;
 	private JMenuItem itemImXmlLibro;
-	private JMenuItem itemImJsonLibro;
 	private JMenuItem itemExXmlLibro;
 	private JMenuItem itemImXmlAutor;
 	private JMenuItem itemExXmlAutor;

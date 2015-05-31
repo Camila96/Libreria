@@ -1,30 +1,20 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.File;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
-import persistencia.XmlLibro;
 import modelo.dao.GestorCliente;
-import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
-import modelo.entidades.EnumGeneroLibro;
-import modelo.entidades.Libro;
 import controlador.Controlador;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -37,26 +27,20 @@ public class DialogoCliente  extends JDialog{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel lbNombre;
-	private JLabel lbId;
 	private JLabel lbcredito;
 	private JLabel lbImagen;
 	ImageIcon image;
 	private JTextField txtNombre;
-	private JTextField txtId;
 	private JTextField txtcredito;
 	private JTextField txtImage;
 	private JButton btnAgregar;
 	private JButton btnCancelar;
 	private JButton btnCargarImagen;
-	private VentanaPrincipal ventanaPrincipal;
-	private Controlador controlador;
-	private JCheckBox check;
 	private JPasswordField jPasswordField;
 	
 	public DialogoCliente(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
 		setTitle("Agregar Cliente");	
-		this.controlador = controlador;
 		UIManager.put("Button.background", Color.lightGray);
 		setLayout(null);
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
@@ -149,8 +133,4 @@ public class DialogoCliente  extends JDialog{
 			return null;
 		}
 	}
-//	public static void main(String[] args) {
-//		DialogoCliente d = new DialogoCliente(null, null);
-//		d.setVisible(true);
-//	}
 }

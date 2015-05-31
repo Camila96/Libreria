@@ -11,7 +11,6 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import modelo.entidades.Autor;
-import modelo.entidades.Libro;
 
 import org.jespxml.JespXML;
 import org.jespxml.excepciones.TagHijoNotFoundException;

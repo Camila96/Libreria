@@ -5,6 +5,7 @@ package modelo.excepciones;
  */
 public class ExcepcionAutorNoEncontrado  extends Exception{
 
+	private static final long serialVersionUID = 1L;
 	public static final String ERROR_AUTOR_NO_ENCONTRADO ="El autor buscado no ha sido encontrado";
 
 

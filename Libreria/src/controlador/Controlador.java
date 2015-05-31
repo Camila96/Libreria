@@ -2,12 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import java.util.Vector;
-
-import javax.swing.JCheckBox;
 
 import persistencia.XmlAutor;
 import persistencia.XmlCliente;
@@ -18,11 +13,9 @@ import modelo.dao.GestorLibro;
 import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
-import modelo.entidades.TipoBusqueda;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
-import vista.BarraMenu;
 import vista.ConstantesGUI;
 import vista.DialogoAutor;
 import vista.DialogoCliente;
@@ -73,17 +66,12 @@ public class Controlador implements ActionListener {
 	public static final String A_CANCELAR_INCIO_SESION = "cancelar incio de sesion";
 	public static final String A_INICIAR_SESION = "Iniciar sesion";
 	public static final String A_BUSCAR = "buscar";
-	private int j;
-	private JCheckBox posicion ;
-	private BarraMenu barraMenu;
-	private ConstantesGUI constantesGUI;
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaUsuario ventanaUsuario;
 	private GestorAutor gestorAutor;
 	private GestorCliente gestorCliente;
 	private GestorLibro gestorLibro;
 	private Libro libro;
-	private Autor autor;
 	private Cliente cliente;
 	private DialogoLibro dialogoLibro;
 	private DialogoEditar dialogoEditar;
@@ -209,11 +197,11 @@ public class Controlador implements ActionListener {
 			break;
 
 		case ConstantesGUI.C_JM_IDIOMA_INGLES:
-			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ENG);
+			ventanaPrincipal.getBarraMenu().cargarPropiedades(ConstantesGUI.RUTA_ARCHIVO_ENG);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();
 			break;
 		case ConstantesGUI.C_JM_IDIOMA_ESPANIOL:
-			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ESP);
+			ventanaPrincipal.getBarraMenu().cargarPropiedades(ConstantesGUI.RUTA_ARCHIVO_ESP);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();	
 			break;
 		case A_AGREGAR_ADMINISTRADOR:

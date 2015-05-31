@@ -3,9 +3,7 @@ package modelo.dao;
 import java.util.ArrayList;
 
 import persistencia.XmlLibro;
-import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
-import modelo.excepciones.ExcepcionAutorNoEncontrado;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelos.util.Util;
 /**

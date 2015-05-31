@@ -13,9 +13,7 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
 import modelo.dao.GestorAutor;
-import modelo.dao.GestorCliente;
 import modelo.entidades.Autor;
-import modelo.entidades.Cliente;
 import controlador.Controlador;
 
 public class DialogoAutor extends JDialog{
@@ -31,7 +29,6 @@ public class DialogoAutor extends JDialog{
 	private JButton btnCargarImagen;
 	private JLabel lbImagen;
 	private JLabel lbImageFondo;
-	private VentanaPrincipal ventanaPrincipal;
 
 	public DialogoAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		

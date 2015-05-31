@@ -20,7 +20,6 @@ public class Autor implements Serializable {
 	public Autor(String nombre) {
 		this.id = consecutivo;
 		this.nombre = nombre;
-		this.image = image;
 		consecutivo++;
 	}
 	public String getNombre() {

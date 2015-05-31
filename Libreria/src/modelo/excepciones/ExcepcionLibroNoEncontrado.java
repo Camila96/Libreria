@@ -5,6 +5,7 @@ package modelo.excepciones;
  */
 public class ExcepcionLibroNoEncontrado extends Exception {
 
+	private static final long serialVersionUID = 1L;
 	public static final String ERROR_LIBRO_NO_ENCONTRADO ="El libro buscado no ha sido encontrado";
 
 	public ExcepcionLibroNoEncontrado(int id) {

@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.Color;
 
-import javax.swing.Icon;
 /**
  * @author Maria Camila Preciado Rojas y 
  * Angel Isidro Gutierrez Guerrero

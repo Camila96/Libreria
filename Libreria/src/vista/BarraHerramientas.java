@@ -43,8 +43,7 @@ public class BarraHerramientas extends JToolBar {
 	private ButtonGroup btnGroupAutor;
 
 	private JButton btnBuscar;
-	private JComboBox cBox;
-
+	private JComboBox<TipoBusqueda> cBox;
 
 	public BarraHerramientas(Controlador controlador) {
 		setEnabled(false);
@@ -279,7 +278,7 @@ public class BarraHerramientas extends JToolBar {
 		this.btnGroupAutor = btnGroupAutor;
 	}
 
-	public JComboBox getcBox() {
+	public JComboBox<TipoBusqueda> getcBox() {
 		return cBox;
 	}
 

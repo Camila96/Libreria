@@ -9,13 +9,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import modelo.entidades.Autor;
 import modelo.entidades.Cliente;
-import modelo.entidades.EnumGeneroLibro;
-import modelo.entidades.Libro;
 
 import org.jespxml.JespXML;
-import org.jespxml.excepciones.AtributoNotFoundException;
 import org.jespxml.excepciones.TagHijoNotFoundException;
 import org.jespxml.modelo.Atributo;
 import org.jespxml.modelo.Comentario;
@@ -79,9 +75,11 @@ public class XmlCliente{
 				Tag nombre = cliente.getTagHijoByName("nombre");
 				Tag descripcion = cliente.getTagHijoByName("saldo");
 				Tag valor = cliente.getTagHijoByName("contrasena");
-								
-				lista.add(new  Cliente(nombre.getContenido(),
-						Double.parseDouble(descripcion.getContenido()),valor.getContenido()));
+					
+				Cliente cl = new  Cliente(nombre.getContenido(),
+						Double.parseDouble(descripcion.getContenido()),valor.getContenido());
+				cl.setId(Integer.parseInt(id.getContenido()));
+				lista.add(cl);
 							}
 		} catch (ParserConfigurationException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);

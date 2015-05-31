@@ -14,11 +14,11 @@ import javax.swing.filechooser.FileSystemView;
 
 import modelo.dao.GestorAutor;
 import modelo.entidades.Autor;
-import modelo.entidades.Libro;
 import controlador.Controlador;
 
 public class DialogoEditarAutor extends JDialog{
 
+	private static final long serialVersionUID = 1L;
 	private JLabel lbNombre;
 	private ImageIcon image;
 
@@ -30,7 +30,6 @@ public class DialogoEditarAutor extends JDialog{
 	private JButton btnCargarImagen;
 	private JLabel lbImagen;
 	private JLabel lbImageFondo;
-	private VentanaPrincipal ventanaPrincipal;
 
 	public DialogoEditarAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);

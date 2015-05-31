@@ -8,10 +8,6 @@ import modelo.entidades.Libro;
  */
 public class LibreriaTienda {
 
-	private GestorAutor gestorAutor;
-	private GestorCliente gestorCliente;
-	private GestorLibro gestorLibro;
-
 	public LibreriaTienda() {
 
 	}

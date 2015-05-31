@@ -2,8 +2,6 @@ package vista;
 
 import java.awt.Color;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,7 +15,6 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
 import modelo.dao.GestorLibro;
-import modelo.entidades.Autor;
 import modelo.entidades.EnumGeneroLibro;
 import modelo.entidades.Libro;
 import modelos.util.Util;

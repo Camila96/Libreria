@@ -6,7 +6,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
@@ -16,7 +15,7 @@ import controlador.Controlador;
 public class BarraHerramientasUsuario extends JToolBar{
 
 	private static final long serialVersionUID = 1L;
-	private JComboBox cBox;
+	private JComboBox<TipoBusqueda> cBox;
 	private JButton btnBuscarLibro;
 	private JButton btnBuscarCliente;
 	private JButton btnBuscarAutor;

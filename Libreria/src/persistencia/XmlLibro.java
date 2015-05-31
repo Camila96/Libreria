@@ -10,12 +10,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import modelo.entidades.Autor;
-import modelo.entidades.EnumGeneroLibro;
 import modelo.entidades.Libro;
 
 import org.jespxml.JespXML;
-import org.jespxml.excepciones.AtributoNotFoundException;
 import org.jespxml.excepciones.TagHijoNotFoundException;
 import org.jespxml.modelo.Atributo;
 import org.jespxml.modelo.Comentario;
@@ -100,12 +97,14 @@ public class XmlLibro{
 				Tag autor = libro.getTagHijoByName("autor");
 				Tag copias = libro.getTagHijoByName("copias");
 				Tag pathImagenTag = libro.getTagHijoByName("rutaImagen");
-				
-				lista.add(new  Libro(nombre.getContenido(),descripcion.getContenido(),
+				Libro libr = new  Libro(nombre.getContenido(),descripcion.getContenido(),
 						Double.parseDouble(valor.getContenido()),genero.getContenido(),
 						autor.getContenido(),
 						copias.getContenido(),
-						pathImagenTag.getContenido()));
+						pathImagenTag.getContenido());
+				libr.setId(Integer.parseInt(id.getContenido()));
+				
+				lista.add(libr);
 			}
 		} catch (ParserConfigurationException ex) {
 			Logger.getLogger(XmlLibro.class.getName()).log(Level.SEVERE, null, ex);
