@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Libreria Cantidad-Clientes="1">
+    <!--comentario :v-->
+    <Cliente>
+        <id>1</id>
+        <nombre>hola</nombre>
+        <saldo>2.1313123E7</saldo>
+        <contrasena>hola</contrasena>
+    </Cliente>
+</Libreria>

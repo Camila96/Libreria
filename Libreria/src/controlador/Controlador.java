@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import persistencia.XmlAutor;
 import persistencia.XmlCliente;
 import persistencia.XmlLibro;
@@ -97,6 +99,7 @@ public class Controlador implements ActionListener {
 		dialogoPrincipal.setVisible(true);
 		dialogoIniciarSesion = new DialogoIniciarSesion(dialogoPrincipal, this);
 		//		ventanaPrincipal.setVisible(true);
+		gestorCliente.setListaCliente(XmlCliente.leerXML("src/data/arrayClientes.xml"));
 	}
 
 	@Override
@@ -227,7 +230,7 @@ public class Controlador implements ActionListener {
 			dialogoCliente.dispose();
 			break;
 		case A_INICIAR_SESION:
-			ventanaUsuario.setVisible(true);
+			login();
 			break;
 		default:
 			break;
@@ -297,17 +300,19 @@ public class Controlador implements ActionListener {
 	public void borrarLibro() throws ExcepcionLibroNoEncontrado{
 		int id = ventanaPrincipal.eliminarLibro();
 		gestorLibro.eliminarLibro(gestorLibro.buscarLibro(id));
+		XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arraylibros.xml");
 	}
 
 	public void borrarAutor() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarAutor();
 		gestorAutor.eliminarAutor(gestorAutor.buscarAutor(id));
-		XmlCliente.EscribirXML(gestorCliente.getListaCliente(), "src/data/arraylibros.xml");
+		XmlAutor.EscribirXML(gestorAutor.getListaAutor(), "src/data/arrayAutores.xml");
 	}
 	public void borrarCliente() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarCliente();
 		try {
 			gestorCliente.eliminarCliente(gestorCliente.buscarCliente(id));
+			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), "src/data/arrayClientes.xml");
 		} catch (ExcepcionClienteNoEncontrado e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -318,6 +323,7 @@ public class Controlador implements ActionListener {
 		try {
 			Libro libro = dialogoEditar.editar();
 			ventanaPrincipal.actualizarVentana(libro, ventanaPrincipal.filaSeleccionada());
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arraylibros.xml");
 		} catch (Exception e) {
 		}
 	}
@@ -326,6 +332,7 @@ public class Controlador implements ActionListener {
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
 			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
+			XmlAutor.EscribirXML(gestorAutor.getListaAutor(), "src/data/arrayAutores.xml");
 			//			agrgegarAutoraChecKBox();
 		} catch (Exception e) {
 		}
@@ -464,6 +471,19 @@ public class Controlador implements ActionListener {
 
 	public ArrayList<Libro> getListaLibros() {
 		return gestorLibro.getListaLibro();
+	}
+	public void login(){
+		char[] arrayC = dialogoIniciarSesion.getTxtContrasena().getPassword(); 
+		String pass = new String(arrayC); 
+		String name = dialogoIniciarSesion.getTxtNombre().getText();
+		for (int i = 0; i < gestorCliente.getListaCliente().size(); i++) {
+			if (name.equals(gestorCliente.getListaCliente().get(0).getNombre()) && pass.equals(gestorCliente.getListaCliente().get(0).getPassWord())) {
+
+				ventanaUsuario.setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(dialogoIniciarSesion, "Error de Acceso,intentelo de nuevo");
+			}
+		}
 	}
 
 

@@ -61,5 +61,22 @@ public class DialogoIniciarSesion extends JDialog{
 		add(btnIniciar , gb);
 	}
 
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public JPasswordField getTxtContrasena() {
+		return txtContrasena;
+	}
+
+	public void setTxtContrasena(JPasswordField txtContrasena) {
+		this.txtContrasena = txtContrasena;
+	}
+
+
 
 }
