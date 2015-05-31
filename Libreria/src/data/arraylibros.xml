@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Libro="13">
+<Libreria Cantidad-Libro="14">
     <!--comentario :v-->
     <libro>
         <id>0</id>
@@ -130,5 +130,15 @@
         <autor>32131312323123</autor>
         <copias>213123</copias>
         <rutaImagen>/img/imgLibros/21321312.jpg</rutaImagen>
+    </libro>
+    <libro>
+        <id>13</id>
+        <nombre>wewqeqe</nombre>
+        <descripcion>213123123</descripcion>
+        <valor>2321312.0</valor>
+        <genero>Romance</genero>
+        <autor>23213312</autor>
+        <copias>321312</copias>
+        <rutaImagen>/img/imgLibros/wewqeqe13.jpg</rutaImagen>
     </libro>
 </Libreria>

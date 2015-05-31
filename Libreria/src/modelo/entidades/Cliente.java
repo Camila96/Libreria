@@ -13,11 +13,13 @@ public class Cliente {
 	private static int consecutivo;
 	private ArrayList<Libro> listaLibro;
 	private boolean activo;
+	private String passWord;
 
-	public Cliente(String nombre, double credito) {
+	public Cliente(String nombre, double credito, String passWord) {
 		this.nombre = nombre;
 		this.id = consecutivo;
 		this.credito = credito;
+		this.passWord = passWord;
 		consecutivo++;
 	}
 
@@ -56,6 +58,15 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return nombre + ","+ credito;
+	}
+	
+	
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 
 	/**

@@ -14,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
@@ -50,6 +51,7 @@ public class DialogoCliente  extends JDialog{
 	private VentanaPrincipal ventanaPrincipal;
 	private Controlador controlador;
 	private JCheckBox check;
+	private JPasswordField jPasswordField;
 	
 	public DialogoCliente(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
@@ -97,6 +99,9 @@ public class DialogoCliente  extends JDialog{
 		btnCargarImagen.addActionListener(controlador);
 		btnCargarImagen.setActionCommand(Controlador.A_CREAR_IMAGEN);
 		btnCargarImagen.setBounds(350,140, 150, 30);
+		
+		jPasswordField = new JPasswordField();
+		jPasswordField.setBounds(150,200, 150, 30);
 
 		add(lbNombre);
 		add(txtNombre);
@@ -107,18 +112,23 @@ public class DialogoCliente  extends JDialog{
 		add(btnAgregar);
 		add(btnCancelar);
 		add(btnCargarImagen);
+		add(jPasswordField);
 	}
 	public Cliente crearCliente(){
+		char[] arrayC = jPasswordField.getPassword(); 
+		String pass = new String(arrayC); 
 		Cliente cliente = GestorCliente.crearCliente(txtNombre.getText(),
-				txtcredito.getText());
+				txtcredito.getText(),pass);
 		dispose();
 		eliminarDatosTableCliente();
+		System.out.println(cliente.getPassWord());
 		return cliente;
 	}
 
 	public void eliminarDatosTableCliente(){
 		txtNombre.setText("");
 		txtcredito.setText("");
+		jPasswordField.setText("");
 	}
 
 	public ImageIcon importarImagen(){

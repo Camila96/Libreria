@@ -46,9 +46,9 @@ public class GestorCliente {
 		throw new ExcepcionClienteNoEncontrado(nombre);
 	}
 
-	public static Cliente crearCliente(String nombre, String valor){
+	public static Cliente crearCliente(String nombre, String valor, String passWord){
 		if (Util.validarValor(valor)) {
-			return new Cliente(nombre, Double.parseDouble(valor));	
+			return new Cliente(nombre, Double.parseDouble(valor),passWord);	
 		}
 		return null;
 	}

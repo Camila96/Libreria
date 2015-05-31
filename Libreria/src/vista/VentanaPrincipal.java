@@ -81,7 +81,7 @@ public class VentanaPrincipal  extends JFrame{
 		add(new JScrollPane(tableLibro),BorderLayout.SOUTH);
 		add(jPanelImage,BorderLayout.EAST);
 
-		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito"}, 0);
+		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito","Contraseña"}, 0);
 		tableCliente = new JTable(modeloCliente);
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		tableCliente.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			
@@ -284,6 +284,7 @@ public class VentanaPrincipal  extends JFrame{
 		modeloCliente.setValueAt(cliente.getId(),fila,0);
 		modeloCliente.setValueAt(cliente.getNombre(),fila, 1);
 		modeloCliente.setValueAt(cliente.getCredito(),fila, 2);
+		modeloCliente.setValueAt(cliente.getPassWord(), fila, 3);
 		modeloCliente.fireTableDataChanged();
 	}
 	

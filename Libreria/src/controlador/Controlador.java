@@ -9,15 +9,8 @@ import java.util.Vector;
 
 import javax.swing.JCheckBox;
 
-import persistencia.ArchivoBinarioAutor;
-import persistencia.ArchivoBinarioCliente;
-import persistencia.ArchivoBinarioLibro;
-import persistencia.ArchivoJsonCliente;
-import persistencia.ArchivoJsonLibro;
-import persistencia.ArchivoPlanoCliente;
-import persistencia.ArchivoPlanoLibro;
-import persistencia.ArchivoXmlCliente;
 import persistencia.XmlAutor;
+import persistencia.XmlCliente;
 import persistencia.XmlLibro;
 import modelo.dao.GestorAutor;
 import modelo.dao.GestorCliente;
@@ -61,37 +54,18 @@ public class Controlador implements ActionListener {
 	public static final String A_MOSTRAR_DIALOGO_EDITAR_LIBRO="Editar Dialogo";
 	public static final String A_MOSTRAR_CANCELAR_CLIENTE = "Mostrar agregar Cliente";
 	public static final String A_MOSTRAR_AGREGAR_CLIENTE = "Mostrar Agregar Cliente";
-	public static final String A_IMPORTAR_ARCHIVO_BINARIO_LIBRO = "importar binario";
-	public static final String A_IMPORTAR_ARCHIVO_PLANO_LIBRO = "Importar Plano";
 	public static final String A_IMPORTAR_ARCHIVO_XML_LIBRO = "Importar Xml";
-	public static final String A_IMPORTAR_ARCHIVO_JSON_LIBRO = "Importar Json";
-	public static final String A_EXPORTAR_ARCHIVO_BINARIO_LIBRO = "Exportar Binario";
-	public static final String A_EXPORTAR_ARCHIVO_PLANO_LIBRO = "Exportar Plano";
 	public static final String A_EXPORTAR_ARCHIVO_XML_LIBRO = "exportar xml";
-	public static final String A_EXPORTAR_ARCHIVO_JSON_LIBRO = "exportar json";
 	public static final String A_AGREGAR_ADMINISTRADOR = "Administrador";
 	public static final String A_MOSTRAR_USUARIO = "Usuario";
 	public static final String A_MOSTRAR_AGREGAR_AUTOR = "mostrar autor";
 	public static final String A_MOSTRAR_CANCELAR_AUTOR = "cancelar autor";
 	public  static final String A_MOSTRAR_DIALOGO_EDITAR_AUTOR = "mostar editar autor";
 	public static final String A_CREAR_IMAGEN_AUTOR ="Crear Autor";
-	public static final String A_IMPORTAR_ARCHIVO_BINARIO_AUTOR = "binario autor";
-	public static final String A_IMPORTAR_ARCHIVO_PLANO_AUTOR = "plano autor";
 	public static final String A_IMPORTAR_ARCHIVO_XML_AUTOR = "xml autor";
-	public static final String A_IMPORTAR_ARCHIVO_JSON_AUTOR = "json autor";
-	public static final String A_EXPORTAR_ARCHIVO_BINARIO_AUTOR = "ex binario autor";
-	public static final String A_EXPORTAR_ARCHIVO_PLANO_AUTOR = "ex plano autor";
 	public static final String A_EXPORTAR_ARCHIVO_XML_AUTOR = "ex xml autor";
-	public static final String A_EXPORTAR_ARCHIVO_JSON_AUTOR = "ex json autor";
-
-	public static final String A_IMPORTAR_ARCHIVO_BINARIO_CLIENTE = "Binario Cliente";
-	public static final String A_IMPORTAR_ARCHIVO_PLANO_CLIENTE = "Plano Cliente";
 	public static final String A_IMPORTAR_ARCHIVO_XML_CLIENTE = "Xml Cliente";
-	public static final String A_IMPORTAR_ARCHIVO_JSON_CLIENTE = "Json Cliente";
-	public static final String A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE = "Ex Binario Cliente";
-	public static final String A_EXPORTAR_ARCHIVO_PLANO_CLIENTE = "Ex Plano Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
-	public static final String A_EXPORTAR_ARCHIVO_JSON_CLIENTE = "Ex Json Cliente";
 	public  static final String GUARDAR_ARRAY_LIBROS = "guardar xml";
 	public static final String A_MOSTRAR_COLECCION = "mostrar coleccion Usuario";
 	public static final String A_MOSTRAR_LIBROS_A_COMPRAR = "mostrar libros seleccionados para la compra";
@@ -242,24 +216,6 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.getBarraMenu().cargarPropiedades(constantesGUI.RUTA_ARCHIVO_ESP);
 			ventanaPrincipal.getBarraMenu().actualizarProperties();	
 			break;
-		case A_IMPORTAR_ARCHIVO_BINARIO_LIBRO:
-			agregarLibro(ArchivoBinarioLibro.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_BINARIO_LIBRO:
-			ArchivoBinarioLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
-			break;
-		case A_IMPORTAR_ARCHIVO_PLANO_LIBRO:
-			agregarLibro(ArchivoPlanoLibro.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_PLANO_LIBRO:
-			ArchivoPlanoLibro.guardarArchivo(buscarId(ventanaPrincipal.retornarIdSeleccion()));
-			break;
-		case A_IMPORTAR_ARCHIVO_JSON_LIBRO:
-			agregarLibro(ArchivoJsonLibro.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_JSON_LIBRO:
-			ArchivoJsonLibro.guardarArchivoJson(buscarId(ventanaPrincipal.retornarIdSeleccion()));
-			break;
 		case A_AGREGAR_ADMINISTRADOR:
 			ventanaPrincipal.setVisible(true);
 
@@ -267,53 +223,11 @@ public class Controlador implements ActionListener {
 		case A_MOSTRAR_USUARIO:
 			dialogoIniciarSesion.setVisible(true);
 			break;
-		case A_IMPORTAR_ARCHIVO_BINARIO_AUTOR:
-			agregarAutor(ArchivoBinarioAutor.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_BINARIO_AUTOR:
-			ArchivoBinarioAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			break;
-			//		case A_IMPORTAR_ARCHIVO_PLANO_AUTOR:
-			//			agregarAutor(ArchivoPlanoAutor.abrirArchivo());
-			//			break;
-			//		case A_EXPORTAR_ARCHIVO_PLANO_AUTOR:
-			//			ArchivoPlanoAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			//			break;
-			//		case A_IMPORTAR_ARCHIVO_XML_AUTOR:
-			//			agregarAutor(XmlAutor.l);
-			//			break;
-			//		case A_EXPORTAR_ARCHIVO_XML_AUTOR:
-			//			ArchivoXmlAutor.guardarArchivo(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			//			break;
-			//		case A_IMPORTAR_ARCHIVO_JSON_AUTOR:
-			//			agregarAutor(ArchivoJsonAutor.abrirArchivo());
-			//			break;
-			//		case A_EXPORTAR_ARCHIVO_JSON_AUTOR:
-			//			ArchivoJsonAutor.guardarArchivoJson(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			//			break;
-		case A_EXPORTAR_ARCHIVO_BINARIO_CLIENTE:
-			ArchivoBinarioCliente.guardarArchivo(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
-			break;
-		case A_IMPORTAR_ARCHIVO_BINARIO_CLIENTE:
-			agregarCliente(ArchivoBinarioCliente.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_PLANO_CLIENTE:
-			ArchivoPlanoCliente.guardarArchivo(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
-			break;
-		case A_IMPORTAR_ARCHIVO_PLANO_CLIENTE:
-			agregarCliente(ArchivoPlanoCliente.abrirArchivo());
-			break;
 		case A_EXPORTAR_ARCHIVO_XML_CLIENTE:
-			ArchivoXmlCliente.guardarXml(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
+			XmlLibro.EscribirXML(gestorLibro.getListaLibro(), "src/data/arrayClientes.xml");
 			break;
 		case A_IMPORTAR_ARCHIVO_XML_CLIENTE:
-			agregarCliente(ArchivoXmlCliente.abrirArchivo());
-			break;
-		case A_EXPORTAR_ARCHIVO_JSON_CLIENTE:
-			ArchivoJsonCliente.guardarArchivoJson(buscarIdCliente(ventanaPrincipal.retornarIdSeleccionCliente()));
-			break;
-		case A_IMPORTAR_ARCHIVO_JSON_CLIENTE:
-			agregarCliente(ArchivoJsonCliente.abrirArchivo());
+			XmlLibro.leerXML("src/data/arraylibros.xml");
 			break;
 		case A_MOSTRAR_COLECCION:
 			mostrarColeccionCliente();
@@ -358,6 +272,7 @@ public class Controlador implements ActionListener {
 		if (cliente != null){
 			gestorCliente.agregarCliente(cliente);
 			ventanaPrincipal.agregarCliente(cliente);
+			XmlCliente.EscribirXML(gestorCliente.getListaCliente(), "src/data/arraylibros.xml");
 		}
 	}
 
@@ -399,6 +314,7 @@ public class Controlador implements ActionListener {
 	public void borrarAutor() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarAutor();
 		gestorAutor.eliminarAutor(gestorAutor.buscarAutor(id));
+		XmlCliente.EscribirXML(gestorCliente.getListaCliente(), "src/data/arraylibros.xml");
 	}
 	public void borrarCliente() throws ExcepcionAutorNoEncontrado{
 		int id = ventanaPrincipal.eliminarCliente();

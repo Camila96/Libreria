@@ -41,7 +41,7 @@ public class Util {
 
 	public static String[] clienteAVector(Cliente cliente){
 		return new String[]{Integer.toString(cliente.getId()),cliente.getNombre(),
-				Double.toString(cliente.getCredito())};
+				Double.toString(cliente.getCredito()),cliente.getPassWord()};
 	}
 	
 	public static String[] autorAVector(Autor autor){
