@@ -423,7 +423,7 @@ public class Controlador implements ActionListener {
 	public void editarAutor(){
 		try {
 			dialogoEditarAutor.editarAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()));
-			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.retornarIdSeleccionAutor());
+			ventanaPrincipal.actualizarVentanaAutor(buscarIdAutor(ventanaPrincipal.retornarIdSeleccionAutor()), ventanaPrincipal.filaSeleccionadaAutor());
 			XmlAutor.EscribirXML(gestorAutor.getListaAutor(), RUTA_AUTOR);
 			//			agrgegarAutoraChecKBox();
 		} catch (Exception e) {

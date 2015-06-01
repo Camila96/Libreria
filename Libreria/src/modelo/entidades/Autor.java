@@ -18,9 +18,10 @@ public class Autor implements Serializable {
 	private int id;
 	private String image;
 
-	public Autor(String nombre) {
+	public Autor(String nombre,String imagen) {
 		this.id = Util.asignarId("src/data/Archivo Id Autor.txt");
 		this.nombre = nombre;
+		this.image = imagen;
 	}
 	public String getNombre() {
 		return nombre;
@@ -34,7 +35,6 @@ public class Autor implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getImage() {
 		return image;
 	}

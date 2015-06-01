@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Clientes="5">
+<Libreria Cantidad-Clientes="4">
     <Cliente>
-        <id>507</id>
+        <id>573</id>
         <nombre>holasas</nombre>
         <saldo>213123.0</saldo>
         <contrasena>hola</contrasena>
         <imagen/>
     </Cliente>
     <Cliente>
-        <id>508</id>
+        <id>574</id>
         <nombre>duh</nombre>
         <saldo>3213.0</saldo>
         <contrasena>lol</contrasena>
         <imagen>/images/imgCliente/duh166.jpg</imagen>
     </Cliente>
     <Cliente>
-        <id>509</id>
-        <nombre>hola</nombre>
+        <id>575</id>
+        <nombre>holasda</nombre>
         <saldo>3213123.0</saldo>
+        <contrasena/>
+        <imagen>/home/stefa/Escritorio/11061236_819246638143766_5845392720150265193_n.jpg</imagen>
+    </Cliente>
+    <Cliente>
+        <id>576</id>
+        <nombre>hola</nombre>
+        <saldo>23432.0</saldo>
         <contrasena>hola</contrasena>
-        <imagen>/home/stefa/Escritorio/11061236_819246638143766_5845392720150265193_n.jpg</imagen>
-    </Cliente>
-    <Cliente>
-        <id>510</id>
-        <nombre>mariamulata</nombre>
-        <saldo>34324.0</saldo>
-        <contrasena>cosota</contrasena>
-        <imagen>/home/stefa/Escritorio/11061236_819246638143766_5845392720150265193_n.jpg</imagen>
-    </Cliente>
-    <Cliente>
-        <id>511</id>
-        <nombre>Johnn</nombre>
-        <saldo>8936807.0</saldo>
-        <contrasena>ja</contrasena>
-        <imagen>/home/johnn/Imágenes/hj.jpg</imagen>
+        <imagen>/home/stefa/Escritorio/11209717_496019307216084_1631747182816443858_n.jpg</imagen>
     </Cliente>
 </Libreria>

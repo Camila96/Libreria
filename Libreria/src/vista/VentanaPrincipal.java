@@ -109,7 +109,7 @@ public class VentanaPrincipal  extends JFrame{
 
 			public void valueChanged(ListSelectionEvent e) {		
 				if(modeloAutor.getRowCount() > 0){
-					jPanelImage.setRutaImagen(controlador.buscarIdAutor(retornarIdSeleccionAutor()).getImage());
+				//	jPanelImage.setRutaImagen(controlador.buscarIdAutor(retornarIdSeleccionAutor()).getImage());
 					jPanelImage.repaint();
 				}
 
@@ -241,6 +241,9 @@ public class VentanaPrincipal  extends JFrame{
 	public int filaSeleccionadaCliente(){
 		return tableCliente.getSelectedRow();
 	}
+	public int filaSeleccionadaAutor(){
+		return tableAutor.getSelectedRow();
+	}
 	public int retornarIdSeleccionAutor(){
 		return  selectionAutor;
 	}
@@ -260,23 +263,19 @@ public class VentanaPrincipal  extends JFrame{
 	}
 	
 	public int eliminarCliente(){
-
-		int auxiliar = Integer.parseInt((String) modeloCliente.getValueAt(tableCliente.getSelectedRow(), 0));
 		int ob = JOptionPane.showConfirmDialog(this, "SEGURO QUE QUIERE ELIMINAR?.");
 		if(ob == JOptionPane.YES_OPTION){
 			modeloCliente.removeRow(tableCliente.getSelectedRow());
 		}
-		return auxiliar;
+		return selectionCliente;
 	}
 
 	public int eliminarAutor(){
-
-		int auxiliar = Integer.parseInt((String) modeloAutor.getValueAt(tableAutor.getSelectedRow(), 0));
 		int ob = JOptionPane.showConfirmDialog(this, "SEGURO QUE QUIERE ELIMINAR?.");
 		if(ob == JOptionPane.YES_OPTION){
 			modeloAutor.removeRow(tableAutor.getSelectedRow());
 		}
-		return auxiliar;
+		return selectionAutor;
 	}
 
 	public void actualizarVentana(Libro libro, int fila){

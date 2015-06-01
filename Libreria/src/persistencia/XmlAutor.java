@@ -26,6 +26,7 @@ public class XmlAutor {
 	private static Tag autorE;
 	private static Tag id;
 	private static Tag nombre;
+	private static Tag imagen;
 
 	public static void EscribirXML(ArrayList<Autor>  listaAutor, String ruta){
 		raiz = new Tag("Autor");
@@ -35,11 +36,14 @@ public class XmlAutor {
 			autorE = new Tag("autor");
 			id = new Tag("id");
 			nombre = new Tag("nombre");
+			imagen = new Tag("imagen");
 			id.addContenido(Integer.toString(autor.getId()));
 			nombre.addContenido(autor.getNombre());
+			imagen.addContenido(autor.getImage());
 			raiz.addTagHijo(autorE);
 			autorE.addTagHijo(id);
 			autorE.addTagHijo(nombre);
+			autorE.addTagHijo(imagen);
 
 			JespXML xml = new JespXML(ruta, Encoding.UTF_8);
 			try {
@@ -61,15 +65,16 @@ public class XmlAutor {
 		ArrayList<Autor> lista = new ArrayList<>();
 		try {
 			Tag raiz = xml.leerXML();
-		
+
 			for(Tag libro : raiz.getTagsHijos()){
-				
+
 				Tag id = libro.getTagHijoByName("id");
 				Tag nombre = libro.getTagHijoByName("nombre");
-				
-				Autor aut = new Autor(nombre.getContenido());
+				Tag imagen = libro.getTagHijoByName("imagen");
+
+				Autor aut = new Autor(nombre.getContenido(),imagen.getContenido());
 				aut.setId(Integer.parseInt(id.getContenido()));
-				
+
 				lista.add(aut);
 			}
 		} catch (ParserConfigurationException ex) {

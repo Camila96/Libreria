@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Autor Cantidad-Autor="4">
+<Autor Cantidad-Autor="2">
     <!--comentario :v-->
     <autor>
-        <id>0</id>
-        <nombre>ada</nombre>
+        <id>375</id>
+        <nombre>jose</nombre>
+        <imagen>/home/stefa/Escritorio/11209717_496019307216084_1631747182816443858_n.jpg</imagen>
     </autor>
     <autor>
-        <id>1</id>
-        <nombre>adaaaaaaaa</nombre>
-    </autor>
-    <autor>
-        <id>2</id>
-        <nombre>arewr</nombre>
-    </autor>
-    <autor>
-        <id>55</id>
-        <nombre/>
+        <id>384</id>
+        <nombre>troll master</nombre>
+        <imagen>/home/stefa/Escritorio/11061236_819246638143766_5845392720150265193_n.jpg</imagen>
     </autor>
 </Autor>

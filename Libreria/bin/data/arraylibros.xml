@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Libreria Cantidad-Libro="14">
+<Libreria Cantidad-Libro="13">
     <!--comentario :v-->
     <libro>
         <id>0</id>
@@ -80,16 +80,6 @@
         <autor>g</autor>
         <copias>524</copias>
         <rutaImagen>/img/imgLibros/peggle7.jpg</rutaImagen>
-    </libro>
-    <libro>
-        <id>8</id>
-        <nombre>ler</nombre>
-        <descripcion>iu3qceah</descripcion>
-        <valor>12000.0</valor>
-        <genero>Comedia</genero>
-        <autor>ws</autor>
-        <copias>536452</copias>
-        <rutaImagen>/img/imgLibros/ler8.jpg</rutaImagen>
     </libro>
     <libro>
         <id>9</id>

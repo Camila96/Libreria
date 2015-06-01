@@ -1,7 +1,10 @@
 package modelo.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import modelo.entidades.Autor;
+import modelo.entidades.Cliente;
 import modelo.excepciones.ExcepcionAutorNoEncontrado;
 /**
  * @author Maria Camila Preciado Rojas y 
@@ -41,8 +44,8 @@ public class GestorAutor {
 		throw new ExcepcionAutorNoEncontrado(id);
 	}
 	
-	public static Autor crearAutor(String nombre){
-			return new Autor(nombre);	
+	public static Autor crearAutor(String nombre,String imagen){
+			return new Autor(nombre,imagen);	
 	}
 	
 	public ArrayList<Autor> getListaAutor() {
@@ -52,6 +55,13 @@ public class GestorAutor {
 	public void setListaAutor(ArrayList<Autor> listaAutor) {
 		this.listaAutor = listaAutor;
 	}
-
+	public static void editar(Autor autorViejo , HashMap<String, String> listaCampos ){
+		if (listaCampos.containsKey("NOMBRE")) {
+			autorViejo.setNombre(listaCampos.get("NOMBRE"));;
+		}
+		if (listaCampos.containsKey("IMAGEN")) {
+			autorViejo.setImage(listaCampos.get("IMAGEN"));;
+		}
+	}
 
 }

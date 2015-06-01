@@ -43,11 +43,11 @@ public class Util {
 
 	public static String[] clienteAVector(Cliente cliente){
 		return new String[]{Integer.toString(cliente.getId()),cliente.getNombre(),
-				Double.toString(cliente.getCredito()),cliente.getPassWord()};
+				Double.toString(cliente.getCredito()),cliente.getPassWord(),cliente.getImage()};
 	}
 	
 	public static String[] autorAVector(Autor autor){
-		return new String[]{Integer.toString(autor.getId()),autor.getNombre()};
+		return new String[]{Integer.toString(autor.getId()),autor.getNombre(),autor.getImage()};
 	}
 	
 	public static ImageIcon createImageIcon(String path) {

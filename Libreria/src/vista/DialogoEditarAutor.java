@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +14,10 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
 import modelo.dao.GestorAutor;
+import modelo.dao.GestorCliente;
 import modelo.entidades.Autor;
+import modelo.entidades.Cliente;
+import modelos.util.Util;
 import controlador.Controlador;
 
 public class DialogoEditarAutor extends JDialog{
@@ -30,6 +34,7 @@ public class DialogoEditarAutor extends JDialog{
 	private JButton btnCargarImagen;
 	private JLabel lbImagen;
 	private JLabel lbImageFondo;
+	private Autor autor;
 
 	public DialogoEditarAutor(VentanaPrincipal ventanaPrincipal, Controlador controlador){
 		super(ventanaPrincipal);
@@ -85,7 +90,7 @@ public class DialogoEditarAutor extends JDialog{
 	}
 
 	public Autor crearAutor(){
-		Autor autor  = GestorAutor.crearAutor(txtNombre.getText());
+		Autor autor  = GestorAutor.crearAutor(txtNombre.getText(),txtImage.getText());
 		dispose();
 		eliminarDatosTablaAutor();
 		return autor;
@@ -96,6 +101,21 @@ public class DialogoEditarAutor extends JDialog{
 		autor.setImage(txtImage.getText());
 		eliminarDatosTablaAutor();
 		dispose();
+		return autor;
+	}
+	public Autor editar(){
+		HashMap<String, String> listaCampos = new HashMap<String, String>();
+		
+		if (!txtNombre.getText().equals(autor.getNombre())) {
+			listaCampos.put("NOMBRE", txtNombre.getText());
+		}
+		if (!txtImage.getText().equals(autor.getImage())) {
+			String nombreImagen = txtNombre.getText()+ autor.getId();
+			autor.setImage("/images/imgAutor/"+nombreImagen+".jpg");
+			Util.guardarImagen(nombreImagen, autor.getImage());
+			listaCampos.put("IMAGEN", autor.getImage());
+		}
+		GestorAutor.editar(autor, listaCampos);
 		return autor;
 	}
 	
