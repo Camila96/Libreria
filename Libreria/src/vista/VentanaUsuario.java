@@ -51,48 +51,49 @@ public class VentanaUsuario  extends JFrame{
 
 	@SuppressWarnings("deprecation")
 	public void agregarPanel(ArrayList<PanelLibro> lis){
-		if (lis == null) {
-			this.remove(panelLibrosUsuario);
-			panelLibrosUsuario = new PanelLibrosUsuario();
-			panelLibrosUsuario.add(new JLabel("No tienes libros seleccionados para la compra                                      "));
-			add(panelLibrosUsuario , BorderLayout.CENTER);
-			panelOpcionesUsuario.comprar.setEnabled(false);
-		}else{
-			this.remove(panelLibrosUsuario);
-			panelLibrosUsuario = new PanelLibrosUsuario(lis , controlador);
-			add(panelLibrosUsuario , BorderLayout.CENTER);
-			panelOpcionesUsuario.comprar.setEnabled(true);
+		if(panelLibrosUsuario != null){
+			if (lis == null) {
+				this.remove(panelLibrosUsuario);
+				panelLibrosUsuario = new PanelLibrosUsuario();
+				panelLibrosUsuario.add(new JLabel("No tienes libros seleccionados para la compra                                      "));
+				add(panelLibrosUsuario , BorderLayout.CENTER);
+				panelOpcionesUsuario.comprar.setEnabled(false);
+			}else{
+				this.remove(panelLibrosUsuario);
+				panelLibrosUsuario = new PanelLibrosUsuario(lis , controlador);
+				add(panelLibrosUsuario , BorderLayout.CENTER);
+				panelOpcionesUsuario.comprar.setEnabled(true);
+			}
+			this.resize(ConstantesGUI.VENTANA_ANCHO-1,ConstantesGUI.VENTANA_ALTO-2);
 		}
-		this.resize(ConstantesGUI.VENTANA_ANCHO-1,ConstantesGUI.VENTANA_ALTO-2);
 	}
 
 	@SuppressWarnings("deprecation")
 	public void agregarPanel(){
 		if (panelLibrosUsuario != null) {
 			this.remove(panelLibrosUsuario);
-		}
-		panelLibrosUsuario = new PanelLibrosUsuario(getListaLibros());
-		add(panelLibrosUsuario , BorderLayout.CENTER);
-		this.resize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);
-		panelOpcionesUsuario.comprar.setEnabled(false);
+		}panelLibrosUsuario = new PanelLibrosUsuario(getListaLibros());
+			add(panelLibrosUsuario , BorderLayout.CENTER);
+			this.resize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);
+			panelOpcionesUsuario.comprar.setEnabled(false);
 	}
 
 	@SuppressWarnings("deprecation")
 	public void agregarPanelColeccion(ArrayList<Libro> lista ){
 		if (panelLibrosUsuario != null) {
 			this.remove(panelLibrosUsuario);
-		}
-		if (lista == null) {
-			panelLibrosUsuario = new PanelLibrosUsuario();
-			panelLibrosUsuario.add(new JLabel("No tienes libros en tu coleccion                                    "));
-			add(panelLibrosUsuario , BorderLayout.CENTER);
+			if (lista == null) {
+				panelLibrosUsuario = new PanelLibrosUsuario();
+				panelLibrosUsuario.add(new JLabel("No tienes libros en tu coleccion                                    "));
+				add(panelLibrosUsuario , BorderLayout.CENTER);
+				panelOpcionesUsuario.comprar.setEnabled(false);
+			}else{
+				panelLibrosUsuario = new PanelLibrosUsuario(lista);
+				add(panelLibrosUsuario , BorderLayout.CENTER);
+			}
+			this.resize(ConstantesGUI.VENTANA_ANCHO-2,ConstantesGUI.VENTANA_ALTO-1);
 			panelOpcionesUsuario.comprar.setEnabled(false);
-		}else{
-			panelLibrosUsuario = new PanelLibrosUsuario(lista);
-			add(panelLibrosUsuario , BorderLayout.CENTER);
 		}
-		this.resize(ConstantesGUI.VENTANA_ANCHO-2,ConstantesGUI.VENTANA_ALTO-1);
-		panelOpcionesUsuario.comprar.setEnabled(false);
 	}
 
 	public ArrayList<PanelLibro> getListaLibros(String s) {

@@ -18,7 +18,7 @@ public class PanelLibrosUsuario extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ArrayList<PanelLibro> listaPanelLibro;
 	private ArrayList<Libro> listaLibrosSeleccionados;
-	
+
 	public PanelLibrosUsuario(ArrayList<Libro> lista) {
 		listaPanelLibro = new ArrayList<PanelLibro>();
 		setLayout(new GridLayout(4,6 ));
@@ -30,7 +30,7 @@ public class PanelLibrosUsuario extends JPanel{
 			add(panelLibro);
 		}
 	}
-	
+
 	public void init(ArrayList<Libro> lista){
 		this.removeAll();
 		for (Libro libro : lista) {
@@ -46,7 +46,7 @@ public class PanelLibrosUsuario extends JPanel{
 		this.updateUI();
 		this.repaint();
 	}
-	
+
 	public PanelLibrosUsuario() {
 		setLayout(new FlowLayout());
 	}
@@ -54,13 +54,15 @@ public class PanelLibrosUsuario extends JPanel{
 	public ArrayList<PanelLibro> listaSeleccionados(){
 		ArrayList<PanelLibro> lis = new ArrayList<PanelLibro>();
 		ArrayList<Libro> listalibr= new ArrayList<Libro>();
-		for (PanelLibro panelLibro : listaPanelLibro) {
-			if (panelLibro.isSelect()) {
-				lis.add(panelLibro);
-				listalibr.add(panelLibro.getLibr());
+		if(listaPanelLibro != null){
+			for (PanelLibro panelLibro : listaPanelLibro) {
+				if (panelLibro.isSelect()) {
+					lis.add(panelLibro);
+					listalibr.add(panelLibro.getLibr());
+				}
 			}
+			setListaLibrosSeleccionados(listalibr);
 		}
-		setListaLibrosSeleccionados(listalibr);
 		if (lis.size() == 0) {
 			return null;
 		}else
