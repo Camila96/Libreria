@@ -54,15 +54,13 @@ public class PanelLibrosUsuario extends JPanel{
 	public ArrayList<PanelLibro> listaSeleccionados(){
 		ArrayList<PanelLibro> lis = new ArrayList<PanelLibro>();
 		ArrayList<Libro> listalibr= new ArrayList<Libro>();
-		if(listaPanelLibro != null){
-			for (PanelLibro panelLibro : listaPanelLibro) {
-				if (panelLibro.isSelect()) {
-					lis.add(panelLibro);
-					listalibr.add(panelLibro.getLibr());
-				}
+		for (PanelLibro panelLibro : listaPanelLibro) {
+			if (panelLibro.isSelect()) {
+				lis.add(panelLibro);
+				listalibr.add(panelLibro.getLibr());
 			}
-			setListaLibrosSeleccionados(listalibr);
 		}
+		setListaLibrosSeleccionados(listalibr);
 		if (lis.size() == 0) {
 			return null;
 		}else
