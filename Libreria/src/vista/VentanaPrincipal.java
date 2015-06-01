@@ -3,6 +3,8 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -55,7 +57,8 @@ public class VentanaPrincipal  extends JFrame{
 		setLayout(new BorderLayout());
 		setSize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		addWindowListener(new WindowAdapter(){ public void windowClosing(WindowEvent e){ controlador.mostrarVentanaInicial(); } });
 
 		barraMenu = new BarraMenu(controlador);
 		setJMenuBar(barraMenu);

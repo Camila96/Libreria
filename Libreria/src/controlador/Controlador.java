@@ -238,7 +238,7 @@ public class Controlador implements ActionListener {
 			break;
 		case A_AGREGAR_ADMINISTRADOR:
 			ventanaPrincipal.setVisible(true);
-
+			dialogoPrincipal.setVisible(false);
 			break;
 		case A_MOSTRAR_USUARIO:
 			dialogoIniciarSesion.setVisible(true);
@@ -535,10 +535,16 @@ public class Controlador implements ActionListener {
 		for (int i = 0; i < gestorCliente.getListaCliente().size(); i++) {
 			if (name.equals(gestorCliente.getListaCliente().get(i).getNombre()) && pass.equals(gestorCliente.getListaCliente().get(i).getPassWord())) {
 				ventanaUsuario.setVisible(true);
+				dialogoIniciarSesion.setVisible(false);
+				dialogoPrincipal.setVisible(false);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public void mostrarVentanaInicial() {
+		dialogoPrincipal.setVisible(true);	
 	}
 
 }

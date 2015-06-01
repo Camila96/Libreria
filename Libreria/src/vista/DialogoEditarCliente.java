@@ -14,9 +14,7 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileSystemView;
 
 import modelo.dao.GestorCliente;
-import modelo.dao.GestorLibro;
 import modelo.entidades.Cliente;
-import modelo.entidades.Libro;
 import modelos.util.Util;
 import controlador.Controlador;
 /**

@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,7 +28,7 @@ public class JDialogoPrincipal extends JDialog {
 		setSize(ConstantesGUI.DIALOGO_ANCHO, ConstantesGUI.DIALOGO_ALTO);
 		setLocationRelativeTo(null);
 		setBackground(Color.CYAN);
-		
+		addWindowListener(new WindowAdapter(){ public void windowClosing(WindowEvent e){ System.exit(0); } });
 		PanelImagen panelImg = new PanelImagen("/img/f.jpg");
 		
 		btnAdministrador = new JButton(ConstantesGUI.T_ITEM_AGREGAR_ADMINISTRADOR,Util.createImageIcon("/img/admi.png"));

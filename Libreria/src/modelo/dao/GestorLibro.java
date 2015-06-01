@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import persistencia.XmlLibro;
-import modelo.entidades.Cliente;
 import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionLibroNoEncontrado;
 import modelos.util.Util;

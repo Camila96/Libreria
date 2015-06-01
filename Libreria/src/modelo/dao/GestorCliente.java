@@ -3,7 +3,6 @@ package modelo.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import persistencia.XmlLibro;
 import modelo.entidades.Cliente;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelos.util.Util;
