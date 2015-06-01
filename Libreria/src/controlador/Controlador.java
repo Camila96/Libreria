@@ -62,7 +62,7 @@ public class Controlador implements ActionListener {
 	public static final String A_EXPORTAR_ARCHIVO_XML_AUTOR = "ex xml autor";
 	public static final String A_IMPORTAR_ARCHIVO_XML_CLIENTE = "Xml Cliente";
 	public static final String A_EXPORTAR_ARCHIVO_XML_CLIENTE = "Ex Xml Cliente";
-	public  static final String GUARDAR_ARRAY_LIBROS = "guardar xml";
+	public static final String GUARDAR_ARRAY_LIBROS = "guardar xml";
 	public static final String A_MOSTRAR_COLECCION = "mostrar coleccion Usuario";
 	public static final String A_MOSTRAR_LIBROS_A_COMPRAR = "mostrar libros seleccionados para la compra";
 	public static final String GUARDAR_ARRAY_AUTOR = "xmlautor";
@@ -75,6 +75,8 @@ public class Controlador implements ActionListener {
 	public static final String A_CREAR_IMAGEN_CLIENTE = "CLIENTE";
 	public static final String A_MOSTRAR_EDITAR_CLIENTE = "EDITAR CLIENTE";
 	public static final String A_CREAR_IMAGEN_EDITAR_CLIENTE = "IMAGEN CLIENTE";
+	public static final String A_ATRAS = "devolverse a la lista de libros";
+	public static final String A_COMPRAR = "comprar libros seleccionados";
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaUsuario ventanaUsuario;
 	private GestorAutor gestorAutor;
@@ -109,15 +111,15 @@ public class Controlador implements ActionListener {
 		gestorCliente.setListaCliente(XmlCliente.leerXML(RUTA_CLIENTE));
 		gestorAutor.setListaAutor(XmlAutor.leerXML(RUTA_AUTOR));
 		gestorLibro.setListaLibro(XmlLibro.leerXML(RUTA_LIBRO));
-		inicializaDatos();
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
-
-
+		case A_COMPRAR:
+			comprar();
+			break;
 		case A_MOSTRAR_AGREGAR_LIBRO:
 			dialogoLibro.setVisible(true);
 			break;
@@ -239,6 +241,7 @@ public class Controlador implements ActionListener {
 		case A_AGREGAR_ADMINISTRADOR:
 			ventanaPrincipal.setVisible(true);
 			dialogoPrincipal.setVisible(false);
+			inicializaDatos();
 			break;
 		case A_MOSTRAR_USUARIO:
 			dialogoIniciarSesion.setVisible(true);
@@ -266,13 +269,44 @@ public class Controlador implements ActionListener {
 				JOptionPane.showMessageDialog(dialogoIniciarSesion, "Error de Acceso,intentelo de nuevo");
 			}
 			break;
+		case A_MOSTRAR_LIBROS_A_COMPRAR:
+			ventanaUsuario.agregarPanel(ventanaUsuario.getListaLibros(""));
+			break;
+		case A_ATRAS:
+			ventanaUsuario.agregarPanel();
+			break;
 		default:
 			break;
 		}
 	}
 
-	private void mostrarColeccionCliente() {
+	private void comprar() {
+		ArrayList<Libro> lista = ventanaUsuario.getListaLibrosSeleccionados();
+		double valor = 0;
+		for (Libro libro : lista) {
+			valor += libro.getValor();
+		}
+		try {
+			Cliente c;
+			c = gestorCliente.buscarCliente();
+			if(gestorCliente.validarCompra(c , valor)){
+				gestorCliente.realizarCompra(c , valor , lista);
+			}
+		} catch (ExcepcionClienteNoEncontrado e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 
+	private void mostrarColeccionCliente() {
+		Cliente c;
+		try {
+			c = gestorCliente.buscarCliente();
+			ventanaUsuario.agregarPanelColeccion(c.getListaLibro());
+		} catch (ExcepcionClienteNoEncontrado e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void agregarLibro(Libro libro){
@@ -534,6 +568,7 @@ public class Controlador implements ActionListener {
 		String name = dialogoIniciarSesion.getTxtNombre().getText();
 		for (int i = 0; i < gestorCliente.getListaCliente().size(); i++) {
 			if (name.equals(gestorCliente.getListaCliente().get(i).getNombre()) && pass.equals(gestorCliente.getListaCliente().get(i).getPassWord())) {
+				gestorCliente.getListaCliente().get(i).setActivo(true);
 				ventanaUsuario.setVisible(true);
 				dialogoIniciarSesion.setVisible(false);
 				dialogoPrincipal.setVisible(false);

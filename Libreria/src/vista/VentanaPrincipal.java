@@ -154,7 +154,6 @@ public class VentanaPrincipal  extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectionCliente = Integer.parseInt((String)modeloCliente.getValueAt(tableCliente.getSelectedRow(), 0));
-
 			}
 
 			@Override
@@ -219,7 +218,6 @@ public class VentanaPrincipal  extends JFrame{
 	public void init(){
 		setTitle(ConstantesGUI.T_TITULO_VENTANA_ADMINISTRADOR);		
 	}
-
 
 	public void agregarLibro(Libro libro){
 		modeloLibro.addRow(Util.libroAVector(libro));

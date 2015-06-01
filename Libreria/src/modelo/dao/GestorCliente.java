@@ -3,7 +3,10 @@ package modelo.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import controlador.Controlador;
+import persistencia.XmlCliente;
 import modelo.entidades.Cliente;
+import modelo.entidades.Libro;
 import modelo.excepciones.ExcepcionClienteNoEncontrado;
 import modelos.util.Util;
 /**
@@ -44,6 +47,15 @@ public class GestorCliente {
 		throw new ExcepcionClienteNoEncontrado(nombre);
 	}
 
+	public Cliente buscarCliente() throws ExcepcionClienteNoEncontrado{
+		for (Cliente cliente : listaCliente) {
+			if (cliente.isActivo()) {
+				return cliente;
+			}
+		}
+		throw new ExcepcionClienteNoEncontrado("No hay clientes activos");
+	}
+
 	public static Cliente crearCliente(String nombre, String valor, String passWord,String image){
 		if (Util.validarValor(valor)) {
 			return new Cliente(nombre, Double.parseDouble(valor),passWord,image);	
@@ -71,5 +83,23 @@ public class GestorCliente {
 		if (listaCampos.containsKey("IMAGEN")) {
 			clienteViejo.setImage(listaCampos.get("IMAGEN"));;
 		}
+	}
+
+	public boolean validarCompra(Cliente cliente , double valor) {
+		if (valor <= cliente.getCredito()) {
+			return true;		
+		}else 
+			return false;
+	}
+
+	public void realizarCompra(Cliente c , double valor , ArrayList<Libro> lista) {
+
+		for (Cliente cliente : listaCliente) {
+			if (cliente == c) {
+				cliente.setCredito(cliente.getCredito()-valor);
+				cliente.setListaLibro(lista);
+			}
+		}
+		XmlCliente.EscribirXML(getListaCliente(), Controlador.RUTA_CLIENTE);
 	}
 }

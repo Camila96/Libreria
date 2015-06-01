@@ -71,16 +71,10 @@ public class Cliente {
 		this.passWord = passWord;
 	}
 
-	/**
-	 * @return the activo
-	 */
 	public boolean isActivo() {
 		return activo;
 	}
 
-	/**
-	 * @param activo the activo to set
-	 */
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
