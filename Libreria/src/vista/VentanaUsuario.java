@@ -63,7 +63,7 @@ public class VentanaUsuario  extends JFrame{
 			add(panelLibrosUsuario , BorderLayout.CENTER);
 			panelOpcionesUsuario.comprar.setEnabled(true);
 		}
-		this.resize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);
+		this.resize(ConstantesGUI.VENTANA_ANCHO-1,ConstantesGUI.VENTANA_ALTO-2);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -91,7 +91,7 @@ public class VentanaUsuario  extends JFrame{
 			panelLibrosUsuario = new PanelLibrosUsuario(lista);
 			add(panelLibrosUsuario , BorderLayout.CENTER);
 		}
-		this.resize(ConstantesGUI.VENTANA_ANCHO,ConstantesGUI.VENTANA_ALTO);
+		this.resize(ConstantesGUI.VENTANA_ANCHO-2,ConstantesGUI.VENTANA_ALTO-1);
 		panelOpcionesUsuario.comprar.setEnabled(false);
 	}
 

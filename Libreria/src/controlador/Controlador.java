@@ -291,6 +291,9 @@ public class Controlador implements ActionListener {
 			c = gestorCliente.buscarCliente();
 			if(gestorCliente.validarCompra(c , valor)){
 				gestorCliente.realizarCompra(c , valor , lista);
+				JOptionPane.showMessageDialog(ventanaUsuario, "Compra Realizada Exitosamente", "Éxito" , JOptionPane.INFORMATION_MESSAGE);
+			}else{
+				JOptionPane.showMessageDialog(ventanaUsuario, "Error al comprar libros", "Error" , JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (ExcepcionClienteNoEncontrado e) {
 			e.printStackTrace();

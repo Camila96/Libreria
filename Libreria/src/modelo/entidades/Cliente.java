@@ -86,5 +86,23 @@ public class Cliente {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public boolean siExiste(Libro libroNuevo){
+		for (Libro libro : listaLibro) {
+			if (libro == libroNuevo) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void agregarLibros(ArrayList<Libro> lista) {
+		for (Libro libro : lista) {
+			if (!siExiste(libro)) {
+				listaLibro.add(libro);
+			}
+		}
+		
+	}
 	
 }

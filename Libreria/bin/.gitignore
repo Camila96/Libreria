@@ -1,7 +1,6 @@
 /controlador/
-/data/
-/img/
 /modelo/
 /modelos/
-/vista/
 /persistencia/
+/vista/
+/data/

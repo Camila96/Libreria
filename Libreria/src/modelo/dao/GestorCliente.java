@@ -97,7 +97,7 @@ public class GestorCliente {
 		for (Cliente cliente : listaCliente) {
 			if (cliente == c) {
 				cliente.setCredito(cliente.getCredito()-valor);
-				cliente.setListaLibro(lista);
+				cliente.agregarLibros(lista);;
 			}
 		}
 		XmlCliente.EscribirXML(getListaCliente(), Controlador.RUTA_CLIENTE);
