@@ -84,7 +84,7 @@ public class VentanaPrincipal  extends JFrame{
 		add(new JScrollPane(tableLibro),BorderLayout.SOUTH);
 		add(jPanelImage,BorderLayout.EAST);
 
-		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito","Contrase�a"}, 0);
+		modeloCliente = new DefaultTableModel(new String[]{"Id", "Nombre", "Credito","Contrasena"}, 0);
 		tableCliente = new JTable(modeloCliente);
 		tableCliente.getTableHeader().setReorderingAllowed(false);
 		tableCliente.getSelectionModel().addListSelectionListener(new ListSelectionListener() {			

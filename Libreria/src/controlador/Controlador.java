@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import persistencia.XmlAdmin;
 import persistencia.XmlAutor;
 import persistencia.XmlCliente;
 import persistencia.XmlLibro;
@@ -26,6 +27,7 @@ import vista.DialogoEditarAutor;
 import vista.DialogoEditarCliente;
 import vista.DialogoIniciarSesion;
 import vista.DialogoLibro;
+import vista.DialogoLoginAdmin;
 import vista.JDialogoPrincipal;
 import vista.VentanaPrincipal;
 import vista.VentanaUsuario;
@@ -68,6 +70,7 @@ public class Controlador implements ActionListener {
 	public static final String GUARDAR_ARRAY_AUTOR = "xmlautor";
 	public static final String A_CANCELAR_INCIO_SESION = "cancelar incio de sesion";
 	public static final String A_INICIAR_SESION = "Iniciar sesion";
+	public static final String A_INICIAR_SESION_ADMIN = "Iniciar sesion ADMIN";
 	public static final String A_BUSCAR = "buscar";
 	public static final String RUTA_CLIENTE = "src/data/arrayClientes.xml";
 	public static final String RUTA_AUTOR = "src/data/arrayAutor.xml";
@@ -92,6 +95,7 @@ public class Controlador implements ActionListener {
 	private JDialogoPrincipal dialogoPrincipal;
 	private DialogoIniciarSesion dialogoIniciarSesion;
 	private DialogoEditarCliente dialogoEditarCliente;
+	private DialogoLoginAdmin dialogoLoginAdmin;
 
 	public Controlador() {
 		gestorAutor = new GestorAutor();
@@ -108,6 +112,7 @@ public class Controlador implements ActionListener {
 		dialogoPrincipal.setVisible(true);
 		dialogoIniciarSesion = new DialogoIniciarSesion(dialogoPrincipal, this);
 		dialogoEditarCliente = new DialogoEditarCliente(ventanaPrincipal, this);
+		dialogoLoginAdmin = new DialogoLoginAdmin(dialogoPrincipal, this);
 		gestorCliente.setListaCliente(XmlCliente.leerXML(RUTA_CLIENTE));
 		gestorAutor.setListaAutor(XmlAutor.leerXML(RUTA_AUTOR));
 		gestorLibro.setListaLibro(XmlLibro.leerXML(RUTA_LIBRO));
@@ -239,8 +244,7 @@ public class Controlador implements ActionListener {
 			ventanaPrincipal.getBarraMenu().actualizarProperties();	
 			break;
 		case A_AGREGAR_ADMINISTRADOR:
-			ventanaPrincipal.setVisible(true);
-			dialogoPrincipal.setVisible(false);
+			dialogoLoginAdmin.setVisible(true);
 			inicializaDatos();
 			break;
 		case A_MOSTRAR_USUARIO:
@@ -264,6 +268,13 @@ public class Controlador implements ActionListener {
 			break;
 		case A_INICIAR_SESION:
 			if (login()) {
+
+			}else {
+				JOptionPane.showMessageDialog(dialogoIniciarSesion, "Error de Acceso,intentelo de nuevo");
+			}
+			break;
+		case A_INICIAR_SESION_ADMIN:
+			if (loginAdmin()) {
 
 			}else {
 				JOptionPane.showMessageDialog(dialogoIniciarSesion, "Error de Acceso,intentelo de nuevo");
@@ -583,6 +594,23 @@ public class Controlador implements ActionListener {
 
 	public void mostrarVentanaInicial() {
 		dialogoPrincipal.setVisible(true);	
+	}
+	public boolean loginAdmin(){
+		char[] arrayC = dialogoLoginAdmin.getTxtContrasena().getPassword(); 
+		String pass = new String(arrayC); 
+		String name = dialogoLoginAdmin.getTxtNombre().getText();
+		ArrayList<String> aux = XmlAdmin.leerXML("src/data/admin.xml");
+		
+		for (int i = 0; i < aux.size(); i++) {
+			if (name.equals(aux.get(i)) && pass.equals(aux.get(i))) {
+			//	gestorCliente.getListaCliente().get(i).setActivo(true);
+				ventanaPrincipal.setVisible(true);
+				dialogoLoginAdmin.setVisible(false);
+				dialogoPrincipal.setVisible(false);
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

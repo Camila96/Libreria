@@ -38,7 +38,7 @@ public class DialogoIniciarSesion extends JDialog{
 		gb.gridx = 1;
 		add(txtNombre);
 
-		JLabel lblContrasena = new JLabel("Contrase�a: ");
+		JLabel lblContrasena = new JLabel("Contrasena: ");
 		gb.gridy = 1;
 		gb.gridx = 0;
 		add(lblContrasena , gb);
